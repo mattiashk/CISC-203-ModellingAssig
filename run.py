@@ -2,12 +2,31 @@
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
+"""
+    This python file
+
+    Returns:
+        None
+
+    Example:
+"""
+
 # These two lines make sure a faster SAT solver is used.
 from nnf import config
 config.sat_backend = "kissat"
 
 # Encoding that will store all of your constraints
 E = Encoding()
+
+class Hashable:
+    def __hash__(self):
+        return hash(str(self))
+
+    def __eq__(self, __value: object) -> bool:
+        return hash(self) == hash(__value)
+
+    def __repr__(self):
+        return str(self)
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
