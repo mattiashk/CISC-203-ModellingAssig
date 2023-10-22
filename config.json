@@ -1,0 +1,5 @@
+{
+    "courses_file": "Data/Reference/datasets-master/courses.json",
+    "buildings_file": "path/to/buildings.json",
+    "sections_file": "path/to/sections.json"
+}
