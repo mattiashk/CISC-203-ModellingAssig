@@ -2,6 +2,9 @@
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
+import datalayer
+import main #TODO needs to be removed and code needs to be added to build_theorey
+
 """
     This python file
 
@@ -66,6 +69,7 @@ y = FancyPropositions("y")
 z = FancyPropositions("z")
 
 
+
 # Build an example full theory for your setting and return it.
 #
 #  There should be at least 10 variables, and a sufficiently large formula to describe it (>50 operators).
@@ -84,9 +88,18 @@ def example_theory():
 
     return E
 
+def build_theory():
+    """
+    #TODO
+    """
+    objects = main.create_data_layer()
+    students = objects["students"]
+
+
+
 
 if __name__ == "__main__":
-
+    build_theory()
     T = example_theory()
     # Don't compile until you're finished adding all your constraints!
     T = T.compile()
