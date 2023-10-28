@@ -19,7 +19,7 @@ Classes:
 
 
 Author: [Hayden Jenkins]
-Date: [21/10/23]
+Date: [28/10/23]
 
 Example usage:
 - Create instances of Course, Department and CourseSection.
@@ -58,6 +58,7 @@ class Course:
         self.department = department
         self.course_code = course_code
         self.course_name = course_name
+        self.section = None #a Section object that is linked to this Course
         self.campus = campus
         self.description = description
         self.grading_basis = grading_basis
@@ -147,6 +148,26 @@ class Course:
             None
         """
         self._course_name = value
+
+    @property
+    def section(self):
+        """
+        Get the Section object connected to the Course object.
+        """
+        return self._section
+
+    @section.setter
+    def section(self, section):
+        """
+        Set the section attribute to a Section object that is connected to this Course.
+
+        Args:
+            value (Section): The Section to set.
+
+        Returns:
+            None
+        """
+        self._section = section
 
     @property
     def campus(self):
@@ -394,7 +415,12 @@ class Course:
         """
         return f"{self.id}"
 
-class Courses:
+    def add_section_link(self, section):
+        """
+        """
+        self.section = section
+#depreciated
+class Courses_slow:
     """
     Represents a collection of course objects and provides methods to add and find courses.
     """
@@ -468,6 +494,96 @@ class Courses:
         formatted_string += "]"
         
         return(formatted_string)
+
+    def __iter__(self):
+        """
+        Make the Courses class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        return self
+
+    def __next__(self):
+        """
+        Get the next Course object in the iteration.
+        """
+        if self._current_index < len(self._courses):
+            course = self._courses[self._current_index]
+            self._current_index += 1
+            return course
+        raise StopIteration
+class Courses:
+    def __init__(self, courses=None):
+        """
+        Initializes a Courses instance with an empty dictionary of courses.
+        """
+        self._courses = {}  # Use a dictionary to store courses by ID
+        if courses is not None:
+            self.add_courses(courses)
+
+    @property
+    def courses(self):
+        """
+        Get the list of Courses.
+        """
+        return list(self._courses.values())  # Convert dictionary values to a list
+
+    def add_course(self, course):
+        """
+        Add a Course to the collection.
+
+        Args:
+            course (Course): The Course object to be added.
+        """
+        self._courses[course.id] = course  # Use course ID as the key in the dictionary
+
+    def add_courses(self, courses):
+        """
+        Add multiple courses to the collection.
+
+        Args:
+            courses (list of Course): A list of Course objects to be added.
+        """
+        for course in courses:
+            self.add_course(course)
+
+    def find_course_by_id(self, id):
+        """
+        Find a Course by its unique identifier.
+
+        Args:
+            id (str): The unique identifier of the Course to search for.
+
+        Returns:
+            Course or None: The Course object if found, or None if not found.
+        """
+        return self._courses.get(id, None)  # Use dictionary's get method
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of Course objects.
+
+        Returns:
+            str: A list with information for each Course.
+        """
+        return str([str(course) for course in self._courses.values()])
+
+    def __iter__(self):
+        """
+        Make the Courses class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        self._course_list = list(self._courses.values())
+        return self
+
+    def __next__(self):
+        """
+        Get the next Course object in the iteration.
+        """
+        if self._current_index < len(self._course_list):
+            course = self._course_list[self._current_index]
+            self._current_index += 1
+            return course
+        raise StopIteration
 
 
 class Department:
@@ -555,7 +671,6 @@ class Department:
         """
         #return f"Department ID: {self.id}, Department: {self.code}, Name: {self.name}"
         return f"{self.code}: {self.name}"
-
 class Departments:
     """
     Represents a collection of department objects and provides methods to add and find departments.
@@ -632,6 +747,22 @@ class Departments:
         
         return(formatted_string)
 
+    def __iter__(self):
+        """
+        Make the Department class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        return self
+
+    def __next__(self):
+        """
+        Get the next Department object in the iteration.
+        """
+        if self._current_index < len(self._departments):
+            department = self._departments[self._current_index]
+            self._current_index += 1
+            return department
+        raise StopIteration
 
 class CourseSection:
     """
@@ -664,6 +795,7 @@ class CourseSection:
         self.campus = campus
         self.academic_level = academic_level
         self.course_sections = course_sections
+        self.courseid = ("{}-{}".format(department, course_code))
     
     @property
     def id(self):
@@ -805,6 +937,20 @@ class CourseSection:
         """
         self._course_sections = value
 
+    @property
+    def courseid(self):
+        """
+        Get the course id of the course section.
+        """
+        return self._courseid
+
+    @courseid.setter
+    def courseid(self, value):
+        """
+        Set the course id of the course section.
+        """
+        self._courseid = value
+
 
     def __str__(self):
         """
@@ -814,7 +960,6 @@ class CourseSection:
             str: A formatted string with CourseSection information.
         """
         return f"{self.id}"
-
 class Section:
     """
     Represents a specific course section with its attributes.
@@ -1011,7 +1156,6 @@ class Section:
             str: A formatted string with Section information.
         """
         return(self.class_number)
-
 class SectionDate:
     """
     Represents a course section with its attributes.
@@ -1150,107 +1294,371 @@ class SectionDate:
         return (
             f"{self.day} {self.start_time} : {self.end_time} {self.instructors} {self.location}"
         )
-
-class CourseSections:
+#depreciated
+class Sections_slow:
     """
-    Represents a collection of CourseSection objects and provides methods to add and find CourseSections.
+    Represents a collection of Section objects and provides methods to add and find Section.
     """
     def __init__(self):
         """
-        Initializes a CourseSections instance with an empty list of CourseSections.
+        Initializes a Section instance with an empty list of Sections.
         """
-        self._course_sections = []
+        self._sections = []
     
-    def __init__(self, course_sections):
+    def __init__(self, sections):
         """
-        Initializes a CourseSections instance from a list of CourseSections.
+        Initializes a Section instance from a list of Sections.
         """
-        self._course_sections = course_sections
+        self._sections = sections
 
     @property
-    def course_sections(self):
+    def sections(self):
         """
-        Get the list of CourseSections.
+        Get the list of Sections.
         """
-        return self._course_sections
+        return self._sections
 
-    @course_sections.setter
-    def course_sections(self, value):
+    @sections.setter
+    def sections(self, value):
         """
-        Set the list of CourseSections.
-
-        Args:
-            value (List): The new list of CourseSections.
-        """
-        self._course_sections = value
-
-
-    def add_course_section(self, course_section):
-        """
-        Add a CourseSection to the collection.
+        Set the list of Sections.
 
         Args:
-            course_section (CourseSection): The CourseSection object to be added.
+            value (List): The new list of Sections.
         """
-        self._course_sections.append(course_section)
+        self._sections = value
 
-    def find_course_section_by_id(self, id):
+
+    def add_section(self, section):
         """
-        Find a CourseSection by its unique identifier.
+        Add a Section to the collection.
 
         Args:
-            id (str): The unique identifier of the CourseSection to search for.
+            section (Section): The Section object to be added.
+        """
+        self._sections.append(section)
+
+    def find_section_by_id(self, id):
+        """
+        Find a Section by its unique identifier.
+
+        Args:
+            id (str): The unique identifier of the Section to search for.
 
         Returns:
-            CourseSection or None: The CourseSection object if found, or None if not found.
+            Section or None: The Section object if found, or None if not found.
         """
-        for course_section in self._course_sections:
-            if course_section.id == id:
-                return course_section
-        return None  # Return None if CourseSection with the given ID is not found
+        for section in self._sections:
+            if section.id == id:
+                return section
+        return None  # Return None if Section with the given ID is not found
 
     def __str__(self):
         """
-        Returns a string representation of the list of CourseSection objects.
+        Returns a string representation of the list of Section objects.
 
         Returns:
-            str: A list with information for each CourseSection.
+            str: A string with information for each Section.
         """
 
         formatted_string = "["
 
-        for course_section in self._course_sections:
-            formatted_string += ("'{}', ".format(course_section))
+        for section in self._sections:
+            formatted_string += ("'{}', ".format(section))
         
         formatted_string = formatted_string[:-2]
         formatted_string += "]"
         
         return(formatted_string)
 
+    def __iter__(self):
+        """
+        Make the Sections class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        return self
 
-def mapCourses(courses_file):
+    def __next__(self):
+        """
+        Get the next Section object in the iteration.
+        """
+        if self._current_index < len(self._sections):
+            section = self._sections[self._current_index]
+            self._current_index += 1
+            return section
+        raise StopIteration
+class Sections:
     """
-    Map data from a courses JSON file to Course objects.
-
-    Args:
-        courses_file (str): The path to the courses JSON file.
-
-    Returns:
-        Courses: An instance of the Courses class containing a list of Course objects.
+    Represents a collection of Section objects and provides methods to add and find Section.
     """
-    with open(courses_file, "r") as json_file:
-        data = json.load(json_file)
+    def __init__(self, sections=None):
+        self._sections = {}
+        if sections is not None:
+            self.add_sections(sections)
 
-    courses = []  # Create a list to store course objects 
+    @property
+    def sections(self):
+        """
+        Get the list of Section objects.
 
-    # Iterate through the JSON data and create Course instances
-    for course_data in data:
-        course = Course(**course_data)
-        courses.append(course)
+        Returns:
+            list: A list of Section objects.
+        """
+        return list(self._sections.values())
+
+    @sections.setter
+    def sections(self, value):
+        """
+        Set the list of Section objects.
+
+        Args:
+            value (list of Section): The new list of Section objects.
+        """
+        self._sections = {section.id: section for section in value}
+
+    def add_section(self, section):
+        """
+        Add a Section to the collection.
+
+        Args:
+            section (Section): The Section object to be added.
+        """
+        self._sections[section.courseid] = section
+
+    def add_sections(self, sections):
+        """
+        Add multiple sections to the collection.
+
+        Args:
+            sections (list of Section): A list of Section objects to be added.
+        """
+        for section in sections:
+            self.add_section(section)
+
+    def find_section_by_id(self, id):
+        """
+        Find a Section by its unique identifier.
+
+        Args:
+            id (str): The unique identifier of the Section to search for.
+
+        Returns:
+            Section or None: The Section object if found, or None if not found.
+        """
+        return self._sections.get(id, None)
+    
+    def __str__(self):
+        """
+        Returns a string representation of the list of Section objects.
+
+        Returns:
+            str: A string with information for each Section.
+        """
+        formatted_string = "["
+
+        for section in self._sections.values():
+            formatted_string += ("'{}', ".format(section))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return formatted_string
+
+    def __iter__(self):
+        """
+        Make the Sections class iterable. This method returns an iterator.
+        """
+        self._current_index = iter(self._sections.values())
+        return self
+
+    def __next__(self):
+        """
+        Get the next Section object in the iteration.
+        """
+        try:
+            return next(self._current_index)
+        except StopIteration:
+            raise StopIteration
+        
 
 
-    # Return a list of Course objects
-    return Courses(courses)
+class Student:
+    """
+    Represents a specific student with their attributes.
+
+    Attributes:
+
+    Methods:
+        __str__(): Returns a string representation of the Student instance.
+    """
+    def __init__(self, name, courses):
+        self._name = name
+        self._courses_str = courses
+        self._courses = None #a Courses object 
+    
+    def __str__(self):
+        """
+        Returns a string representation of the Student.
+
+        Returns:
+            str: A formatted string with Student information.
+        """
+
+        formatted_courses = "["
+
+        for course in self._courses:
+            formatted_courses += ("'{}', ".format(course))
+        
+        formatted_courses = formatted_courses[:-2]
+        formatted_courses += "]"
+
+        return("{}:{}" .format(self.name, formatted_courses))
+
+    @property
+    def courses(self):
+        """
+        Get the Courses object.
+        """
+        return self._courses
+
+    @courses.setter
+    def courses(self, value):
+        """
+        Set the couses attribute to a Courses objects.
+
+        Args:
+            value (Courses): a Courses object.
+        """
+        if not isinstance(value, (Courses, type(None))):
+            raise ValueError("The value must be a Courses object or None")
+        self._courses = value        
+
+    @property
+    def courses_str(self):
+        """
+        Get the list of courses as as list of strings.
+        """
+        return self._courses_str
+
+    @courses_str.setter
+    def courses_str(self, value):
+        """
+        Set the couses_str attribute to a list of course id's.
+
+        Args:
+            value (List): a list of strings.
+        """
+        self._courses_str = value        
+
+    @property
+    def name(self):
+        """
+        Get the student name attribute.
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """
+        Set the student name attribute.
+
+        Args:
+            value (String): a student name.
+        """
+        self._name = value        
+class Students:
+    """
+    Represents a collection of Student objects and provides methods to add and find Students.
+    """
+    def __init__(self):
+        """
+        Initializes a CourseSections instance with an empty list of Students.
+        """
+        self._students = []
+    
+    def __init__(self, students):
+        """
+        Initializes a Students instance from a list of Students.
+        """
+        self._students = students
+
+    @property
+    def students(self):
+        """
+        Get the list of Students.
+        """
+        return self._students
+
+    @students.setter
+    def students(self, value):
+        """
+        Set the list of Students.
+
+        Args:
+            value (List): The new list of Students.
+        """
+        self._students = value
+
+
+    def add_student(self, value):
+        """
+        Add a Student to the collection.
+
+        Args:
+            value (Student): The Student object to be added.
+        """
+        self.students.append(value)
+
+    def find_student_by_id(self, name):
+        """
+        Find a Student object by its unique name.
+
+        Args:
+            id (str): The unique name of the Student to search for.
+
+        Returns:
+            Student or None: The Student object if found, or None if not found.
+        """
+        for student in self._students:
+            if student.name == name:
+                return student
+        return None  # Return None if Student with the given name is not found
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of Student objects.
+
+        Returns:
+            str: A list with information for each Student.
+        """
+
+        formatted_string = "["
+
+        for student in self._students:
+            formatted_string += ("'{}', ".format(student))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return(formatted_string)
+
+    def __iter__(self):
+        """
+        Make the Students class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        return self
+
+    def __next__(self):
+        """
+        Get the next Student object in the iteration.
+        """
+        if self._current_index < len(self._students):
+            student = self._students[self._current_index]
+            self._current_index += 1
+            return student
+        raise StopIteration
+
 
 def mapDepartments(buildings_file):
     """
@@ -1316,9 +1724,113 @@ def mapSections(sections_file):
 
         all_courses.append(course_section)
 
+    # Return a list of Section objects
+    return Sections(all_courses)
+
+def mapCourses(courses_file, mapped_sections = None):
+    """
+    Map data from a courses JSON file to Course objects.
+    Links student courses to their respective Section objects if a Sections object is passed
+
+    Args:
+        courses_file (str): The path to the courses JSON file.
+        (optional) mapped_sections (Sections): The Sections object containing all Section objects
+
+    Returns:
+        Courses: An instance of the Courses class containing a list of Course objects.
+    """
+    with open(courses_file, "r") as json_file:
+        data = json.load(json_file)
+
+    courses = []  # Create a list to store course objects 
+
+    # Iterate through the JSON data and create Course instances
+    for course_data in data:
+        course = Course(**course_data)
+        courses.append(course)
+
+        #if a Sections object is passed then create the required links
+        if mapped_sections is not None:
+            course.add_section_link(mapped_sections.find_section_by_id(course.id))
+
+
+    # Return a list of Course objects
+    return Courses(courses)
+
+def mapStudents(students_file, mapped_courses = None):
+    """
+    Map data from a student JSON file to Students objects.
+    Links student courses to their respective Course objects if a Courses object is passed
+
+    Args:
+        students_file (str): The path to the students JSON file.
+        (optional) mapped_courses (Courses): The Courses object containing all Course objects
+
+    Returns:
+        Students: An instance of the Students class containing a list of Student objects.
+    """
+    with open(students_file, "r") as json_file:
+        data = json.load(json_file)
+
+    all_students = []  # Create a list to store course objects 
+
+    # Iterate through the JSON data and create Student instances
+    for student_data in data:  
+        student = Student(student_data["name"], student_data["courses"])
+        all_students.append(student)
+
+        #if a Courses object is passed then create the required links
+        if mapped_courses is not None:
+            student_courses = []
+            for course in student.courses_str:
+                student_courses.append(mapped_courses.find_course_by_id(course))
+
+            student.courses = Courses(student_courses)
+
     # Return a list of CourseSection objects
-    return CourseSections(all_courses)
+    return Students(all_students)
+
+#Depreciated
+def link_sections_to_courses(sections, courses):
+    """
+    Links every Course object in course (a list of Courses) to a Section object in sections (a list of Courses) that share
+    a unique identifier
+
+    Args:
+        sections ([Section]): The list of Section objects.
+        courses ([Course]): The list of Course objects.
+
+    Returns:
+        None
+    """
+    for course in courses:
+        course_id = course.id
+        linked_section = sections.find_section_by_id(course_id)
+        if linked_section is not None:
+            course.add_section_link(linked_section)
+            print("linked Course: {} to Section: {}".format(course_id, linked_section.id))
+
+#Depreciated
+def link_courses_to_students(students, courses):
+    """
+    Links every Student object in students (a list of Student objects) list of courses to the a specific Course object in courses (a list of Course objects).
+    using a unique identifier
+
+    Args:
+        students ([Student]): The list of Student objects.
+        courses ([Course]): The list of Course objects.
+
+    Returns:
+        None
+    """
+
+    linked_course_list = []
+    for student in students:
+        for course_id in student.courses_str:
+            linked_student_course_pref = courses.find_course_by_id(course_id)
+            if linked_student_course_pref is not None and linked_student_course_pref not in linked_course_list:
+                linked_course_list.append(linked_student_course_pref)
+        student.courses = Courses(linked_course_list)
 
 if __name__ == "__main__":
     pass
-
