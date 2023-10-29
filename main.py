@@ -65,3 +65,4 @@ def parse_student_preferences():
 if __name__ == "__main__":
     print("...loading data")
     create_data_layer()
+    print("Finished loading data")

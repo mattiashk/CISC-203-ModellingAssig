@@ -1,7 +1,7 @@
 {
-    "courses_file": "Data/Reference/datasets-master/courses.json",
+    "courses_file": "Data/Testing/courses.json",
     "buildings_file": "Data/Reference/datasets-master/buildings.json",
     "departments_file": "Data/Reference/datasets-master/departments.json",
-    "sections_file": "Data/Reference/datasets-master/sections.json",
-    "students_file": "Data/Reference/datasets-master/students.json"
+    "sections_file": "Data/Testing/sections.json",
+    "students_file": "Data/Testing/students.json"
 }
