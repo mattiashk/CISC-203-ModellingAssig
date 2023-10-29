@@ -33,85 +33,105 @@ class Hashable:
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
-class BasicPropositions:
-
-    def __init__(self, data):
-        self.data = data
+class StudentEnrolled(Hashable): #has a section
+    def __init__(self, student, course, term, course_section):
+        self.student = student #a Student object
+        self.course = course #parent object of the section
+        self.term = term
+        self.section = course_section
 
     def __repr__(self):
-        return f"A.{self.data}"
+        return f"({str(self.student.name)} in {str(self.course.id)} T: {str(self.term)} -> {str(self.section.class_number)})"
 
-
-# Different classes for propositions are useful because this allows for more dynamic constraint creation
-# for propositions within that class. For example, you can enforce that "at least one" of the propositions
-# that are instances of this class must be true by using a @constraint decorator.
-# other options include: at most one, exactly one, at most k, and implies all.
-# For a complete module reference, see https://bauhaus.readthedocs.io/en/latest/bauhaus.html
-@constraint.at_least_one(E)
 @proposition(E)
-class FancyPropositions:
-
-    def __init__(self, data):
-        self.data = data
+class StudentCourse(Hashable): #not section i.e, generalized
+    def __init__(self, student, course, term):
+        self.student = student #a Student object
+        self.course = course #parent object of the section
+        self.term = term
 
     def __repr__(self):
-        return f"A.{self.data}"
+            return f"({str(self.student.name)} in {str(self.course)} T: {str(self.term)}"
 
-# Call your variables whatever you want
-a = BasicPropositions("a")
-b = BasicPropositions("b")   
-c = BasicPropositions("c")
-d = BasicPropositions("d")
-e = BasicPropositions("e")
-# At least one of these will be true
-x = FancyPropositions("x")
-y = FancyPropositions("y")
-z = FancyPropositions("z")
+def build_propositions():
+    #Build Propositions
+    objects = main.create_data_layer()
+    students = objects["students"]
 
+    student_enrolled = []
+    for student in students:
+        for course in student.courses:
+            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
+                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
+                    student_enrolled.append(StudentEnrolled(student, course, term, course_section))
 
-
-# Build an example full theory for your setting and return it.
-#
-#  There should be at least 10 variables, and a sufficiently large formula to describe it (>50 operators).
-#  This restriction is fairly minimal, and if there is any concern, reach out to the teaching staff to clarify
-#  what the expectations are.
-def example_theory():
-    # Add custom constraints by creating formulas with the variables you created. 
-    E.add_constraint((a | b) & ~x)
-    # Implication
-    E.add_constraint(y >> z)
-    # Negate a formula
-    E.add_constraint(~(x & y))
-    # You can also add more customized "fancy" constraints. Use case: you don't want to enforce "exactly one"
-    # for every instance of BasicPropositions, but you want to enforce it for a, b, and c.:
-    constraint.add_exactly_one(E, a, b, c)
-
-    return E
+    #For every student and course, they can only be enrolled in a course during one of "Summer", "Winter", "Fall" depending on the courses offering 
+    for student in students:
+        for course in student.courses:
+            term_options = [] #all possible term options for a specifc course ex: "Fall", "Winter", "Summer"
+            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
+                coursecode = course.section[term].courseid
+                term_options.append(StudentCourse(student, coursecode, term))
 
 def build_theory():
     """
     #TODO
     """
+    #Build Propositions
     objects = main.create_data_layer()
     students = objects["students"]
 
+    build_propositions()
 
+    
+    #For every student and course, they can be enrolled in exactly one section of a course 
+    for student in students:
+        for course in student.courses:
+            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
+                section_options = [] #all possible section options for a specifc course during a specific term ex: "CISC-204-001", "CISC-204-002" During the "Winter" term
+                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
+                    section_options.append(StudentEnrolled(student, course, term, course_section))
+
+                #For every student and course, they can be enrolled in exactly one section of a course 
+                constraint.add_exactly_one(E, section_options)
+
+    #For every student and course, they can only be enrolled in a course during one of "Summer", "Winter", "Fall" depending on the courses offering 
+    for student in students:
+        for course in student.courses:
+            term_options = [] #all possible term options for a specifc course ex: "Fall", "Winter", "Summer"
+            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
+                coursecode = course.section[term].courseid
+                term_options.append(StudentCourse(student, coursecode, term))
+
+            #For every student and course, they can be enrolled in the course during only one term ex: one of "Fall", "Winter", "Summer" depending on a courses offering
+            constraint.add_exactly_one(E, term_options)
+
+
+    #For every student and course, if they are not taking the course during a term they should not be enrolled in any of its sections
+    for student in students:
+        for course in student.courses:
+            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
+                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
+                    pass #E.add_constraint(~StudentCourse(student, course.section[term].courseid, term) >> ~StudentEnrolled(student, course, term, course_section))
+    return E
+                
+
+def display_solution(sol):
+    import pprint
+    pprint.pprint(sol)
+    #display_assignment(sol)
+    #display_student_prefs(sol)
 
 
 if __name__ == "__main__":
-    build_theory()
-    T = example_theory()
+    T = build_theory()
     # Don't compile until you're finished adding all your constraints!
     T = T.compile()
     # After compilation (and only after), you can check some of the properties
     # of your model:
     print("\nSatisfiable: %s" % T.satisfiable())
     print("# Solutions: %d" % count_solutions(T))
-    print("   Solution: %s" % T.solve())
+    print("   Solution:")
+    sol = T.solve()
 
-    print("\nVariable likelihoods:")
-    for v,vn in zip([a,b,c,x,y,z], 'abcxyz'):
-        # Ensure that you only send these functions NNF formulas
-        # Literals are compiled to NNF here
-        print(" %s: %.2f" % (vn, likelihood(T, v)))
-    print()
+    display_solution(sol)

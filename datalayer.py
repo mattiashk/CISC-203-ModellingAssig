@@ -58,7 +58,7 @@ class Course:
         self.department = department
         self.course_code = course_code
         self.course_name = course_name
-        self.section = None #a Section object that is linked to this Course
+        self.section = {} #a dictionary of Section object that is linked to this Course
         self.campus = campus
         self.description = description
         self.grading_basis = grading_basis
@@ -152,14 +152,14 @@ class Course:
     @property
     def section(self):
         """
-        Get the Section object connected to the Course object.
+        Get the dictionary of Section objects that are connected to the Course object.
         """
         return self._section
 
     @section.setter
     def section(self, section):
         """
-        Set the section attribute to a Section object that is connected to this Course.
+        Set the section attribute to a dictionary of Section objects that are connected to this Course.
 
         Args:
             value (Section): The Section to set.
@@ -418,7 +418,8 @@ class Course:
     def add_section_link(self, section):
         """
         """
-        self.section = section
+        term = section.term
+        self._section[term] = section
 #depreciated
 class Courses_slow:
     """
@@ -1392,29 +1393,29 @@ class Sections:
     Represents a collection of Section objects and provides methods to add and find Section.
     """
     def __init__(self, sections=None):
-        self._sections = {}
+        self._sections = {"Winter": {}, "Fall": {}, "Summer": {}}
         if sections is not None:
             self.add_sections(sections)
 
     @property
     def sections(self):
         """
-        Get the list of Section objects.
+        Get the list of Section objects per term.
 
         Returns:
-            list: A list of Section objects.
+            list: A list of Section objects per term.
         """
-        return list(self._sections.values())
+        return self._sections
 
     @sections.setter
-    def sections(self, value):
+    def sections(self, key, value):
         """
-        Set the list of Section objects.
+        Set the list of Section objects per term.
 
         Args:
-            value (list of Section): The new list of Section objects.
+            value (list of Section): The new list of Section objects for a term.
         """
-        self._sections = {section.id: section for section in value}
+        self._sections[key] = {section.id: section for section in value}
 
     def add_section(self, section):
         """
@@ -1423,7 +1424,8 @@ class Sections:
         Args:
             section (Section): The Section object to be added.
         """
-        self._sections[section.courseid] = section
+        term = section.term
+        self._sections[term][section.courseid] = section
 
     def add_sections(self, sections):
         """
@@ -1447,6 +1449,30 @@ class Sections:
         """
         return self._sections.get(id, None)
     
+    def find_sections_by_course_code(self, code):
+        """
+        Find all Sections over different terms by its course code.
+
+        Args:
+            id (str): The course code of the Section to search for.
+
+        Returns:
+            List or None: A list of the Section objects if found, or None if not found.
+        """
+        '''
+        matching_courses = []
+        for term, term_courses  in self.sections.items():
+                for course, course_obj in term_courses.items():
+                        if course_obj.courseid == code:
+                            matching_courses.append(course_obj)
+        return matching_courses
+        '''
+        matching_courses = []
+        for term, term_courses  in self.sections.items():
+            if code in self.sections[term]:
+                matching_courses.append(self.sections[term][code])
+        return matching_courses
+
     def __str__(self):
         """
         Returns a string representation of the list of Section objects.
@@ -1468,17 +1494,25 @@ class Sections:
         """
         Make the Sections class iterable. This method returns an iterator.
         """
-        self._current_index = iter(self._sections.values())
+        self._term_iterator = iter(self._sections)
+        self._section_iterator = None
         return self
 
     def __next__(self):
         """
         Get the next Section object in the iteration.
         """
+        if self._section_iterator is None:
+            term = next(self._term_iterator)
+            self._section_iterator = iter(self._sections[term].values())
+
         try:
-            return next(self._current_index)
+            return next(self._section_iterator)
         except StopIteration:
-            raise StopIteration
+            # If a term is exhausted, move to the next term
+            term = next(self._term_iterator)
+            self._section_iterator = iter(self._sections[term].values())
+            return next(self._section_iterator)
         
 
 
@@ -1701,10 +1735,12 @@ def mapSections(sections_file):
         data = json.load(json_file)
 
     all_courses = []  # Create a list to store course objects 
-
     # Iterate through the JSON data and create CourseSection instances
     for course_section_data in data:
         course_section = CourseSection(**course_section_data)
+
+        term = course_section.term
+        code = course_section.course_code
 
         all_course_sections = []
         # Iterate through the CourseSection JSON data and create Course instances
@@ -1722,6 +1758,7 @@ def mapSections(sections_file):
             section.dates = all_section_dates #map list of Dates class to Parent Section Class attribute dates
         course_section.course_sections = all_course_sections #map list of Section classes to Parent CourseSection Class attribute course_sections
 
+        #all_courses[term][code] = (course_section)
         all_courses.append(course_section)
 
     # Return a list of Section objects
@@ -1751,7 +1788,8 @@ def mapCourses(courses_file, mapped_sections = None):
 
         #if a Sections object is passed then create the required links
         if mapped_sections is not None:
-            course.add_section_link(mapped_sections.find_section_by_id(course.id))
+            for section in mapped_sections.find_sections_by_course_code(course.id):
+                course.add_section_link(section)
 
 
     # Return a list of Course objects

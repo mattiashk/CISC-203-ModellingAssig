@@ -1,0 +1,526 @@
+Help on class Course in module datalayer:
+
+class Course(builtins.object)
+ |  Course(id, department, course_code, course_name, campus, description, grading_basis, course_components, requirements, add_consent, drop_consent, academic_level, academic_group, academic_org, units, CEAB)
+ |  
+ |  Represents a Queens course with its attributes.
+ |  
+ |  Attributes:
+ |      id (str): The course ID.
+ |      department (str): The department offering the course.
+ |      course_code (str): The code of the course.
+ |      course_name (str): The name of the course.
+ |      campus (str): The campus where the course is offered.
+ |      description (str): A description of the course.
+ |      grading_basis (str): The grading basis for the course.
+ |      course_components (dict): A dictionary representing course components.
+ |      requirements (str): Prerequisites and requirements for the course.
+ |      add_consent (str): Additional consent information.
+ |      drop_consent (str): Information regarding consent for dropping the course.
+ |      academic_level (str): The academic level (e.g., Undergraduate).
+ |      academic_group (str): The academic group to which the course belongs.
+ |      academic_org (str): The academic organization offering the course.
+ |      units (float): The number of course units.
+ |      CEAB (dict): A dictionary representing CEAB (Canadian Engineering Accreditation Board) information.
+ |  
+ |  Methods:
+ |  __str__(): Returns a string representation of the Course instance.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, id, department, course_code, course_name, campus, description, grading_basis, course_components, requirements, add_consent, drop_consent, academic_level, academic_group, academic_org, units, CEAB)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the course.
+ |      
+ |      Returns:
+ |          str: A formatted string with course information.
+ |  
+ |  add_section_link(self, section)
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  CEAB
+ |      Get CEAB (Canadian Engineering Accreditation Board) information (as a dictionary).
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  academic_group
+ |      Get the academic group to which the course belongs.
+ |  
+ |  academic_level
+ |      Get the academic level (e.g., Undergraduate).
+ |  
+ |  academic_org
+ |      Get the academic organization offering the course.
+ |  
+ |  add_consent
+ |      Get additional consent information.
+ |  
+ |  campus
+ |      Get the campus where the course is offered.
+ |  
+ |  course_code
+ |      Get the code of the course.
+ |  
+ |  course_components
+ |      Get the course components (as a dictionary).
+ |  
+ |  course_name
+ |      Get the name of the course.
+ |  
+ |  department
+ |      Get the department offering the course.
+ |  
+ |  description
+ |      Get a description of the course.
+ |  
+ |  drop_consent
+ |      Get information regarding consent for dropping the course.
+ |  
+ |  grading_basis
+ |      Get the grading basis for the course.
+ |  
+ |  id
+ |      Get the course ID.
+ |  
+ |  requirements
+ |      Get the prerequisites and requirements for the course.
+ |  
+ |  section
+ |      Get the Section object connected to the Course object.
+ |  
+ |  units
+ |      Get the number of course units.
+
+Help on class Courses in module datalayer:
+
+class Courses(builtins.object)
+ |  Courses(courses=None)
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, courses=None)
+ |      Initializes a Courses instance with an empty dictionary of courses.
+ |  
+ |  __iter__(self)
+ |      Make the Courses class iterable. This method returns an iterator.
+ |  
+ |  __next__(self)
+ |      Get the next Course object in the iteration.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the list of Course objects.
+ |      
+ |      Returns:
+ |          str: A list with information for each Course.
+ |  
+ |  add_course(self, course)
+ |      Add a Course to the collection.
+ |      
+ |      Args:
+ |          course (Course): The Course object to be added.
+ |  
+ |  add_courses(self, courses)
+ |      Add multiple courses to the collection.
+ |      
+ |      Args:
+ |          courses (list of Course): A list of Course objects to be added.
+ |  
+ |  find_course_by_id(self, id)
+ |      Find a Course by its unique identifier.
+ |      
+ |      Args:
+ |          id (str): The unique identifier of the Course to search for.
+ |      
+ |      Returns:
+ |          Course or None: The Course object if found, or None if not found.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Readonly properties defined here:
+ |  
+ |  courses
+ |      Get the list of Courses.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+
+Help on class CourseSection in module datalayer:
+
+class CourseSection(builtins.object)
+ |  CourseSection(id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections)
+ |  
+ |  Represents a course section group with its attributes.
+ |  
+ |  Attributes:
+ |      id (int): The identifier for the course section.
+ |      year (int): The academic year in which the course section is offered.
+ |      term (str): The term during which the course section is held (e.g., 'Spring', 'Fall').
+ |      department (str): The department responsible for the course section.
+ |      course_code (str): The unique code for the course.
+ |      course_name (str): The name or title of the course.
+ |      units (float): The number of course units.
+ |      campus (str): The campus or location where the course section is conducted.
+ |      academic_level (str): The academic level of the course section (e.g., 'Undergraduate', 'Graduate').
+ |      course_sections (list): A list of subsections or components that make up the course section.
+ |  
+ |  Methods:
+ |      __str__(): Returns a string representation of the CourseSection instance.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the CourseSection.
+ |      
+ |      Returns:
+ |          str: A formatted string with CourseSection information.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  academic_level
+ |      Get the academic level of the course section.
+ |  
+ |  campus
+ |      Get the campus of the course section.
+ |  
+ |  course_code
+ |      Get the course code of the course section.
+ |  
+ |  course_name
+ |      Get the course name of the course section.
+ |  
+ |  course_sections
+ |      Get the course sections of the course section.
+ |  
+ |  courseid
+ |      Get the course id of the course section.
+ |  
+ |  department
+ |      Get the department of the course section.
+ |  
+ |  id
+ |      Get the ID of the course section.
+ |  
+ |  term
+ |      Get the term of the course section.
+ |  
+ |  units
+ |      Get the number of units of the course section.
+ |  
+ |  year
+ |      Get the year of the course section.
+
+Help on class Section in module datalayer:
+
+class Section(builtins.object)
+ |  Section(class_number, combined_with, dates, enrollment_capacity, enrollment_total, last_updated, section_name, section_number, section_type, waitlist_capacity, waitlist_total)
+ |  
+ |  Represents a specific course section with its attributes.
+ |  
+ |  Attributes:
+ |      class_number (str): The unique identifier for the course section.
+ |      combined_with (str): Information about combined sections, if applicable.
+ |      dates (str): The dates when the course section is scheduled.
+ |      enrollment_capacity (int): The maximum number of students that can enroll in the section.
+ |      enrollment_total (int): The current number of students enrolled in the section.
+ |      last_updated (str): Timestamp of the last update to the section information.
+ |      section_name (str): The name of the course section.
+ |      section_number (str): The section number.
+ |      section_type (str): The type of the section (e.g., lecture, lab).
+ |      waitlist_capacity (int): The maximum number of students that can be on the waitlist.
+ |      waitlist_total (int): The current number of students on the waitlist.
+ |  
+ |  Methods:
+ |      __str__(): Returns a string representation of the Section instance.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, class_number, combined_with, dates, enrollment_capacity, enrollment_total, last_updated, section_name, section_number, section_type, waitlist_capacity, waitlist_total)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the Section.
+ |      
+ |      Returns:
+ |          str: A formatted string with Section information.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  class_number
+ |      Get the unique identifier for the course section.
+ |  
+ |  combined_with
+ |      Get information about combined sections, if applicable.
+ |  
+ |  dates
+ |      Get the dates when the course section is scheduled.
+ |  
+ |  enrollment_capacity
+ |      Get the maximum number of students that can enroll in the section.
+ |  
+ |  enrollment_total
+ |      Get the current number of students enrolled in the section.
+ |  
+ |  last_updated
+ |      Get the timestamp of the last update to the section information.
+ |  
+ |  section_name
+ |      Get the name of the course section.
+ |  
+ |  section_number
+ |      Get the section number.
+ |  
+ |  section_type
+ |      Get the type of the section (e.g., lecture, lab).
+ |  
+ |  waitlist_capacity
+ |      Get the maximum number of students that can be on the waitlist.
+ |  
+ |  waitlist_total
+ |      Get the current number of students on the waitlist.
+
+Help on class SectionDate in module datalayer:
+
+class SectionDate(builtins.object)
+ |  SectionDate(day, end_date, end_time, instructors, location, start_date, start_time)
+ |  
+ |  Represents a course section with its attributes.
+ |  
+ |  Attributes:
+ |      id (str): The unique identifier for the course section.
+ |      year (int): The year in which the course section is offered.
+ |      term (str): The term in which the course section is offered (e.g., 'Spring', 'Fall').
+ |      department (str): The department offering the course section.
+ |      course_code (str): The code of the course section.
+ |      course_name (str): The name of the course section.
+ |      units (float): The number of units associated with the course section.
+ |      campus (str): The campus where the course section is located.
+ |      academic_level (str): The academic level of the course section (e.g., 'Undergraduate', 'Graduate').
+ |      course_sections (list): A list of course sections if the course has multiple sections.
+ |  
+ |  Methods:
+ |      __str__(self):
+ |          Returns a string representation of the CourseSection instance.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, day, end_date, end_time, instructors, location, start_date, start_time)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the SectionDate.
+ |      
+ |      Returns:
+ |          str: A formatted string with SectionDate information.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  day
+ |      Get the day of the week for the section date.
+ |  
+ |  end_date
+ |      Get the end date of the section.
+ |  
+ |  end_time
+ |      Get the end time of the section.
+ |  
+ |  instructors
+ |      Get the list of instructors for the section date.
+ |  
+ |  location
+ |      Get the location where the section date takes place.
+ |  
+ |  start_date
+ |      Get the start date of the section.
+ |  
+ |  start_time
+ |      Get the start time of the section.
+
+Help on class Sections in module datalayer:
+
+class Sections(builtins.object)
+ |  Sections(sections=None)
+ |  
+ |  Represents a collection of Section objects and provides methods to add and find Section.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, sections=None)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __iter__(self)
+ |      Make the Sections class iterable. This method returns an iterator.
+ |  
+ |  __next__(self)
+ |      Get the next Section object in the iteration.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the list of Section objects.
+ |      
+ |      Returns:
+ |          str: A string with information for each Section.
+ |  
+ |  add_section(self, section)
+ |      Add a Section to the collection.
+ |      
+ |      Args:
+ |          section (Section): The Section object to be added.
+ |  
+ |  add_sections(self, sections)
+ |      Add multiple sections to the collection.
+ |      
+ |      Args:
+ |          sections (list of Section): A list of Section objects to be added.
+ |  
+ |  find_section_by_id(self, id)
+ |      Find a Section by its unique identifier.
+ |      
+ |      Args:
+ |          id (str): The unique identifier of the Section to search for.
+ |      
+ |      Returns:
+ |          Section or None: The Section object if found, or None if not found.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  sections
+ |      Get the list of Section objects.
+ |      
+ |      Returns:
+ |          list: A list of Section objects.
+
+Help on class Student in module datalayer:
+
+class Student(builtins.object)
+ |  Student(name, courses)
+ |  
+ |  Represents a specific student with their attributes.
+ |  
+ |  Attributes:
+ |  
+ |  Methods:
+ |      __str__(): Returns a string representation of the Student instance.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, name, courses)
+ |      Initialize self.  See help(type(self)) for accurate signature.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the Student.
+ |      
+ |      Returns:
+ |          str: A formatted string with Student information.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  courses
+ |      Get the Courses object.
+ |  
+ |  courses_str
+ |      Get the list of courses as as list of strings.
+ |  
+ |  name
+ |      Get the student name attribute.
+
+Help on class Students in module datalayer:
+
+class Students(builtins.object)
+ |  Students(students)
+ |  
+ |  Represents a collection of Student objects and provides methods to add and find Students.
+ |  
+ |  Methods defined here:
+ |  
+ |  __init__(self, students)
+ |      Initializes a Students instance from a list of Students.
+ |  
+ |  __iter__(self)
+ |      Make the Students class iterable. This method returns an iterator.
+ |  
+ |  __next__(self)
+ |      Get the next Student object in the iteration.
+ |  
+ |  __str__(self)
+ |      Returns a string representation of the list of Student objects.
+ |      
+ |      Returns:
+ |          str: A list with information for each Student.
+ |  
+ |  add_student(self, value)
+ |      Add a Student to the collection.
+ |      
+ |      Args:
+ |          value (Student): The Student object to be added.
+ |  
+ |  find_student_by_id(self, name)
+ |      Find a Student object by its unique name.
+ |      
+ |      Args:
+ |          id (str): The unique name of the Student to search for.
+ |      
+ |      Returns:
+ |          Student or None: The Student object if found, or None if not found.
+ |  
+ |  ----------------------------------------------------------------------
+ |  Data descriptors defined here:
+ |  
+ |  __dict__
+ |      dictionary for instance variables (if defined)
+ |  
+ |  __weakref__
+ |      list of weak references to the object (if defined)
+ |  
+ |  students
+ |      Get the list of Students.
+
