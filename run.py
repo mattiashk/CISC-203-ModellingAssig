@@ -2,6 +2,7 @@
 from bauhaus import Encoding, proposition, constraint
 from bauhaus.utils import count_solutions, likelihood
 
+from datalayer import Term
 import datalayer
 import main #TODO needs to be removed and code needs to be added to build_theorey
 
@@ -33,86 +34,162 @@ class Hashable:
 
 # To create propositions, create classes for them first, annotated with "@proposition" and the Encoding
 @proposition(E)
-class StudentEnrolled(Hashable): #has a section
-    def __init__(self, student, course, term, course_section):
-        self.student = student #a Student object
-        self.course = course #parent object of the section
-        self.term = term
-        self.section = course_section
+class StudentEnrolledCourse(Hashable): #A student enrolled in a specific course 
+    """
+    Represents a student's enrollment in a specific course.
+
+    Attributes:
+    - student: A Student object representing the enrolled student.
+    - course: The parent object (typically a Course) of the enrolled section.
+
+    Methods:
+    - __init__(self, student, course, term, section): Initializes a new StudentEnrolled instance.
+    - __repr__(self): Returns a human-readable string representation of the enrollment.
+    """
+    def __init__(self, student, course, term, section):
+        self.student = student #a datalayer Student object
+        self.course = course #a datalayer Course object
 
     def __repr__(self):
-        return f"({str(self.student.name)} in {str(self.course.id)} T: {str(self.term)} -> {str(self.section.class_number)})"
+        return f"({str(self.student.name)} -> {str(self.course.id)})"
 
 @proposition(E)
-class StudentCourse(Hashable): #not section i.e, generalized
+class StudentEnrolledCourseTerm(Hashable): #A student enrolled in a specific course of a specific term
+    """
+    Represents a student's enrollment in a specific course in a given term of a given year.
+
+    Attributes:
+    - student: A Student object representing the enrolled student.
+    - course: The parent object (typically a Course) of the enrolled section.
+    - term: The term in which the student is enrolled.
+
+    Methods:
+    - __init__(self, student, course, term, section): Initializes a new StudentEnrolled instance.
+    - __repr__(self): Returns a human-readable string representation of the enrollment.
+    """
     def __init__(self, student, course, term):
-        self.student = student #a Student object
-        self.course = course #parent object of the section
-        self.term = term
+        self.student = student #a datalayer Student object
+        self.course = course #a datalayer Course object
+        self.term = term #a datalayer Term Enum
 
     def __repr__(self):
-            return f"({str(self.student.name)} in {str(self.course)} T: {str(self.term)}"
+        return f"({str(self.student.name)} -> {str(self.course.id)} Term: {str(self.term)})"
 
-def build_propositions():
-    #Build Propositions
-    objects = main.create_data_layer()
+@proposition(E)
+class StudentEnrolledCourseSection(Hashable): #A student enrolled in a specific course of a specific term in a specific section
+    """
+    Represents a student's enrollment in a specific course section for a given term of a given year.
+
+    Attributes:
+    - student: A Student object representing the enrolled student.
+    - course: The parent object (typically a Course) of the enrolled section.
+    - term: The term in which the student is enrolled.
+    - section: The specific course section in which the student is enrolled.
+
+    Methods:
+    - __init__(self, student, course, term, section): Initializes a new StudentEnrolled instance.
+    - __repr__(self): Returns a human-readable string representation of the enrollment.
+    """
+    def __init__(self, student, course, term, section):
+        self.student = student #a datalayer Student object
+        self.course = course #a datalayer Course object
+        self.term = term #a datalayer Term Enum
+        self.section = section #a datalayer Section object
+
+    def __repr__(self):
+        return f"({str(self.student.name)} -> {str(self.course.id)} Term: {str(self.term)} Section: {str(self.section.class_number)})"
+
+@proposition(E)
+class CourseTermSectionTimeConflict(Hashable): #Models a conflict between 2 sections of 2 differnt courses in different terms
+    def __init__(self, student, term, course1, section1, course2, section2):
+        self.student = student #a datalayer Student object
+        self.term = term #a datalayer Term Enum
+        
+        self.course1 = course1 #a datalayer Course object
+        self.course2 = course2 #a datalayer Course object
+        
+        self.section1 = section1 #a datalayer Section object
+        self.section2 = section2 #a datalayer Section object
+
+    def __repr__(self):
+        return f"( {str(self.student.name)} -> CONFLICT[{self.course1.id}-{str(self.section1.class_number)}, {self.course2.id}-{str(self.section2.class_number)}] in Term: {str(self.term)})"
+    
+
+def build_propositions(objects):
+    """
+    NOT USED YET
+    """
     students = objects["students"]
+        
+    
 
-    student_enrolled = []
-    for student in students:
-        for course in student.courses:
-            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
-                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
-                    student_enrolled.append(StudentEnrolled(student, course, term, course_section))
 
-    #For every student and course, they can only be enrolled in a course during one of "Summer", "Winter", "Fall" depending on the courses offering 
-    for student in students:
-        for course in student.courses:
-            term_options = [] #all possible term options for a specifc course ex: "Fall", "Winter", "Summer"
-            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
-                coursecode = course.section[term].courseid
-                term_options.append(StudentCourse(student, coursecode, term))
-
-def build_theory():
+def build_theory(objects):
     """
     #TODO
     """
-    #Build Propositions
-    objects = main.create_data_layer()
+    #build_propositions(objects)
     students = objects["students"]
-
-    build_propositions()
-
     
-    #For every student and course, they can be enrolled in exactly one section of a course 
+    #CONSTRAINT 1
+    #For every student and course, they can be enrolled in the course during only one term ex: one of "Fall", "Winter", "Summer" depending on a courses offering
     for student in students:
-        for course in student.courses:
-            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
-                section_options = [] #all possible section options for a specifc course during a specific term ex: "CISC-204-001", "CISC-204-002" During the "Winter" term
-                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
-                    section_options.append(StudentEnrolled(student, course, term, course_section))
+        for course in student.course_wish_list:
+            
+            ENROLLED_COURSE_TERM = []
+            
+            offered_terms = course.sections.get_term_offerings()
+            for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                ENROLLED_COURSE_TERM.append(StudentEnrolledCourseTerm(student, course, term))
+                
+            constraint.add_exactly_one(E, ENROLLED_COURSE_TERM)
 
-                #For every student and course, they can be enrolled in exactly one section of a course 
-                constraint.add_exactly_one(E, section_options)
-
-    #For every student and course, they can only be enrolled in a course during one of "Summer", "Winter", "Fall" depending on the courses offering 
+    #CONSTRAINT 2
+    #For every student and course, they can be enrolled in exactly one section of a course
     for student in students:
-        for course in student.courses:
-            term_options = [] #all possible term options for a specifc course ex: "Fall", "Winter", "Summer"
-            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
-                coursecode = course.section[term].courseid
-                term_options.append(StudentCourse(student, coursecode, term))
+        for course in student.course_wish_list:
+            offered_terms = course.sections.get_term_offerings()
+            for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                term_offerings = course.sections.get_term_collection(term)#get course term offerings
+                
+                ENROLLED_COURSE_SECTIONS = [] #a list of all sections during a term for a particular course
+                
+                for section in term_offerings: #get the Section objects from the term_offering
+                    ENROLLED_COURSE_SECTIONS.append(StudentEnrolledCourseSection(student, course, term, section))
+                    
+                constraint.add_at_most_one(E, ENROLLED_COURSE_SECTIONS)
 
-            #For every student and course, they can be enrolled in the course during only one term ex: one of "Fall", "Winter", "Summer" depending on a courses offering
-            constraint.add_exactly_one(E, term_options)
-
-
+    #CONSTRAINT 3
     #For every student and course, if they are not taking the course during a term they should not be enrolled in any of its sections
     for student in students:
-        for course in student.courses:
-            for term in course.section: #loop over "Winter", "Summer", "Fall" if they exist for this specific course
-                for course_section in course.section[term].course_sections: #loop over each course section "001", "002" for this specific course
-                    pass #E.add_constraint(~StudentCourse(student, course.section[term].courseid, term) >> ~StudentEnrolled(student, course, term, course_section))
+        for course in student.course_wish_list:
+            offered_terms = course.sections.get_term_offerings()
+            for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                term_offerings = course.sections.get_term_collection(term)#get course term offerings
+                for section in term_offerings: #get the Section objects from the term_offering
+
+                    E.add_constraint(~StudentEnrolledCourseTerm(student, course, term) >> ~StudentEnrolledCourseSection(student, course, term, section))
+                
+    #CONSTRAINT 4
+    #For every student and every course if any sections of a course have a time conflict, both of the sections cannot be taken.
+    for student in students:
+        for course1 in student.course_wish_list:
+            for course2 in student.course_wish_list:
+                if course1 != course2: #check to ensure that the courses are different
+                    offered_terms_course1 = course1.sections.get_term_offerings()
+                    offered_terms_course2 = course1.sections.get_term_offerings()
+                    for term1 in offered_terms_course1: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering of course1
+                        for term2 in offered_terms_course2: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering of course2
+                            if term1 == term2: #ensure that the terms are not different
+                                term_offerings_course1 = course1.sections.get_term_collection(term1)#get course term offerings for course1
+                                term_offerings_course2 = course2.sections.get_term_collection(term2)#get course term offerings for course2
+                                for section_course1 in term_offerings_course1: #get the Section objects from the term offering for course 1
+                                    for section_course2 in term_offerings_course2: #get the Section objects from the term offering for course 2
+                                        if section_course1.has_conflict(section_course2):
+                                            time_conflict_instance = CourseTermSectionTimeConflict(student, term1, course1, section_course1, course2, section_course2)
+                                            constraint.add_exactly_one(E,[time_conflict_instance]) #force the premise to true #TODO I don't think this is how your suppose to do this LOL
+                                            E.add_constraint(time_conflict_instance >> ~(StudentEnrolledCourseSection(student, course1, term1, section_course1) & StudentEnrolledCourseSection(student, course2, term2, section_course2)))
+    
     return E
                 
 
@@ -124,7 +201,9 @@ def display_solution(sol):
 
 
 if __name__ == "__main__":
-    T = build_theory()
+    objects = main.create_data_layer()
+    
+    T = build_theory(objects)
     # Don't compile until you're finished adding all your constraints!
     T = T.compile()
     # After compilation (and only after), you can check some of the properties

@@ -1,4 +1,9 @@
 import json
+from aenum import MultiValueEnum
+from enum import Enum
+from datetime import datetime, timedelta
+
+from collections.abc import Mapping
 
 """
 Object-Oriented JSON Data Modeling
@@ -26,6 +31,43 @@ Example usage:
 - Create Collections of Course, Department and CourseSection.
 """
 
+
+#ENUM Classes
+class Term(MultiValueEnum):
+    """
+    Enum representing academic terms.
+    
+    This enum defines three academic terms:
+    - FALL: Representing the fall term.
+    - WINTER: Representing the winter term.
+    - SUMMER: Representing the summer term.
+    """
+    FALL = "FALL", "Fall", "fall", 1
+    WINTER = "WINTER", "Winter", "winter", 2
+    SUMMER = "SUMMER", "Summer", "summer", 3
+
+    def __str__(self):
+        """
+        Return a string representation of the enum member.
+        """
+        return self.value  # Using the first value in the member's tuple
+    
+class AcademicYear(Enum):
+    """
+    Enum representing academic years.
+
+    This enum defines four academic years:
+    - FIRSTYEAR: Representing the first academic year.
+    - SECONDYEAR: Representing the second academic year.
+    - THIRDYEAR: Representing the third academic year.
+    - FOURTHYEAR: Representing the fourth academic year.
+    """
+    FIRSTYEAR = "FIRSTYEAR"
+    SECONDYEAR = "SECONDYEAR"
+    THIRDYEAR = "THIRDYEAR"
+    FOURTHYEAR = "FOURTHYEAR"
+
+
 class Course:
     """
     Represents a Queens course with its attributes.
@@ -35,6 +77,7 @@ class Course:
         department (str): The department offering the course.
         course_code (str): The code of the course.
         course_name (str): The name of the course.
+        sections (Sections): A Sections object.
         campus (str): The campus where the course is offered.
         description (str): A description of the course.
         grading_basis (str): The grading basis for the course.
@@ -49,16 +92,20 @@ class Course:
         CEAB (dict): A dictionary representing CEAB (Canadian Engineering Accreditation Board) information.
 
     Methods:
-    __str__(): Returns a string representation of the Course instance.
+        __str__(): Returns a string representation of the Course instance.
+        is_offered_in_term(term): Returns True if the course is offered during a specific Term.
     """
     def __init__(self, id, department, course_code, course_name, campus, description, grading_basis,
                  course_components, requirements, add_consent, drop_consent, academic_level,
                  academic_group, academic_org, units, CEAB):
+        """
+        Initializes a Course instance.
+        """
         self.id = id
         self.department = department
         self.course_code = course_code
         self.course_name = course_name
-        self.section = {} #a dictionary of Section object that is linked to this Course
+        self.sections = Sections()
         self.campus = campus
         self.description = description
         self.grading_basis = grading_basis
@@ -150,25 +197,25 @@ class Course:
         self._course_name = value
 
     @property
-    def section(self):
+    def sections(self):
         """
-        Get the dictionary of Section objects that are connected to the Course object.
+        Get the dictionary of Sections objects that are connected to the Course object.
         """
-        return self._section
+        return self._sections
 
-    @section.setter
-    def section(self, section):
+    @sections.setter
+    def sections(self, sections):
         """
-        Set the section attribute to a dictionary of Section objects that are connected to this Course.
+        Set the sections attribute to a dictionary of Sections objects that are connected to this Course.
 
         Args:
-            value (Section): The Section to set.
+            value (Sections): The Sections to set.
 
         Returns:
             None
         """
-        self._section = section
-
+        self._sections = sections
+    
     @property
     def campus(self):
         """
@@ -415,107 +462,49 @@ class Course:
         """
         return f"{self.id}"
 
-    def add_section_link(self, section):
+    def is_offered_in_term(self, term):
         """
-        """
-        term = section.term
-        self._section[term] = section
-#depreciated
-class Courses_slow:
-    """
-    Represents a collection of course objects and provides methods to add and find courses.
-    """
-    def __init__(self):
-        """
-        Initializes a Courses instance with an empty list of courses.
-        """
-        self._courses = []
-    
-    def __init__(self, courses):
-        """
-        Initializes a Courses instance from a list of courses.
-        """
-        self._courses = courses
-
-    @property
-    def courses(self):
-        """
-        Get the list of Courses.
-        """
-        return self._courses
-
-    @courses.setter
-    def courses(self, value):
-        """
-        Set the list of Courses.
+        Checks if the course is offered in a specific academic term.
 
         Args:
-            value (List): The new list of Courses.
-        """
-        self._courses = value
-
-
-    def add_course(self, course):
-        """
-        Add a Course to the collection.
-
-        Args:
-            course (Course): The Course object to be added.
-        """
-        self._courses.append(course)
-
-    def find_course_by_id(self, id):
-        """
-        Find a Course by its unique identifier.
-
-        Args:
-            id (str): The unique identifier of the Course to search for.
+            term (str): The academic term to check for (e.g., "Fall 2023").
 
         Returns:
-            Course or None: The Course object if found, or None if not found.
+            bool: True if the course is offered in the specified term, False otherwise.
         """
-        for course in self._courses:
-            if course.id == id:
-                return course
-        return None  # Return None if Course with the given ID is not found
+        if not isinstance(term, Term):
+            term = Term(term)
+        return len(self._sections.get_term_collection(term)) > 0
 
-    def __str__(self):
-        """
-        Returns a string representation of the list of Course objects.
+class Courses(Mapping):
+    ALLCOURSES = None
 
-        Returns:
-            str: A list with information for each Course.
-        """
-        formatted_string = "["
+    """
+    Represents a collection of Course objects with the ability to manage, search, and iterate through them.
 
-        for course in self._courses:
-            formatted_string += ("'{}', ".format(course))
-        
-        formatted_string = formatted_string[:-2]
-        formatted_string += "]"
-        
-        return(formatted_string)
+    Attributes:
+        courses (dict): A dictionary that stores Course objects by their unique IDs.
 
-    def __iter__(self):
-        """
-        Make the Courses class iterable. This method returns an iterator.
-        """
-        self._current_index = 0
-        return self
+    Methods:
+        add_course(self, course): Add a Course object to the collection.
+        add_courses(self, courses): Add multiple Course objects to the collection.
+        find_course_by_id(self, id): Find a Course by its unique identifier.
+        __str__(self): Returns a string representation of the list of Course objects.
+        __iter__(self): Make the Courses class iterable. This method returns an iterator.
+        __next__(self): Get the next Course object in the iteration.
+        __len__(self): Get the number of Course objects in the collection.
+        __contains__(self, item): Check if a Course object is in the collection.
+        __getitem__(self, item): Retrieve a Course object by its unique ID.
+        add_items(self, key, value): Add a Course object to the collection using a unique identifier (ID).
 
-    def __next__(self):
-        """
-        Get the next Course object in the iteration.
-        """
-        if self._current_index < len(self._courses):
-            course = self._courses[self._current_index]
-            self._current_index += 1
-            return course
-        raise StopIteration
-class Courses:
+    """
     def __init__(self, courses=None):
         """
-        Initializes a Courses instance with an empty dictionary of courses.
+        Initializes a Courses instance with an optional dictionary of Courses.
+
+        Args:
+            courses (dict, optional): A dictionary of Course objects indexed by course ID.
+                Default is None, which creates an empty dictionary.
         """
         self._courses = {}  # Use a dictionary to store courses by ID
         if courses is not None:
@@ -535,7 +524,8 @@ class Courses:
         Args:
             course (Course): The Course object to be added.
         """
-        self._courses[course.id] = course  # Use course ID as the key in the dictionary
+        if course is not None:
+            self._courses[course.id] = course  # Use course ID as the key in the dictionary
 
     def add_courses(self, courses):
         """
@@ -585,6 +575,54 @@ class Courses:
             self._current_index += 1
             return course
         raise StopIteration
+
+    def __len__(self):
+        """
+        Get the number of Course objects in the collection.
+
+        Returns:
+            int: The number of Course objects in the collection.
+        """
+        return len(self._courses)
+
+    def __contains__(self, item):
+        """
+        Check if a Course object is in the collection.
+
+        Args:
+            item: The Course object to check for presence in the collection.
+
+        Returns:
+            bool: True if the Course object is in the collection, False otherwise.
+        """
+        return item in self._courses
+
+    def __getitem__(self, item):
+        """
+        Retrieve a Course object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the Course to be retrieved.
+
+        Returns:
+            Course: The Course object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a Course object from the Courses
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._courses[item] 
+
+    def add_item(self, key, value):
+        """
+        Add a Course object to the collection using a unique identifier (ID).
+
+        Args:
+            key: The unique identifier (ID) for the Course.
+            value: The Course object to add to the collection.
+        """
+        self._courses[key] = value
 
 
 class Department:
@@ -672,6 +710,7 @@ class Department:
         """
         #return f"Department ID: {self.id}, Department: {self.code}, Name: {self.name}"
         return f"{self.code}: {self.name}"
+
 class Departments:
     """
     Represents a collection of department objects and provides methods to add and find departments.
@@ -765,28 +804,18 @@ class Departments:
             return department
         raise StopIteration
 
-class CourseSection:
+
+class TermLevelSection:
     """
-    Represents a course section group with its attributes.
-
-    Attributes:
-        id (int): The identifier for the course section.
-        year (int): The academic year in which the course section is offered.
-        term (str): The term during which the course section is held (e.g., 'Spring', 'Fall').
-        department (str): The department responsible for the course section.
-        course_code (str): The unique code for the course.
-        course_name (str): The name or title of the course.
-        units (float): The number of course units.
-        campus (str): The campus or location where the course section is conducted.
-        academic_level (str): The academic level of the course section (e.g., 'Undergraduate', 'Graduate').
-        course_sections (list): A list of subsections or components that make up the course section.
-
-    Methods:
-        __str__(): Returns a string representation of the CourseSection instance.
-
+    Represents a parent section of a course during a specific Term.
+    
+    Note: DO NOT USE THIS CLASS OUTSIDE OF THIS FILE
     """
     def __init__(self, id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections):
-        self.id = id
+        """
+        Initializes a TermLevelSection instance.
+        """
+        self.TLS_id= id
         self.year = year
         self.term = term
         self.department = department
@@ -797,171 +826,9 @@ class CourseSection:
         self.academic_level = academic_level
         self.course_sections = course_sections
         self.courseid = ("{}-{}".format(department, course_code))
-    
-    @property
-    def id(self):
-        """
-        Get the ID of the course section.
-        """
-        return self._id
+        
 
-    @id.setter
-    def id(self, value):
-        """
-        Set the ID of the course section.
-        """
-        self._id = value
-
-    @property
-    def year(self):
-        """
-        Get the year of the course section.
-        """
-        return self._year
-
-    @year.setter
-    def year(self, value):
-        """
-        Set the year of the course section.
-        """
-        self._year = value
-
-    @property
-    def term(self):
-        """
-        Get the term of the course section.
-        """
-        return self._term
-
-    @term.setter
-    def term(self, value):
-        """
-        Set the term of the course section.
-        """
-        self._term = value
-
-    @property
-    def department(self):
-        """
-        Get the department of the course section.
-        """
-        return self._department
-
-    @department.setter
-    def department(self, value):
-        """
-        Set the department of the course section.
-        """
-        self._department = value
-
-    @property
-    def course_code(self):
-        """
-        Get the course code of the course section.
-        """
-        return self._course_code
-
-    @course_code.setter
-    def course_code(self, value):
-        """
-        Set the course code of the course section.
-        """
-        self._course_code = value
-
-    @property
-    def course_name(self):
-        """
-        Get the course name of the course section.
-        """
-        return self._course_name
-
-    @course_name.setter
-    def course_name(self, value):
-        """
-        Set the course name of the course section.
-        """
-        self._course_name = value
-
-    @property
-    def units(self):
-        """
-        Get the number of units of the course section.
-        """
-        return self._units
-
-    @units.setter
-    def units(self, value):
-        """
-        Set the number of units of the course section.
-        """
-        self._units = value
-
-    @property
-    def campus(self):
-        """
-        Get the campus of the course section.
-        """
-        return self._campus
-
-    @campus.setter
-    def campus(self, value):
-        """
-        Set the campus of the course section.
-        """
-        self._campus = value
-
-    @property
-    def academic_level(self):
-        """
-        Get the academic level of the course section.
-        """
-        return self._academic_level
-
-    @academic_level.setter
-    def academic_level(self, value):
-        """
-        Set the academic level of the course section.
-        """
-        self._academic_level = value
-
-    @property
-    def course_sections(self):
-        """
-        Get the course sections of the course section.
-        """
-        return self._course_sections
-
-    @course_sections.setter
-    def course_sections(self, value):
-        """
-        Set the course sections of the course section.
-        """
-        self._course_sections = value
-
-    @property
-    def courseid(self):
-        """
-        Get the course id of the course section.
-        """
-        return self._courseid
-
-    @courseid.setter
-    def courseid(self, value):
-        """
-        Set the course id of the course section.
-        """
-        self._courseid = value
-
-
-    def __str__(self):
-        """
-        Returns a string representation of the CourseSection.
-
-        Returns:
-            str: A formatted string with CourseSection information.
-        """
-        return f"{self.id}"
-class Section:
+class Section(TermLevelSection):
     """
     Represents a specific course section with its attributes.
 
@@ -980,9 +847,15 @@ class Section:
 
     Methods:
         __str__(): Returns a string representation of the Section instance.
+        has_conflict(other): Checks for date conflicts between two Section objects.
     """
     def __init__(self, class_number, combined_with, dates, enrollment_capacity, enrollment_total,
                  last_updated, section_name, section_number, section_type, waitlist_capacity, waitlist_total):
+        
+        #ENHERITED TermLevelSection
+        
+        #NEW
+        self.id = section_name
         self.class_number = class_number
         self.combined_with = combined_with
         self.dates = dates
@@ -995,6 +868,45 @@ class Section:
         self.waitlist_capacity = waitlist_capacity
         self.waitlist_total = waitlist_total
     
+    def add_parent_section(self, id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections):
+        s = super().__init__(id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections)
+        self.id = f"{self.TLS_id}-{self._section_name}"
+    
+    def has_conflict(self, other):
+        """
+        Checks for date conflicts between two Section objects.
+
+        This method compares the dates of the current Section object with another Section object
+        to determine if there are any date and time conflicts. It iterates through the date
+        schedules of both sections, and if it finds overlapping time slots on the same day,
+        it indicates a conflict.
+
+        Args:
+            other (Section): Another Section object to compare against.
+
+        Returns:
+            bool: True if there is a date conflict between the two sections, False otherwise.
+
+        Raises:
+            ValueError: If the 'other' object is not an instance of the Section class.
+        """
+        if not isinstance(other, Section):
+            raise ValueError("The other value must be a Section object")
+        else:
+            for date1 in self.dates:
+                for date2 in other.dates:
+                    start_time1 = datetime.strptime(date1.start_time, "%H:%M")
+                    end_time1 = datetime.strptime(date1.end_time, "%H:%M")
+                    start_time2 = datetime.strptime(date2.start_time, "%H:%M")
+                    end_time2 = datetime.strptime(date2.end_time, "%H:%M")
+
+                    if date1.day == date2.day:
+                        # Check for time overlap
+                        if start_time1 < end_time2 and end_time1 > start_time2:
+                            return True  # Conflict found
+
+        return False
+            
     @property
     def class_number(self):
         """
@@ -1157,35 +1069,100 @@ class Section:
             str: A formatted string with Section information.
         """
         return(self.class_number)
-class SectionDate:
+
+class SectionDates:
     """
-    Represents a course section with its attributes.
+    Represents a collection of SectionDate objects with its attributes.
 
     Attributes:
-        id (str): The unique identifier for the course section.
-        year (int): The year in which the course section is offered.
-        term (str): The term in which the course section is offered (e.g., 'Spring', 'Fall').
-        department (str): The department offering the course section.
-        course_code (str): The code of the course section.
-        course_name (str): The name of the course section.
-        units (float): The number of units associated with the course section.
-        campus (str): The campus where the course section is located.
-        academic_level (str): The academic level of the course section (e.g., 'Undergraduate', 'Graduate').
-        course_sections (list): A list of course sections if the course has multiple sections.
+        dates (list): The collection of SectionDate objet.
 
     Methods:
-        __str__(self):
-            Returns a string representation of the CourseSection instance.
-
+        __str__(self): Returns a string representation of the SectionDates instance.
     """
-    def __init__(self, day, end_date, end_time, instructors, location, start_date, start_time):
+    def __init__(self):
+        self._dates = []
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of SectionDates objects.
+
+        Returns:
+            str: A list with information for each SectionDate object.
+        """
+        formatted_string = "["
+
+        for date in self._dates:
+            formatted_string += ("'{}', ".format(date))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return formatted_string
+
+    def add_date(self, date):
+        """
+        Add a SectionDate to the collection.
+
+        Args:
+            date (SectionDate): The SectionDate object to be added.
+        """
+        if date is not None:
+            self._dates.append(date)
+    
+    
+    def __iter__(self):
+        """
+        Make the SectionDates class iterable. This method returns an iterator.
+        """
+        self._date_iterator = iter(self._dates)
+        return self
+
+    def __next__(self):
+        """
+        Get the next SectionDate object in the iteration.
+        """
+        try:
+            return next(self._date_iterator)
+        except StopIteration:
+            raise StopIteration
+    
+class SectionDate:
+    """
+    Represents a SectionDate object with its attributes.
+
+    Attributes:
+        day (str): The day of the week for the section date.
+        start_date (str): The start date of the section.
+        end_date (str): The end date of the section.
+        start_time (str): The start time of the section.
+        end_time (str): The end time of the section.
+        instructors (list): A list of instructors for the section date.
+        location (str): The location where the section date takes place.
+
+    Methods:
+        __str__(self): Returns a string representation of the SectionDate instance.
+    """
+    def __init__(self, day, start_date, end_date, start_time, end_time, instructors, location):
+        """
+        Initializes a SectionDate with the provided attributes.
+
+        Args:
+            day (str): The day of the week for the section date.
+            start_date (str): The start date of the section.
+            end_date (str): The end date of the section.
+            start_time (str): The start time of the section.
+            end_time (str): The end time of the section.
+            instructors (list): A list of instructors for the section date.
+            location (str): The location where the section date takes place.
+        """
         self.day = day
+        self.start_date = start_date
         self.end_date = end_date
+        self.start_time = start_time
         self.end_time = end_time
         self.instructors = instructors
         self.location = location
-        self.start_date = start_date
-        self.start_time = start_time
 
     @property
     def day(self):
@@ -1198,8 +1175,28 @@ class SectionDate:
     def day(self, value):
         """
         Set the day of the week for the section date.
+
+        Args:
+            value (str): The day of the week (e.g., 'Monday', 'Tuesday').
         """
         self._day = value
+
+    @property
+    def start_date(self):
+        """
+        Get the start date of the section.
+        """
+        return self._start_date
+
+    @start_date.setter
+    def start_date(self, value):
+        """
+        Set the start date of the section.
+
+        Args:
+            value (str): The start date of the section.
+        """
+        self._start_date = value
 
     @property
     def end_date(self):
@@ -1212,8 +1209,28 @@ class SectionDate:
     def end_date(self, value):
         """
         Set the end date of the section.
+
+        Args:
+            value (str): The end date of the section.
         """
         self._end_date = value
+
+    @property
+    def start_time(self):
+        """
+        Get the start time of the section.
+        """
+        return self._start_time
+
+    @start_time.setter
+    def start_time(self, value):
+        """
+        Set the start time of the section.
+
+        Args:
+            value (str): The start time of the section.
+        """
+        self._start_time = value
 
     @property
     def end_time(self):
@@ -1226,6 +1243,9 @@ class SectionDate:
     def end_time(self, value):
         """
         Set the end time of the section.
+
+        Args:
+            value (str): The end time of the section.
         """
         self._end_time = value
 
@@ -1240,6 +1260,9 @@ class SectionDate:
     def instructors(self, value):
         """
         Set the list of instructors for the section date.
+
+        Args:
+            value (list): A list of instructors.
         """
         self._instructors = value
 
@@ -1254,36 +1277,11 @@ class SectionDate:
     def location(self, value):
         """
         Set the location where the section date takes place.
+
+        Args:
+            value (str): The location of the section date.
         """
         self._location = value
-
-    @property
-    def start_date(self):
-        """
-        Get the start date of the section.
-        """
-        return self._start_date
-
-    @start_date.setter
-    def start_date(self, value):
-        """
-        Set the start date of the section.
-        """
-        self._start_date = value
-
-    @property
-    def start_time(self):
-        """
-        Get the start time of the section.
-        """
-        return self._start_time
-
-    @start_time.setter
-    def start_time(self, value):
-        """
-        Set the start time of the section.
-        """
-        self._start_time = value
 
     def __str__(self):
         """
@@ -1293,139 +1291,104 @@ class SectionDate:
             str: A formatted string with SectionDate information.
         """
         return (
-            f"{self.day} {self.start_time} : {self.end_time} {self.instructors} {self.location}"
+            f"{self.day} {self.start_time} : {self.end_time}"
         )
-#depreciated
-class Sections_slow:
+
+class Sections(Mapping):
     """
-    Represents a collection of Section objects and provides methods to add and find Section.
+    Represents a collection of CourseSection objects with the ability to manage, search, and iterate through them.
+
+    Attributes:
+        sections (dict): A dictionary that stores CourseSection objects in a 2D dictionary with the first level being the term 
+            and the second level being the CourseSections by their unique IDs.
+
+    Methods:
+        add_sections(self, sections): Add multiple sections to the collection.
+        add_section(self, section): Add a CourseSection to the collection.
+        find_section_by_id(self, id): Find a CourseSection by its unique identifier.
+        find_sections_by_course_code(self, code): Find all Sections over different terms by its course code.
+        get_term_collection(self, term): Get a collection of CourseSection objects during a specific term.
+        __str__(self): Returns a string representation of the list of CourseSection objects.
+        __iter__(self): Make the Sections class iterable. This method returns an iterator.
+        __next__(self): Get the next CourseSection object in the iteration.
+        __getitem__(self, item): Retrieve a CourseSection object by its unique ID.
+        __len__(self): Get the number of CourseSection objects in the collection.
+        __contains__(self, item): Check if a CourseSection object is in the collection.
+        __getitem__(self, item): Retrieve a CourseSection object by its unique ID.
+        add_items(self, key, value): Add a CourseSection object to the collection using a unique identifier (ID).
+
     """
+
     def __init__(self):
         """
-        Initializes a Section instance with an empty list of Sections.
+        Initializes an empty Sections instance.
         """
-        self._sections = []
-    
-    def __init__(self, sections):
-        """
-        Initializes a Section instance from a list of Sections.
-        """
-        self._sections = sections
+        self._all_sections_by_term = None
+        self._all_sections = {}
+        
+        self._has_fall = False
+        self._has_winter = False
+        self._has_summer = False
+        
+        self._fall_sections = {}
+        self._winter_sections = {}
+        self._summer_sections = {}
 
     @property
-    def sections(self):
+    def all_sections_by_term(self):
         """
-        Get the list of Sections.
-        """
-        return self._sections
+        Get the dictionary of Section objects per term.
 
-    @sections.setter
-    def sections(self, value):
+        Returns:
+            dict{dict}: A 2D dictonary of Section objects per term.
         """
-        Set the list of Sections.
+        self._all_sections_by_term = {Term.FALL: self._fall_sections, Term.WINTER: self._winter_sections, Term.SUMMER: self._summer_sections}
+        return self._all_sections_by_term
+
+    @all_sections_by_term.setter
+    def all_sections_by_term(self, value):
+        """
+        Set the dictionary of Section objects per term.
 
         Args:
-            value (List): The new list of Sections.
+            value (dict{dict}): The dictionary of Section objects per term.
         """
-        self._sections = value
-
+        if not isinstance(value, Mapping):
+            if all(isinstance(m, Mapping) for m in value):
+                self.all_sections_by_term = value
+                
+            else: raise ValueError("The value must be a 2D dictionary of Terms and CourseSection objects")
+        else: raise ValueError("The value must be a 2D dictionary of Terms and CourseSection objects")
 
     def add_section(self, section):
         """
-        Add a Section to the collection.
+        Add a CourseSection to the collection in its correct Term collection.
 
         Args:
-            section (Section): The Section object to be added.
-        """
-        self._sections.append(section)
-
-    def find_section_by_id(self, id):
-        """
-        Find a Section by its unique identifier.
-
-        Args:
-            id (str): The unique identifier of the Section to search for.
-
-        Returns:
-            Section or None: The Section object if found, or None if not found.
-        """
-        for section in self._sections:
-            if section.id == id:
-                return section
-        return None  # Return None if Section with the given ID is not found
-
-    def __str__(self):
-        """
-        Returns a string representation of the list of Section objects.
-
-        Returns:
-            str: A string with information for each Section.
-        """
-
-        formatted_string = "["
-
-        for section in self._sections:
-            formatted_string += ("'{}', ".format(section))
-        
-        formatted_string = formatted_string[:-2]
-        formatted_string += "]"
-        
-        return(formatted_string)
-
-    def __iter__(self):
-        """
-        Make the Sections class iterable. This method returns an iterator.
-        """
-        self._current_index = 0
-        return self
-
-    def __next__(self):
-        """
-        Get the next Section object in the iteration.
-        """
-        if self._current_index < len(self._sections):
-            section = self._sections[self._current_index]
-            self._current_index += 1
-            return section
-        raise StopIteration
-class Sections:
-    """
-    Represents a collection of Section objects and provides methods to add and find Section.
-    """
-    def __init__(self, sections=None):
-        self._sections = {"Winter": {}, "Fall": {}, "Summer": {}}
-        if sections is not None:
-            self.add_sections(sections)
-
-    @property
-    def sections(self):
-        """
-        Get the list of Section objects per term.
-
-        Returns:
-            list: A list of Section objects per term.
-        """
-        return self._sections
-
-    @sections.setter
-    def sections(self, key, value):
-        """
-        Set the list of Section objects per term.
-
-        Args:
-            value (list of Section): The new list of Section objects for a term.
-        """
-        self._sections[key] = {section.id: section for section in value}
-
-    def add_section(self, section):
-        """
-        Add a Section to the collection.
-
-        Args:
-            section (Section): The Section object to be added.
+            section (CourseSection): The CourseSection object to be added.
         """
         term = section.term
-        self._sections[term][section.courseid] = section
+        
+        if term is Term.FALL or term == "FALL" or term == "Fall":
+            section.term = Term.FALL
+            self._fall_sections[section.id] = section
+            self._all_sections[section.id] = section #add section to collection of all sections
+            self._has_fall = True
+            
+        elif term is Term.WINTER or term == "WINTER" or term == "Winter":
+            section.term = Term.WINTER
+            self._winter_sections[section.id] = section
+            self._all_sections[section.id] = section #add section to collection of all sections
+            self._has_winter = True
+        
+        elif term is Term.SUMMER or term == "SUMMER" or term == "Summer":
+            section.term = Term.SUMMER
+            self._summer_sections[section.id] = section
+            self._all_sections[section.id] = section #add section to collection of all sections
+            self._has_summer = True
+        
+        else:
+            raise ValueError("The CourseSection term attribute must be a Term object")
 
     def add_sections(self, sections):
         """
@@ -1447,54 +1410,93 @@ class Sections:
         Returns:
             Section or None: The Section object if found, or None if not found.
         """
-        return self._sections.get(id, None)
+        
+        return self._all_sections.get(id, None)
     
-    def find_sections_by_course_code(self, code):
+    def get_term_collection(self, term):
         """
-        Find all Sections over different terms by its course code.
+        Get a collection of CourseSection objects during a specific term.
 
         Args:
-            id (str): The course code of the Section to search for.
+            term (Term): The term collection to return.
 
         Returns:
-            List or None: A list of the Section objects if found, or None if not found.
+            list or None: A list of the CourseSection objects of a specified Term if found, or None if the Term collection is not found.
         """
-        '''
-        matching_courses = []
-        for term, term_courses  in self.sections.items():
-                for course, course_obj in term_courses.items():
-                        if course_obj.courseid == code:
-                            matching_courses.append(course_obj)
-        return matching_courses
-        '''
-        matching_courses = []
-        for term, term_courses  in self.sections.items():
-            if code in self.sections[term]:
-                matching_courses.append(self.sections[term][code])
-        return matching_courses
+        if term is Term.FALL or term == "FALL" or term == "Fall":
+            return list(self._fall_sections.values())
+            
+        elif term is Term.WINTER or term == "WINTER" or term == "Winter":
+            return list(self._winter_sections.values())
+        
+        elif term is Term.SUMMER or term == "SUMMER" or term == "Summer":
+            return list(self._summer_sections.values())
+        
+        else:
+            raise ValueError("The term value must be a Term object")
+            return None
+    
+    def is_offered(self, term):
+        """
+        Returns True if a Section is offered during a specific Term.
 
+        Returns:
+            bool: True of False.
+        """
+
+        if term is Term.FALL:
+           return self._has_fall
+            
+        elif term is Term.WINTER:
+           return self._has_winter
+        
+        elif term is Term.SUMMER:
+           return self._has_summer
+    
+    def get_term_offerings(self):
+        """
+        Get a collection of Term objects during that represent all the tern offerings of Section.
+
+        Returns:
+            list: A list of Term Enums.
+        """
+        term_offerings = []
+        if len(self._fall_sections) > 0:
+            term_offerings.append(Term.FALL)
+            
+        if len(self._winter_sections) > 0:
+            term_offerings.append(Term.WINTER)
+        
+        if len(self._summer_sections) > 0:
+            term_offerings.append(Term.SUMMER)
+        
+        return term_offerings
+    
+    
     def __str__(self):
         """
-        Returns a string representation of the list of Section objects.
+        Returns a string representation of the Sections object.
 
         Returns:
             str: A string with information for each Section.
         """
-        formatted_string = "["
-
-        for section in self._sections.values():
-            formatted_string += ("'{}', ".format(section))
+        fall = []
+        for v in self._fall_sections.values():
+            fall.append(str(v))
+        winter = []
+        for v in self._winter_sections.values():
+            winter.append(str(v))
+        summer = []
+        for v in self._summer_sections.values():
+            summer.append(str(v))
         
-        formatted_string = formatted_string[:-2]
-        formatted_string += "]"
-        
-        return formatted_string
+        return f"Fall: {fall}, Winter: {winter}, Summer: {summer}"
 
     def __iter__(self):
         """
         Make the Sections class iterable. This method returns an iterator.
         """
-        self._term_iterator = iter(self._sections)
+        self._term_iterator = iter(self.all_sections_by_term)
         self._section_iterator = None
         return self
 
@@ -1504,16 +1506,62 @@ class Sections:
         """
         if self._section_iterator is None:
             term = next(self._term_iterator)
-            self._section_iterator = iter(self._sections[term].values())
+            self._section_iterator = iter(self._all_sections_by_term[term].values())
 
         try:
             return next(self._section_iterator)
         except StopIteration:
             # If a term is exhausted, move to the next term
             term = next(self._term_iterator)
-            self._section_iterator = iter(self._sections[term].values())
+            self._section_iterator = iter(self._all_sections_by_term[term].values())
             return next(self._section_iterator)
-        
+    
+    def __len__(self):
+        """
+        Get the number of CourseSection objects in the collection.
+
+        Returns:
+            int: The number of CourseSection objects in the collection.
+        """
+        return len(self._all_sections)
+
+    def __contains__(self, item):
+        """
+        Check if a CourseSection object is in the collection.
+
+        Args:
+            item: The CourseSection object to check for presence in the collection.
+
+        Returns:
+            bool: True if the CourseSection object is in the collection, False otherwise.
+        """
+        return item in self._all_sections
+
+    def __getitem__(self, item):
+        """
+        Retrieve a CourseSetion object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the CourseSection to be retrieved.
+
+        Returns:
+            CourseSection: The CourseSection object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a CourseSection object from the Sections
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._all_sections[item] 
+
+    def add_item(self, value):
+        """
+        Add a CourseSection object to the collection using a unique identifier (ID).
+
+        Args:
+            value: The CourseSection object to add to the collection.
+        """
+        self.add_section(value)
 
 
 class Student:
@@ -1521,14 +1569,31 @@ class Student:
     Represents a specific student with their attributes.
 
     Attributes:
+        - _name (str): The name of the student.
+        - _academic_year (AcademicYear): The current academic year of the student.
+        - _program (string): The program the student is enrolled in. #TODO needs to be mapped to a new program class to force required courses
+        - _completed_courses (Courses): A Courses object containing a collection of this students completed of courses.
+        - _course_wish_list (Courses): A Courses object containing the courses this student wishes to enroll in this academic year.
 
     Methods:
         __str__(): Returns a string representation of the Student instance.
     """
-    def __init__(self, name, courses):
-        self._name = name
-        self._courses_str = courses
-        self._courses = None #a Courses object 
+    def __init__(self, name, academic_year, program, completed_courses, course_wish_list):
+        """
+        Initializes a Student instance.
+
+        Args:
+            _name (str): The name of the student.
+            _academic_year (AcademicYear): The current academic year of the student.
+            _program (string): The program the student is enrolled in.
+            _completed_courses (Courses): A Courses object containing a collection of this students completed of courses.
+            _course_wish_list (Courses): A Courses object containing the courses this student wishes to enroll in this academic year.
+        """
+        self.name = name
+        self.academic_year = academic_year
+        self.program = program
+        self.completed_courses = completed_courses
+        self.course_wish_list = course_wish_list
     
     def __str__(self):
         """
@@ -1538,51 +1603,15 @@ class Student:
             str: A formatted string with Student information.
         """
 
-        formatted_courses = "["
+        formatted_wish_list = "["
 
-        for course in self._courses:
-            formatted_courses += ("'{}', ".format(course))
+        for course in self._course_wish_list:
+            formatted_wish_list += ("'{}', ".format(course))
         
-        formatted_courses = formatted_courses[:-2]
-        formatted_courses += "]"
+        formatted_wish_list = formatted_wish_list[:-2]
+        formatted_wish_list += "]"
 
-        return("{}:{}" .format(self.name, formatted_courses))
-
-    @property
-    def courses(self):
-        """
-        Get the Courses object.
-        """
-        return self._courses
-
-    @courses.setter
-    def courses(self, value):
-        """
-        Set the couses attribute to a Courses objects.
-
-        Args:
-            value (Courses): a Courses object.
-        """
-        if not isinstance(value, (Courses, type(None))):
-            raise ValueError("The value must be a Courses object or None")
-        self._courses = value        
-
-    @property
-    def courses_str(self):
-        """
-        Get the list of courses as as list of strings.
-        """
-        return self._courses_str
-
-    @courses_str.setter
-    def courses_str(self, value):
-        """
-        Set the couses_str attribute to a list of course id's.
-
-        Args:
-            value (List): a list of strings.
-        """
-        self._courses_str = value        
+        return("{}:{}" .format(self.name, formatted_wish_list))
 
     @property
     def name(self):
@@ -1599,22 +1628,162 @@ class Student:
         Args:
             value (String): a student name.
         """
-        self._name = value        
-class Students:
+        self._name = value
+
+    @property
+    def academic_year(self):
+        """
+        Get the academic year attribute.
+        """
+        return self._academic_year
+
+    @academic_year.setter
+    def academic_year(self, value):
+        """
+        Set the academic year attribute.
+
+        Args:
+            value (Union[str, AcademicYear]): A string representation of the academic year 
+            or an AcademicYear Enum object representing the academic year to be set.
+        """
+        if not isinstance(value, AcademicYear):
+            self._academic_year = AcademicYear(value)
+        else:
+            self._academic_year = value      
+
+    @property
+    def program(self):
+        """
+        Get the program attribute.
+        """
+        return self._program
+
+    @program.setter
+    def program(self, value):
+        """
+        Set the program attribute.
+
+        Args:
+            value (String): a program.
+        """
+        self._program = value
+
+    @property
+    def completed_courses(self):
+        """
+        Get the completed_courses attribute, a Courses object.
+        """
+        return self._completed_courses
+
+    @completed_courses.setter
+    def completed_courses(self, value):
+        """
+        Set the completed courses attribute.
+
+        This setter method is used to set the completed courses attribute for an instance
+        of a class. It accepts a value that can be either a Courses object or a list
+        of unique course identifiers (Course IDs) represented as strings. It then assigns
+        this value to the private attribute _completed_courses.
+
+        Args:
+            value (Union[Courses, List[str]]): A Courses object containing completed courses
+            or a list of unique Course IDs as strings representing completed courses.
+
+        Note:
+            - If the provided value is a Courses object, it is directly assigned to the
+            _completed_courses attribute.
+            - If the provided value is a list of Course IDs, it iterates through the list,
+            retrieves the corresponding Course objects using Course IDs, and creates
+            a new Courses object containing these courses before assigning it to
+            _completed_courses.
+        """
+        if not isinstance(value, Courses):
+            if all(isinstance(c, str) for c in value):
+                courses = Courses()
+                for c in value:
+                    courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+                
+                self._completed_courses = courses
+
+            else:
+                raise ValueError("The value must be a Courses object or a list of unique Course ID's")
+        else:
+            self._completed_courses = value        
+
+    @property
+    def course_wish_list(self):
+        """
+        Get the course_wish_list attribute, a Courses object.
+        """
+        return self._course_wish_list
+
+    @course_wish_list.setter
+    def course_wish_list(self, value):
+        """
+        Set the course wish list attribute.
+
+        This setter method is used to set the course wish list attribute for an instance
+        of a class. It accepts a value that can be either a Courses object or a list of
+        unique course IDs (strings). If the provided value is a list of course IDs, it
+        creates a Courses object and adds the courses based on the IDs.
+
+        Args:
+            value (Union[Courses, List[str]]): A Courses object representing the course
+            wish list or a list of unique course IDs (strings) to be added to the wish list.
+
+        Note:
+            - If the provided value is a Courses object, it is directly assigned to the
+            _completed_courses attribute.
+            - If the provided value is a list of Course IDs, it iterates through the list,
+            retrieves the corresponding Course objects using Course IDs, and creates
+            a new Courses object containing these courses before assigning it to
+            _course_wish_list.
+        """
+        if not isinstance(value, Courses):
+            if all(isinstance(c, str) for c in value):
+                courses = Courses()
+                for c in value:
+                    courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+
+                self._course_wish_list = courses
+            else:
+                raise ValueError("The value must be a Courses object or a list of unique Course ID's")
+        else:
+            self._course_wish_list = value        
+
+class Students(Mapping):
     """
-    Represents a collection of Student objects and provides methods to add and find Students.
+    Represents a collection of CourseSection objects with the ability to manage, search, and iterate through them.
+
+    Attributes:
+        students (dict): A dictionary that stores Student objects by their unique IDs.
+
+    Methods:
+        add_student(self, student): Add a Student to the collection.
+        find_student_by_name(self, name): Find a Student by its unique identifier.
+        __str__(self): Returns a string representation of the list of Student objects.
+        __iter__(self): Make the Students class iterable. This method returns an iterator.
+        __next__(self): Get the next Student object in the iteration.
+        __getitem__(self, item): Retrieve a Student object by its unique ID.
+        __len__(self): Get the number of Student objects in the collection.
+        __contains__(self, item): Check if a Student object is in the collection.
+        __getitem__(self, item): Retrieve a Student object by its unique ID.
+        add_items(self, key, value): Add a Student object to the collection using a unique identifier (ID).
+
     """
-    def __init__(self):
+    ALLSTUDENTS = None
+
+    def __init__(self, students=None):
         """
-        Initializes a CourseSections instance with an empty list of Students.
+        Initializes a Students instance with an optional dictionary of Student objects.
+
+        Args:
+            students (dict, optional): A dictionary of Student objects indexed by student name.
+                Default is None, which creates an empty dictionary.
         """
-        self._students = []
-    
-    def __init__(self, students):
-        """
-        Initializes a Students instance from a list of Students.
-        """
-        self._students = students
+        self._students = {}  # Use a dictionary to store students by name
+        if students is not None:
+            self.add_students(students)
 
     @property
     def students(self):
@@ -1633,17 +1802,28 @@ class Students:
         """
         self._students = value
 
-
-    def add_student(self, value):
+    def add_student(self, student):
         """
-        Add a Student to the collection.
+        Add a student  to the collection.
 
         Args:
-            value (Student): The Student object to be added.
+            student (Student): The Student object to be added.
         """
-        self.students.append(value)
+        if student is not None:
+            self._students[student.name] = student  # Use student name as the key in the dictionary
 
-    def find_student_by_id(self, name):
+    def add_students(self, students):
+        """
+        Add multiple students to the collection.
+
+        Args:
+            students (list of Students): A list of Student objects to be added.
+        """
+        for student in students:
+            self.add_student(student)
+
+
+    def find_student_by_name(self, name):
         """
         Find a Student object by its unique name.
 
@@ -1653,10 +1833,7 @@ class Students:
         Returns:
             Student or None: The Student object if found, or None if not found.
         """
-        for student in self._students:
-            if student.name == name:
-                return student
-        return None  # Return None if Student with the given name is not found
+        return self._students.get(name, None)
 
     def __str__(self):
         """
@@ -1687,11 +1864,77 @@ class Students:
         """
         Get the next Student object in the iteration.
         """
-        if self._current_index < len(self._students):
-            student = self._students[self._current_index]
+        students_list = list(self._students.values())
+        if self._current_index < len(students_list):
+            student = students_list[self._current_index]
             self._current_index += 1
             return student
         raise StopIteration
+
+    def __getitem__(self, item):
+        """
+        Retrieve a Student object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the Student to be retrieved.
+
+        Returns:
+            Student: The Student object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a Student object from the Students
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._students[item] 
+    
+    def __len__(self):
+        """
+        Get the number of Student objects in the collection.
+
+        Returns:
+            int: The number of Student objects in the collection.
+        """
+        return len(self._students)
+
+    def __contains__(self, item):
+        """
+        Check if a Student object is in the collection.
+
+        Args:
+            item: The Student object to check for presence in the collection.
+
+        Returns:
+            bool: True if the Student object is in the collection, False otherwise.
+        """
+        return item in self._students
+
+    def __getitem__(self, item):
+        """
+        Retrieve a Student object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the Student to be retrieved.
+
+        Returns:
+            Student: The Student object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a Student object from the Students
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._students[item] 
+
+    def add_item(self, key, value):
+        """
+        Add a Stuent object to the collection using a unique identifier (ID).
+
+        Args:
+            key: The unique identifier (ID) for the Student.
+            value: The Student object to add to the collection.
+        """
+        self._students[key] = value
 
 
 def mapDepartments(buildings_file):
@@ -1733,38 +1976,28 @@ def mapSections(sections_file):
     """
     with open(sections_file, "r") as json_file:
         data = json.load(json_file)
-
-    all_courses = []  # Create a list to store course objects 
     # Iterate through the JSON data and create CourseSection instances
-    for course_section_data in data:
-        course_section = CourseSection(**course_section_data)
+    for parent_section in data:
+        course_obj_link = f"{parent_section['department']}-{parent_section['course_code']}"
+        all_course_sections = Sections()
+        for each_section in parent_section["course_sections"]:
+            each_section_mapped = Section(**each_section)
+            each_section_mapped.add_parent_section(**parent_section) #inialize the parent term section for the child
+            each_section_mapped.dates = SectionDates()
+            for date in each_section["dates"]:
+                each_section_mapped.dates.add_date(SectionDate(**date)) #link child date arrays to dates attribute
+            all_course_sections.add_section(each_section_mapped) 
+        
+        course_obj = Courses.ALLCOURSES.find_course_by_id(course_obj_link)
+        if course_obj is not None:
+            if len(course_obj.sections) == 0:
+                course_obj.sections = all_course_sections
+            else:
+                course_obj.sections.add_sections(all_course_sections._all_sections.values())
 
-        term = course_section.term
-        code = course_section.course_code
+    return None
 
-        all_course_sections = []
-        # Iterate through the CourseSection JSON data and create Course instances
-        for section_data in course_section.course_sections:
-            #course_section.course_sections.append(Section(**section_data))
-            section = Section(**section_data)
-            all_course_sections.append(section)
-
-            all_section_dates = []
-            # Iterate through the Section JSON data and create SectionDate instances
-            for course_section_data in section.dates:
-                #course_section.course_sections.dates.append(SectionDate(**course_section_data))
-                all_section_dates.append(SectionDate(**course_section_data))
-            
-            section.dates = all_section_dates #map list of Dates class to Parent Section Class attribute dates
-        course_section.course_sections = all_course_sections #map list of Section classes to Parent CourseSection Class attribute course_sections
-
-        #all_courses[term][code] = (course_section)
-        all_courses.append(course_section)
-
-    # Return a list of Section objects
-    return Sections(all_courses)
-
-def mapCourses(courses_file, mapped_sections = None):
+def mapCourses(courses_file):
     """
     Map data from a courses JSON file to Course objects.
     Links student courses to their respective Section objects if a Sections object is passed
@@ -1786,16 +2019,13 @@ def mapCourses(courses_file, mapped_sections = None):
         course = Course(**course_data)
         courses.append(course)
 
-        #if a Sections object is passed then create the required links
-        if mapped_sections is not None:
-            for section in mapped_sections.find_sections_by_course_code(course.id):
-                course.add_section_link(section)
 
 
     # Return a list of Course objects
-    return Courses(courses)
+    Courses.ALLCOURSES = Courses(courses)
+    return Courses.ALLCOURSES
 
-def mapStudents(students_file, mapped_courses = None):
+def mapStudents(students_file):
     """
     Map data from a student JSON file to Students objects.
     Links student courses to their respective Course objects if a Courses object is passed
@@ -1813,62 +2043,34 @@ def mapStudents(students_file, mapped_courses = None):
     all_students = []  # Create a list to store course objects 
 
     # Iterate through the JSON data and create Student instances
-    for student_data in data:  
-        student = Student(student_data["name"], student_data["courses"])
+    for student_data in data:
+        student = Student(**student_data)
         all_students.append(student)
 
-        #if a Courses object is passed then create the required links
-        if mapped_courses is not None:
-            student_courses = []
-            for course in student.courses_str:
-                student_courses.append(mapped_courses.find_course_by_id(course))
-
-            student.courses = Courses(student_courses)
-
     # Return a list of CourseSection objects
-    return Students(all_students)
+    Students.ALLSTUDENTS = Students(all_students)
+    return Students.ALLSTUDENTS
 
-#Depreciated
-def link_sections_to_courses(sections, courses):
-    """
-    Links every Course object in course (a list of Courses) to a Section object in sections (a list of Courses) that share
-    a unique identifier
-
-    Args:
-        sections ([Section]): The list of Section objects.
-        courses ([Course]): The list of Course objects.
-
-    Returns:
-        None
-    """
-    for course in courses:
-        course_id = course.id
-        linked_section = sections.find_section_by_id(course_id)
-        if linked_section is not None:
-            course.add_section_link(linked_section)
-            print("linked Course: {} to Section: {}".format(course_id, linked_section.id))
-
-#Depreciated
-def link_courses_to_students(students, courses):
-    """
-    Links every Student object in students (a list of Student objects) list of courses to the a specific Course object in courses (a list of Course objects).
-    using a unique identifier
-
-    Args:
-        students ([Student]): The list of Student objects.
-        courses ([Course]): The list of Course objects.
-
-    Returns:
-        None
-    """
-
-    linked_course_list = []
-    for student in students:
-        for course_id in student.courses_str:
-            linked_student_course_pref = courses.find_course_by_id(course_id)
-            if linked_student_course_pref is not None and linked_student_course_pref not in linked_course_list:
-                linked_course_list.append(linked_student_course_pref)
-        student.courses = Courses(linked_course_list)
 
 if __name__ == "__main__":
-    pass
+    mapCourses("data/testing/courses.json")
+    mapSections("data/testing/sections.json")
+    x = (mapStudents("data/testing/students.json"))
+    print(x["Hayden"].course_wish_list["STAT-263"].sections)
+    print(x["Hayden"].course_wish_list["STAT-263"].is_offered_in_term("WINTER"))
+    print(x["Hayden"].course_wish_list["STAT-263"].sections.all_sections_by_term)
+    print(x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263"))
+    
+    for section in x["Hayden"].course_wish_list["STAT-263"].sections:
+        print(section.dates)
+        
+    section1 = x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263-001-LEC")
+    section2 = x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263-002-LEC")
+    
+    print(section1.has_conflict(section2))
+    print(section2.term)
+    
+    print(x)
+    for s in x:
+        print(s)
+    

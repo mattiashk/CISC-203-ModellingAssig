@@ -9,8 +9,8 @@ with open("documentation.txt", "w") as text_file:
     with redirect_stdout(text_file):
         docs += str(help(datalayer.Course))
         docs += str(help(datalayer.Courses))
-        docs += str(help(datalayer.CourseSection))
         docs += str(help(datalayer.Section))
+        docs += str(help(datalayer.SectionDates))
         docs += str(help(datalayer.SectionDate))
         docs += str(help(datalayer.Sections))
         docs += str(help(datalayer.Student))
