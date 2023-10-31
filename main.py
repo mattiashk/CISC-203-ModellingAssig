@@ -30,36 +30,24 @@ def create_data_layer():
 
     # Access the data file paths
     courses_file_path = config['courses_file']
-    buildings_file_path = config['buildings_file'] #unused
+    #buildings_file_path = config['buildings_file'] #unused
     sections_file_path = config['sections_file']
     departments_file_path = config['departments_file']
     students_file_path = config['students_file']
 
     #create data set
+    all_courses = datalayer.mapCourses(courses_file_path)
     all_sections = datalayer.mapSections(sections_file_path)
-    all_courses = datalayer.mapCourses(courses_file_path, all_sections)
-    all_students = datalayer.mapStudents(students_file_path, all_courses)
+    all_students = datalayer.mapStudents(students_file_path)
     all_departments = datalayer.mapDepartments(departments_file_path)
 
-    #depreciated
-    #create cross links
-    #datalayer.link_sections_to_courses(all_sections, all_courses) #link all Section objects to their respective Course object
-    #datalayer.link_courses_to_students(all_students, all_courses) #link all Student objects courses attribute to their respective Course object
-
     #Test Cases
-    #print(all_students.find_student_by_id("Hayden").courses.find_course_by_id("CISC-203").description)
-    #print(all_students.find_student_by_id("Hayden").courses)
-    #print(all_students.find_student_by_id("Hayden").courses.find_course_by_id("CISC-204").section.course_sections[0])
+    #print(all_students.find_student_by_name("Hayden").course_wish_list.find_course_by_id("CISC-203").description)
+    #print(all_students.find_student_by_name("Hayden").course_wish_list)
+    #print(all_students.find_student_by_name("Hayden").course_wish_list.find_course_by_id("CISC-204").sections)
 
 
-    return {"courses": all_courses, "departments": all_departments, "sections": all_sections, "students": all_students}
-
-def parse_student_preferences():
-    """
-    """
-    # Load the student JSON configuration file
-    with open('config.json', 'r') as config_file:
-        config = json.load(config_file)
+    return {"courses": all_courses, "departments": all_departments, "students": all_students}
 
 
 if __name__ == "__main__":
