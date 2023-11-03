@@ -1,0 +1,114 @@
+138.    CISC-467 = Prerequisite Level 4 in any BCMP or COCA plan and C- in CISC 204.
+
+182.    CISC-422 = Prerequisite Level 4 and C- in CISC223 and registration in a School of Computing Plan.
+
+189.    CISC-466 = pre C- in CISC365 and registration in a School of Computing Plan.
+
+201.    CISC-226 = Prerequisite C- in CISC124
+
+221.    CISC-234 = CISC121
+
+264.    CISC-223 = pre Level 2 and C- in (CISC124 and CISC204).
+
+270.    CISC-235 = Prerequisites C- in (CISC124 and CISC203)
+
+327.    CISC-457 = Prerequisites C- in (MATH110 or MATH111 or MATH112) and (MATH120 or MATH121 or MATH122 or MATH123 or MATH124 or MATH126) and CISC124 and registration in a School of Computing Plan.
+
+351.    CISC-221 = Prerequisite C- in CISC124
+
+379.    CISC-465 = Prerequisites C- in (CISC204 and CISC223 and CISC260) and registration in a School of Computing Plan.
+
+391.    CISC-231 = Exclusion: CISC231 excludes CISC221. A prerequisite of APSC142 and registration in a BSCE Academic Plan is required.
+
+410.    CISC-472 = Prerequisites C- in CISC330 and registration in a School of Computing Plan.
+
+483.    CISC-101 = Exclusion No more than 3.0 units from APSC142;APSC143;CISC101; CISC110; CISC151./nOne-way exclusion May not be taken with or after: CISC121; CISC; CMPE at the 200-level or above.
+
+516.    CISC-204 = Prerequisite Level 2 or above and C- in [CISC121 and (CISC102 or MATH110)].
+
+606.    CISC-324 = Prerequisites C- in (CISC221 and CISC235) and registration in a School of Computing Plan.
+
+643.    CISC-271 = Prerequisites Level 2 and C- in (CISC101 or CISC121) and (MATH111 or MATH112 or MATH110) and (MATH120 or MATH121 or MATH122 or [MATH123 and MATH124] or MATH126)./nExclusion No more than 3.0 units from CISC271; MATH272; PHYS313.
+
+823.    CISC-453 = Prerequisite CISC 352/nExclusion CISC474.
+
+935.    CISC-203 = Prerequisite C- in [CISC121 and (CISC102 or MATH110)].
+
+975.    CISC-365 = Prerequisites C- in (CISC203 and CISC204 and CISC235) and registration in a School of Computing Plan.
+
+980.    CISC-327 = Prerequisites C- in (CISC220 and CISC124) and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC327; SOFT327
+
+984.    CISC-352 = Prerequisite C- in CISC235 and registration in a School of Computing Plan.
+
+1232.    CISC-102 = One-way exclusion May not be taken with or after CISC203
+
+1308.    CISC-451 = pre C- in (CISC333 or CISC351 or CISC372)
+
+1395.    CISC-251 = Exclusions CISC 251; CISC 333; CMPE 333
+
+1423.    CISC-124 = Prerequisite C- in CISC121 /nCorequisite CISC102 or MATH111 or MATH121 or MATH122 or MATH110 or MATH112 or MATH120 or MATH123 or MATH124 or MATH126 or APSC171 or APSC172 or APSC174 or COMM161 or COMM162.
+
+1528.    CISC-212 = Prerequisite of (APSC142 and APSC174) and registered in a BSCE Academic Program.
+
+1543.    CISC-220 = Corequisite CISC124
+
+1553.    CISC-423 = Prerequisites C- in (CISC322 or CISC326) and registration in a School of Computing Plan./nCorequisite CISC325./nExclusion No more than 3.0 units from CISC423; SOFT423.
+
+1587.    CISC-351 = Prerequisite C- in CISC 251 and [(C- in (3 units in STAT or 3 units from STAT_Options])./nExclusions CISC 371; CISC 372
+
+1616.    CISC-326 = Prerequisites C- in (CISC223 and CISC2350 and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC322 and CISC326
+
+1626.    CISC-426 = Prerequisites C- in (CISC324 and CISC327) and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC425; CMPE425.
+
+1635.    CISC-360 = PRE Registration in a Computing Plan and C- in (CISC124 and CISC204).
+
+1663.    CISC-425 = Prerequisite C- in CISC325 and registration in a School of Computing Plan or permission of the School./nExclusion No more than 3.0 units from CISC425; CMPE425
+
+1712.    CISC-110 = Exclusion No more than 3.0 units from APSC142;APSC143;CISC101; CISC110; CISC151./nOne-Way Exclusion May not be taken with or after: CISC121; CISC or SOFT at the 200 level and above.
+
+1745.    CISC-236 = CISC121
+
+1753.    CISC-458 = Prerequisites C- in (CISC121 and CISC221 and CISC223) and registration in a School of Computing Plan.
+
+1800.    CISC-330 = Prerequisites C- in (CISC121 and CISC271) and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC330; COMP329
+
+1808.    CISC-151 = excl 3 fr APSC142;CISC101, CISC110; CISC151/nOne-Way Exclusion May not be taken with or after CISC121; CISC or SOFT courses at the 200-level and above.
+
+1827.    CISC-498A = Pre Lvl 4 & reg in a SODE Plan & GPA of 1.90 &(GPA of 2.60 in CISC; SOFT;COCA;COGS) &(30 units in CISC;SOFT;COCA;COGS) &[C- in (CISC322 or CISC326) &(CISC325 or CISC327 or SOFT325 or SOFT327)]./nEXCLUSION No more than 6.0 units from CISC498; CISC499
+
+1836.    CISC-471 = Prerequisites Registration in a School of Computing Plan and C- in (CISC271 and CISC352 and CISC365).
+
+1890.    CISC-434 = Prerequisite C- in CISC324 and registration in a School of Computing Plan (or ELEC377).
+
+1913.    CISC-371 = Pre Registration in a computing plan and C- in CISC271/nExclusion No more than 3.0 units from CISC351; CISC371
+
+2090.    CISC-322 = Prerequisites Registration in a School of Computing Plan and C- in (CISC223 and CISC235)./nExclusion No more than CISC322 and CISC326
+
+2214.    CISC-499 = Pre Lvl 4 & reg in a COMP Major or BMCO or COMA or CSCI Spec Plan) &(an overall GPA of 1.90) &(a GPA of 2.6 in CISC;SOFT;COCA;COGS) & (30 units from CISC;SOFT;COCA;COGS) & C- in CISC365./nExclusion No more than 6.0 units from CISC498; CISC499
+
+2236.    CISC-454 = Prerequisite Level 3 or 4 and C- in [CISC 235/3.0 and (MATH 110 or MATH 111 or MATH 112)] and registration in a School of Computing Plan.
+
+2283.    CISC-282 = Prerequisite Level 2 and C- in CISC 124
+
+2347.    CISC-325 = Prerequisites C- in (CISC124 and CISC235) and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC325; SOFT325
+
+2357.    CISC-474 = pre Registration in a Computing Plan and C- in CISC352/nExclusion No more than 3.0 units from CISC474 and CISC453
+
+2451.    CISC-473 = pre Registration in a School of Computing plan and C- in CISC371
+
+2479.    CISC-437 = Prerequisites C- in (CISC324 and CISC327) and registration in a School of Computing Plan./nExclusion No more than 3.0 units from CISC437; SOFT437.
+
+2513.    CISC-121 = Corequisite CISC102 or MATH111 or MATH121 or MATH110 or MATH112 or MATH120 or MATH123 or MATH124 or MATH126 or APSC171 or APSC172 or APSC174 or COMM161 or COMM162.
+
+2538.    CISC-320 = APSCI Requisites: Exclusion: CISC322. Prerequisite of ELEC276 or ELEC278 and registration in a BSCE Academic Program./nARTS&SCI Requisites: Prerequisite of C- in CISC235 and registration in a School of Computing Plan.
+
+2670.    CISC-486 = Prerequisites C- in [CISC226 and (CISC322 or CISC326) and CISC324 and (MATH111 or MATH110 or MATH112)] and registration in a School of Computing Plan.
+
+2679.    CISC-372 = Prerequisite Registration in a School of Computing Plan and C- in CISC 371 and 3 units from (STAT or STAT_Options)/nExclusion No more than 3.0 units from CISC351 and CISC372.
+
+2684.    CISC-340 = ENG Requisites: Exclusions: Elec272 and ELEC373. /nArts & Sci Requisites: prereq of C- in CISC221 and registration in a School of Computing Plan.
+
+2818.    CISC-452 = Prerequisite C- in CISC235 and registration in a School of Computing Plan./nExclusion No more than 3.0 units from COGS400; CISC452
+
+2827.    CISC-496 = Prerequisite Level 4 and registration in a School of Computing Plan and a GPA of 1.9 and C- in [CISC 226 and (CISC 326 or COCA 201)] or permission of the School of Computing./nExclusions CISC 498; CISC 499; CISC 500; COGS 499
+

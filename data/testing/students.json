@@ -1,9 +1,9 @@
 [
     {
-        "name": "Hayden",
+        "name": "Student1",
         "academic_year": "SECONDYEAR",
         "program": "COMPSCI",
-        "completed_courses": ["CISC-121", "CISC-124", "MATH-110", "MATH-124", "HLTH-102", "ASTR-101", "GEOL-107"],
-        "course_wish_list": ["STAT-263", "CISC-204"]
+        "completed_courses": ["CISC-121", "CISC-124", "MATH-110", "MATH-121"],
+        "course_wish_list": ["CISC-203"]
     }
 ]

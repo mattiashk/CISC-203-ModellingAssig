@@ -1,7 +1,8 @@
 {
-    "courses_file": "data/testing/courses.json",
+    "courses_file": "data/reference/courses.json",
     "buildings_file": "data/reference/buildings.json",
     "departments_file": "data/reference/departments.json",
-    "sections_file": "data/testing/sections-test.json",
-    "students_file": "data/testing/students.json"
+    "sections_file": "data/reference/sections.json",
+    "students_file": "data/testing/students.json",
+    "requirements_file": "data/testing/requirements-cisc.json"
 }

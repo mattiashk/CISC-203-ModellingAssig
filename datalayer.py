@@ -5,6 +5,9 @@ from datetime import datetime, timedelta
 
 from collections.abc import Mapping
 
+import sys
+from contextlib import redirect_stdout
+
 """
 Object-Oriented JSON Data Modeling
 
@@ -625,6 +628,326 @@ class Courses(Mapping):
         self._courses[key] = value
 
 
+class CourseRequirement:
+    """
+    Represents the course and its requirements.
+
+    Attributes:
+    - id (str): The course code
+    - requirements (dict): A collection of CourseRequirementSpecific objects representing different requirements.
+    """
+
+    def __init__(self, id, requirements):
+        """
+        Initializes a CourseRequirement object with the course code and its requirements.
+
+        Args:
+        - id (str): The course code.
+        - requirements (list): A list of CourseRequirementSpecific objects.
+        """
+        self.id = id
+        self._requirements = {}
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of Department objects.
+
+        Returns:
+            str: A string with information for each Department.
+        """
+
+        formatted_string = "["
+
+        for requirement in self._requirements:
+            formatted_string += ("'{}: {}', ".format(self._requirements[requirement].id, self._requirements[requirement].criteria))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return(formatted_string)
+
+    def add_requirement(self, course_requirement):
+        """
+        Add a CourseRequirementSpecific to the collection.
+
+        Args:
+            course_requirement (CourseRequirementSpecific): The CourseRequirementSpecific object to be added.
+        """
+        
+        if course_requirement is not None:
+           self._requirements[course_requirement._id] = course_requirement  # Use course ID as the key in the dictionary
+
+    def add_requirements(self, course_requirements):
+        """
+        Add multiple course requirements to the collection.
+
+        Args:
+            course_requirements (list of CourseRequirementSpecific): A list of CourseRequirementSpecific objects to be added.
+        """
+        for requirement in course_requirements:
+            self.add_requirement(requirement)
+
+    def find_requirement_by_id(self, id):
+        """
+        Find a CourseRequirementSpecific by its unique identifier.
+
+        Args:
+            id (str): The unique course code of the CourseRequirementSpecific to search for.
+
+        Returns:
+            CourseRequirementSpecific or None: The CourseRequirementSpecific object if found, or None if not found.
+        """
+        return self._requirements.get(id, None)  # Use dictionary's get method
+
+    def __iter__(self):
+        """
+        Make the CourseRequirement class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        self._requirements_list = list(self._requirements.values())
+        return self
+
+    def __next__(self):
+        """
+        Get the next CourseRequirementSpecific object in the iteration.
+        """
+        if self._current_index < len(self._requirements_list):
+            course = self._requirements_list[self._current_index]
+            self._current_index += 1
+            return course
+        raise StopIteration
+
+    def __len__(self):
+        """
+        Get the number of CourseRequirementSpecific objects in the collection.
+
+        Returns:
+            int: The number of CourseRequirementSpecific objects in the collection.
+        """
+        return len(self._requirements)
+
+    def __contains__(self, item):
+        """
+        Check if a CourseRequirementSpecific object is in the collection.
+
+        Args:
+            item: The CourseRequirementSpecific object to check for presence in the collection.
+
+        Returns:
+            bool: True if the CourseRequirementSpecific object is in the collection, False otherwise.
+        """
+        return item in self._requirements
+
+    def __getitem__(self, item):
+        """
+        Retrieve a CourseRequirementSpecific object by its unique ID.
+
+        Args:
+            item: The unique course code (ID) of the CourseRequirementSpecific to be retrieved.
+
+        Returns:
+            CourseRequirementSpecific: The CourseRequirementSpecific object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a CourseRequirementSpecific object from the CourseRequirement
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._requirements[item] 
+
+    def add_item(self, key, value):
+        """
+        Add a CourseRequirementSpecific object to the collection using a unique identifier (ID).
+
+        Args:
+            key: The unique identifier (ID) for the CourseRequirementSpecific.
+            value: The CourseRequirementSpecific object to add to the collection.
+        """
+        self._requirements[key] = value
+
+class CourseRequirementSpecific:
+    """
+    Represents a specific requirement for a course.
+
+    Attributes:
+    - type (str): The type of requirement, e.g., "PREREQUISITE".
+    - criteria (str): The criteria for the requirement.
+    """
+
+    def __init__(self, type, criteria):
+        """
+        Initializes a CourseRequirementSpecific object with the type and criteria.
+
+        Args:
+        - type (str): The type of the requirement.
+        - criteria (str): The criteria for the requirement.
+        """
+        self._id = type
+        self._criteria = criteria
+    @property
+    def id(self):
+        """
+        Get the id attribute /or the requirement type.
+
+        Returns:
+        - string: The id attribute/requirement type.
+        """
+        return self._id
+    
+    @property
+    def criteria(self):
+        """
+        Get the requiement rule /or criteria.
+
+        Returns:
+        - string: the rule /or criteria.
+        """
+        return self._criteria
+    
+    def __str__(self):
+        return f"Type: {self._id} Criteria: {self._criteria}"
+
+class CourseRequirements:
+    """
+    Represents a collection of course requirements.
+
+    Attributes:
+    - requirements (dict): A dictionary where course codes are keys, and CourseRequirement objects are values.
+    """
+    
+    ALLREQUIREMENTS = None
+
+    def __init__(self, course_requirements = None):
+        """
+        Initializes an empty CourseRequirements object.
+        """
+        self._requirements = {}  # Use a dictionary to store courses by ID
+        if course_requirements is not None:
+            self.add_course_requirements(course_requirements)
+
+    @property
+    def requirements(self):
+        """
+        Get the collection of CourseRequirement objects.
+
+        Returns:
+        - dict: The dictionary of all requirements.
+        """
+        return self._requirements
+
+    @requirements.setter
+    def requirements(self, course_requirement):
+        """
+        Add a CourseRequirement object to the collection.
+
+        Args:
+        - course_requirement (CourseRequirement): The CourseRequirement object to add.
+        """
+        self._requirements[course_requirement.course] = course_requirement
+
+    def __str__(self):
+        return f"{[course_code for course_code in self.requirements.keys()]}"
+
+    def add_course_requirement(self, course_requirement):
+        """
+        Add a CourseRequirement to the collection.
+
+        Args:
+            course_requirement (CourseRequirement): The CourseRequirement object to be added.
+        """
+        
+        if course_requirement is not None:
+           self.requirements[course_requirement.id] = course_requirement  # Use course ID as the key in the dictionary
+
+    def add_course_requirements(self, course_requirements):
+        """
+        Add multiple course requirements to the collection.
+
+        Args:
+            course_requirements (list of CourseRequirement): A list of CourseRequirement objects to be added.
+        """
+        for requirement in course_requirements:
+            self.add_course_requirement(requirement)
+
+    def find_course_requirement_by_id(self, id):
+        """
+        Find a CourseRequirement by its unique identifier.
+
+        Args:
+            id (str): The unique course code of the CourseRequirement to search for.
+
+        Returns:
+            CourseRequirement or None: The CourseRequirement object if found, or None if not found.
+        """
+        return self.requirements.get(id, None)  # Use dictionary's get method
+
+    def __iter__(self):
+        """
+        Make the CourseRequirements class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        self._requirements_list = list(self._requirements.values())
+        return self
+
+    def __next__(self):
+        """
+        Get the next CourseRequirement object in the iteration.
+        """
+        if self._current_index < len(self._requirements_list):
+            course = self._requirements_list[self._current_index]
+            self._current_index += 1
+            return course
+        raise StopIteration
+
+    def __len__(self):
+        """
+        Get the number of CourseRequirement objects in the collection.
+
+        Returns:
+            int: The number of CourseRequirement objects in the collection.
+        """
+        return len(self._requirements)
+
+    def __contains__(self, item):
+        """
+        Check if a CourseRequirement object is in the collection.
+
+        Args:
+            item: The CourseRequirement object to check for presence in the collection.
+
+        Returns:
+            bool: True if the CourseRequirement object is in the collection, False otherwise.
+        """
+        return item in self._requirements
+
+    def __getitem__(self, item):
+        """
+        Retrieve a CourseRequirement object by its unique ID.
+
+        Args:
+            item: The unique course code (ID) of the CourseRequirement to be retrieved.
+
+        Returns:
+            CourseRequirement: The CourseRequirement object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a CourseRequirement object from the CourseRequirements
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._requirements[item] 
+
+    def add_item(self, key, value):
+        """
+        Add a CourseRequirement object to the collection using a unique identifier (ID).
+
+        Args:
+            key: The unique identifier (ID) for the CourseRequirement.
+            value: The CourseRequirement object to add to the collection.
+        """
+        self._requirements[key] = value
+
+
 class Department:
     """
     Represents a Queens department with its attributes and provides properties for id, code, and name.
@@ -827,7 +1150,6 @@ class TermLevelSection:
         self.course_sections = course_sections
         self.courseid = ("{}-{}".format(department, course_code))
         
-
 class Section(TermLevelSection):
     """
     Represents a specific course section with its attributes.
@@ -1945,7 +2267,7 @@ def mapDepartments(buildings_file):
         buildings_file (str): The path to the buildings JSON file.
 
     Returns:
-        Departments: An instance of the Departments class containing a list of Department objects.
+        Departments: An instance of the Departments class containing a collection of Department objects.
     """
     with open(buildings_file, "r") as json_file:
         data = json.load(json_file)
@@ -1964,6 +2286,42 @@ def mapDepartments(buildings_file):
     # Return a list of Department objects
     return Departments(departments)
 
+def mapRequirements(requirements_file):
+    """
+    Map data from a requirements JSON file to CourseRequirement objects.
+
+    Args:
+        requirements_file (str): The path to the requirements JSON file.
+
+    Returns:
+        CourseRequirements: An instance of the CourseRequirements class containing a collection of CourseRequirement objects.
+    """
+    with open(requirements_file, "r") as json_file:
+        data = json.load(json_file)
+
+    all_course_requirements = []  # Create a list to store course objects 
+
+    for course_requirements in data:
+        course_requirement = CourseRequirement(**course_requirements)
+        all_course_requirements.append(course_requirement)
+        all_specific_requirements = []
+        
+        for specifc_requirement in course_requirements["requirements"]:
+            all_specific_requirements.append(CourseRequirementSpecific(**specifc_requirement))
+            
+        course_requirement.add_requirements(all_specific_requirements)
+
+        course_obj_link = course_requirements["id"]
+        course_obj = Courses.ALLCOURSES.find_course_by_id(course_obj_link)
+        if course_obj is not None:
+
+                course_obj.requirements = course_requirement
+
+
+    # Return a collection of CourseRequirement objects
+    CourseRequirements.ALLREQUIREMENTS = CourseRequirements(all_course_requirements)
+    return CourseRequirements.ALLREQUIREMENTS
+    
 def mapSections(sections_file):
     """
     Map data from a sections JSON file to CourseSection objects.
@@ -1972,7 +2330,7 @@ def mapSections(sections_file):
         sections_file (str): The path to the sections JSON file.
 
     Returns:
-        CourseSections: An instance of the CourseSections class containing a list of CourseSection objects.
+        CourseSections: An instance of the CourseSections class containing a collection of CourseSection objects.
     """
     with open(sections_file, "r") as json_file:
         data = json.load(json_file)
@@ -2007,7 +2365,7 @@ def mapCourses(courses_file):
         (optional) mapped_sections (Sections): The Sections object containing all Section objects
 
     Returns:
-        Courses: An instance of the Courses class containing a list of Course objects.
+        Courses: An instance of the Courses class containing a collection of Course objects.
     """
     with open(courses_file, "r") as json_file:
         data = json.load(json_file)
@@ -2021,7 +2379,7 @@ def mapCourses(courses_file):
 
 
 
-    # Return a list of Course objects
+    # Return a collection of Course objects
     Courses.ALLCOURSES = Courses(courses)
     return Courses.ALLCOURSES
 
@@ -2035,7 +2393,7 @@ def mapStudents(students_file):
         (optional) mapped_courses (Courses): The Courses object containing all Course objects
 
     Returns:
-        Students: An instance of the Students class containing a list of Student objects.
+        Students: An instance of the Students class containing a collection of Student objects.
     """
     with open(students_file, "r") as json_file:
         data = json.load(json_file)
@@ -2047,30 +2405,16 @@ def mapStudents(students_file):
         student = Student(**student_data)
         all_students.append(student)
 
-    # Return a list of CourseSection objects
+    # Return a collection of CourseSection objects
     Students.ALLSTUDENTS = Students(all_students)
     return Students.ALLSTUDENTS
 
 
 if __name__ == "__main__":
-    mapCourses("data/testing/courses.json")
-    mapSections("data/testing/sections.json")
-    x = (mapStudents("data/testing/students.json"))
-    print(x["Hayden"].course_wish_list["STAT-263"].sections)
-    print(x["Hayden"].course_wish_list["STAT-263"].is_offered_in_term("WINTER"))
-    print(x["Hayden"].course_wish_list["STAT-263"].sections.all_sections_by_term)
-    print(x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263"))
-    
-    for section in x["Hayden"].course_wish_list["STAT-263"].sections:
-        print(section.dates)
-        
-    section1 = x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263-001-LEC")
-    section2 = x["Hayden"].course_wish_list["STAT-263"].sections.find_section_by_id("2019-FA-U-M-STAT-263-002-LEC")
-    
-    print(section1.has_conflict(section2))
-    print(section2.term)
-    
-    print(x)
-    for s in x:
-        print(s)
+    c = mapCourses("data/reference/courses.json")
+    s = mapSections("data/reference/sections.json")
+    #mapStudents("data/testing/students.json")
+    r = mapRequirements("data/testing/requirements-cisc.json")
+    print(c["MATH-110B"].sections)
+
     

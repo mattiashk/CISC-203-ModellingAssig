@@ -1,0 +1,52 @@
+[
+  {
+    "id": "CISC-204",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CISC-121 AND (CISC-102 OR MATH-110)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CISC-203",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CISC-121 AND (CISC-102 OR MATH-110)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  }
+]
