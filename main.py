@@ -34,12 +34,14 @@ def create_data_layer():
     sections_file_path = config['sections_file']
     departments_file_path = config['departments_file']
     students_file_path = config['students_file']
+    requirements_file_path = config['requirements_file']
 
     #create data set
     all_courses = datalayer.mapCourses(courses_file_path)
     all_sections = datalayer.mapSections(sections_file_path)
     all_students = datalayer.mapStudents(students_file_path)
     all_departments = datalayer.mapDepartments(departments_file_path)
+    all_requirements = datalayer.mapRequirements(requirements_file_path)
 
     #Test Cases
     #print(all_students.find_student_by_name("Hayden").course_wish_list.find_course_by_id("CISC-203").description)
@@ -47,7 +49,7 @@ def create_data_layer():
     #print(all_students.find_student_by_name("Hayden").course_wish_list.find_course_by_id("CISC-204").sections)
 
 
-    return {"courses": all_courses, "departments": all_departments, "students": all_students}
+    return {"courses": all_courses, "departments": all_departments, "students": all_students, "requirements": all_requirements}
 
 
 if __name__ == "__main__":

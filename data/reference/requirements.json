@@ -1,0 +1,1652 @@
+[
+    {
+        "Course": "CLST-214",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "SPAN-262A",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "SPAN-205"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "MNTC-408",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "MNTC-305 OR APSC-151"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "BTECH OR BASC"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "GEOL-249",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "GEOL-104"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "GEOL-249 OR GEOL-269"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "MATH-120 OR MATH-121 OR MATH-122 OR (MATH-123 AND MATH-124) AND PHYS-104 OR PHYS-106 OR PHYS107 OR PHYS-117 OR PHYS-118"
+            }
+        ]
+    },
+    {
+        "Course": "JAPN-300A",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "JAPN-200"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "JAPN-300 OR JAPN-301 OR JAPN-302"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "TRUE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "ELEC-353",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "ELEC-252"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "BSCE OR BASC"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "ELEC-323 OR MTHE-326"
+            }
+        ]
+    },
+    {
+        "Course": "GEOE-249",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "APSC-111 AND APSC-151 AND APSC-171 AND APSC-172"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "BSCE OR BASC"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "POLS-419",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "POLS-250"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "POLS"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "HIST-365",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "HIST-300 OR HIST-330"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "HIST"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "ARTH-301",
+        "Requirements": [
+            {
+                "Type": "PREREQUISITE",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "EXCLUSION",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "PROGRAM REQUIREMENT",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "APPROVAL",
+                "Criteria": "NONE"
+            },
+            {
+                "Type": "COREQUISITE",
+                "Criteria": "NONE"
+            }
+        ]
+    },
+    {
+        "Course": "ECON-243",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "ECON-110 OR ECON-111"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "MECH-394",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "MECH-217 OR MECH-221 OR MECH-228"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "TRUE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "ITLN-112",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "ITLN-111 OR ITLN P10"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "ITLN-111 OR ITLN-101 OR ITLN-112 OR ITLN-204 OR ITLN-205"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "ENGL-290",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "ENGL-100"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "ENGL-290"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "ENGL"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "SURP-889",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "GPHY OR SURP"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "MATH-111A",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "MATH-110 OR MATH-111 OR MATH-112"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "ELEC-454",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "(ELEC-323 OR MTHE-332 OR MATH-332) AND ELEC-353"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE OR BASC"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "JWST-220",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "RELS-100 OR JWST-100 OR HEBR-100"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "POLS-410",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "POLS-250)"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "POLS"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "ENGL-486",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "ENGL-200 AND ENGL-290"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "ENGL"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "RELS-401",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "RELS"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "RELS-353 OR (RELS-354 AND RELS-355)"
+        }
+        ]
+    },
+    {
+        "Course": "FOCI-222B",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "CHEM-399",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "CHEM-222 AND CHEM-223"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "FILM-445",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "FILM OR STSC OR COCA OR MAPP"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "CMPE-204",
+        "Requirements": [
+        {
+            "Type": "PREREQUISITE",
+            "Criteria": "ELEC-270 OR CISC-203"
+        },
+        {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE OR BASC"
+        },
+        {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+        },
+        {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+        }
+        ]
+    },
+    {
+        "Course": "HEBR-295",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "HEBR-294"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "TRUE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "FILM-323",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "FILM OR STSC OR MAPP OR COCA"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "APSC-174",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BASC OR UENG"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PRAC-210A",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PRAC-110B"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ELEC-310",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "ELEC-210 OR ELEC-221"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE OR BASC"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ARTH-242",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "CIVL-342",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "CIVL-340"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "RELS-239",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "CIVL-408",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "STAM-200",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "EDST-429",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "SOCY-321",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "FILM-385A",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "FILM-250"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "FILM-368 OR FILM-356"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "FILM OR STSC OR MAPP OR COCA"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "LAW-692",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PSYC-455",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PSYC-203 AND PSYC-251"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ENGL-278",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "ENGL-100 OR ENGL-110"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PACT-403",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "TRUE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "DRAM-419",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "BMED-384",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "(PHGY-210 OR PHGY-214 OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "LISC-390 AND LISC-391"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "COMM-382",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "ENGL-100 OR ENGL-110"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "LAW-204 OR LAW-704"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "HEBR-295",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "HEBR-294"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "TRUE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "FILM-323",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "FILM OR STSC OR MAPP OR COCA"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "APSC-174",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BASC OR UENG"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PRAC-210A",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PRAC-110B"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ELEC-310",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "ELEC-210 OR ELEC-221"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE OR BASC"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ARTH-242",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "CIVL-342",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "CIVL-340"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "RELS-239",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "RELS-100"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "CIVL-408",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "BSCE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "STAM-200",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "STAT-269"
+          }
+        ]
+      },
+      {
+        "Course": "EDST-429",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "SOCY-321",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "FILM-385A",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "FILM-250"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "FILM-368 OR FILM-356"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "FILM ORSTSC OR MAPP OR COCA"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "LAW-692",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PSYC-455",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PSYC-203 AND PSYC-251"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "ENGL-278",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "ENGL-100 OR ENGL-110"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "PACT-403",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "DRAM-419",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "BMED-384",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "((PHGY-210 OR PHGY-214) OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "LISC-390 AND LISC-391"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "COMM-382",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "COMM-382 OR LAW-204 OR LAW-704"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      },
+      {
+        "Course": "LLCU-295",
+        "Requirements": [
+          {
+            "Type": "PREREQUISITE",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "EXCLUSION",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "PROGRAM REQUIREMENT",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "APPROVAL",
+            "Criteria": "NONE"
+          },
+          {
+            "Type": "COREQUISITE",
+            "Criteria": "NONE"
+          }
+        ]
+      }
+]
