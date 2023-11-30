@@ -16,6 +16,10 @@ RUN pip3 install --upgrade pip
 RUN pip3 install nnf
 RUN pip3 install bauhaus
 RUN pip3 install aenum
+RUN pip3 install datetime
+RUN pip3 install requests
+RUN pip3 install flask
+RUN pip3 install flask_cors
 
 
 # install dsharp to run in the container

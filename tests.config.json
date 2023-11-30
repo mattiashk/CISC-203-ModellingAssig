@@ -1,0 +1,20 @@
+[
+    {   
+        "id": 0,
+        "test": "test-small-general",
+        "description": "A small test size of 2 students each enrolled in 2 courses, with no conflicts",
+        "location": "data/testing/test-small-general"
+    },
+    {
+        "id": 1,
+        "test": "test-small-freindship-01",
+        "description": "A small test size of 2 friends each enrolled in 2 courses, with no conflicts",
+        "location": "data/testing/test-small-freindship-01"
+    },
+    {
+        "id": 2,
+        "test": "test-full-year-course",
+        "description": "A single full year course with terms A and B",
+        "location": "data/testing/test-full-year-course"
+    }
+]

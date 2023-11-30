@@ -1,0 +1,81 @@
+[
+    {
+        "id": "CISC-124",
+        "department": "CISC",
+        "course_code": "124",
+        "course_name": "Introduction to Computing Science II",
+        "campus": "Main",
+        "description": "Introduction to object-oriented design, architecture, and programming. Use of packages, class libraries, and interfaces. Encapsulation and representational abstraction. Inheritance. Polymorphic programming. Exception handling. Iterators. Introduction to a class design notation. Numerical computation. Applications in various areas.",
+        "grading_basis": "Graded",
+        "course_components": {
+            "laboratory": "Required",
+            "lecture": "Required"
+        },
+        "requirements": "Prerequisite C- in CISC121 \nCorequisite CISC102 or MATH111 or MATH121 or MATH122 or MATH110 or MATH112 or MATH120 or MATH123 or MATH124 or MATH126 or APSC171 or APSC172 or APSC174 or COMM161 or COMM162.",
+        "add_consent": "",
+        "drop_consent": "",
+        "academic_level": "Undergraduate Online",
+        "academic_group": "Faculty of Arts and Science",
+        "academic_org": "School of Computing",
+        "units": 3.0,
+        "CEAB": {
+            "math": 0,
+            "basic_sci": 0,
+            "comp_st": 0,
+            "eng_sci": 0,
+            "end_des": 0
+        }
+    },
+    {
+        "id": "CISC-204",
+        "department": "CISC",
+        "course_code": "204",
+        "course_name": "Logic for Computing Science",
+        "campus": "Main",
+        "description": "Elements of mathematical logic with computing applications. Formal proof systems for propositional and predicate logic. Interpretations, validity, and satisfiability. Introduction to soundness, completeness and decidability.",
+        "grading_basis": "Graded",
+        "course_components": {
+            "lecture": "Required"
+        },
+        "requirements": "Prerequisite Level 2 or above and C- in [CISC121 and (CISC102 or MATH110)].",
+        "add_consent": "",
+        "drop_consent": "",
+        "academic_level": "Undergraduate",
+        "academic_group": "Faculty of Arts and Science",
+        "academic_org": "School of Computing",
+        "units": 3.0,
+        "CEAB": {
+            "math": 0,
+            "basic_sci": 0,
+            "comp_st": 0,
+            "eng_sci": 0,
+            "end_des": 0
+        }
+    },
+    {
+        "id": "CISC-203",
+        "department": "CISC",
+        "course_code": "203",
+        "course_name": "Discrete Mathematics for Computing II",
+        "campus": "Main",
+        "description": "Proof methods. Combinatorics: permutations and combinations, discrete probability, recurrence relations. Graphs and trees. Boolean and abstract algebra.",
+        "grading_basis": "Graded",
+        "course_components": {
+            "lecture": "Required"
+        },
+        "requirements": "Prerequisite C- in [CISC121 and (CISC102 or MATH110)].",
+        "add_consent": "",
+        "drop_consent": "",
+        "academic_level": "Undergraduate",
+        "academic_group": "Faculty of Arts and Science",
+        "academic_org": "School of Computing",
+        "units": 3.0,
+        "CEAB": {
+            "math": 0,
+            "basic_sci": 0,
+            "comp_st": 0,
+            "eng_sci": 0,
+            "end_des": 0
+        }
+    }
+]

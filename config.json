@@ -1,8 +1,10 @@
 {
+    "use_web_app": true,
+    "show_propositions": true,
     "courses_file": "data/reference/courses.json",
     "buildings_file": "data/reference/buildings.json",
     "departments_file": "data/reference/departments.json",
     "sections_file": "data/reference/sections.json",
-    "students_file": "data/testing/students.json",
-    "requirements_file": "data/testing/requirements-cisc.json"
+    "students_file": "data/reference/students.json",
+    "requirements_file": "data/reference/requirements.json"
 }

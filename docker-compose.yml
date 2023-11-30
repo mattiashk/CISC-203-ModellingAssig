@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  web_app_204:
+    build:
+      context: ./nextjs_app  #path to Next.js app
+      dockerfile: Dockerfile
+    volumes:
+      - ./nextjs_app:/app/src # Map Next.js app directory to /app in container
+    ports:
+      - "3000:3000"
+    networks:
+      - webapp_network
+    command: tail -f /dev/null
+
+  sat_solver_204:
+    build:
+      context: .  #path to Python app
+      dockerfile: Dockerfile
+    volumes:
+      - .:/PROJECT  # Map Python app directory to /PROJECT in container
+    ports:
+      - "5000:5000"
+    networks:
+      - webapp_network
+    command: tail -f /dev/null
+
+networks:
+  webapp_network:
+    driver: bridge

@@ -1,1652 +1,4506 @@
 [
-    {
-        "Course": "CLST-214",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "SPAN-262A",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "SPAN-205"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "MNTC-408",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "MNTC-305 OR APSC-151"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "BTECH OR BASC"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "GEOL-249",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "GEOL-104"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "GEOL-249 OR GEOL-269"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "MATH-120 OR MATH-121 OR MATH-122 OR (MATH-123 AND MATH-124) AND PHYS-104 OR PHYS-106 OR PHYS107 OR PHYS-117 OR PHYS-118"
-            }
-        ]
-    },
-    {
-        "Course": "JAPN-300A",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "JAPN-200"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "JAPN-300 OR JAPN-301 OR JAPN-302"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "TRUE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "ELEC-353",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "ELEC-252"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "BSCE OR BASC"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "ELEC-323 OR MTHE-326"
-            }
-        ]
-    },
-    {
-        "Course": "GEOE-249",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "APSC-111 AND APSC-151 AND APSC-171 AND APSC-172"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "BSCE OR BASC"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "POLS-419",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "POLS-250"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "POLS"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "HIST-365",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "HIST-300 OR HIST-330"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "HIST"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "ARTH-301",
-        "Requirements": [
-            {
-                "Type": "PREREQUISITE",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "EXCLUSION",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "PROGRAM REQUIREMENT",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "APPROVAL",
-                "Criteria": "NONE"
-            },
-            {
-                "Type": "COREQUISITE",
-                "Criteria": "NONE"
-            }
-        ]
-    },
-    {
-        "Course": "ECON-243",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "ECON-110 OR ECON-111"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "MECH-394",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "MECH-217 OR MECH-221 OR MECH-228"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "TRUE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "ITLN-112",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "ITLN-111 OR ITLN P10"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "ITLN-111 OR ITLN-101 OR ITLN-112 OR ITLN-204 OR ITLN-205"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "ENGL-290",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "ENGL-100"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "ENGL-290"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "ENGL"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "SURP-889",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "GPHY OR SURP"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "MATH-111A",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "MATH-110 OR MATH-111 OR MATH-112"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "ELEC-454",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "(ELEC-323 OR MTHE-332 OR MATH-332) AND ELEC-353"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE OR BASC"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "JWST-220",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "RELS-100 OR JWST-100 OR HEBR-100"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "POLS-410",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "POLS-250)"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "POLS"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "ENGL-486",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "ENGL-200 AND ENGL-290"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "ENGL"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "RELS-401",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "RELS"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "RELS-353 OR (RELS-354 AND RELS-355)"
-        }
-        ]
-    },
-    {
-        "Course": "FOCI-222B",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "CHEM-399",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "CHEM-222 AND CHEM-223"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "FILM-445",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "FILM OR STSC OR COCA OR MAPP"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "CMPE-204",
-        "Requirements": [
-        {
-            "Type": "PREREQUISITE",
-            "Criteria": "ELEC-270 OR CISC-203"
-        },
-        {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE OR BASC"
-        },
-        {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-        },
-        {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-        }
-        ]
-    },
-    {
-        "Course": "HEBR-295",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "HEBR-294"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "TRUE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
+  {
+    "id": "CLST-214",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
       },
       {
-        "Course": "FILM-323",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "FILM OR STSC OR MAPP OR COCA"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
+        "type": "EXCLUSION",
+        "criteria": "NONE"
       },
       {
-        "Course": "APSC-174",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BASC OR UENG"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
       },
       {
-        "Course": "PRAC-210A",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PRAC-110B"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
+        "type": "APPROVAL",
+        "criteria": "NONE"
       },
       {
-        "Course": "ELEC-310",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "ELEC-210 OR ELEC-221"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE OR BASC"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "ARTH-242",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "CIVL-342",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "CIVL-340"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "RELS-239",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "CIVL-408",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "STAM-200",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "EDST-429",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "SOCY-321",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "FILM-385A",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "FILM-250"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "FILM-368 OR FILM-356"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "FILM OR STSC OR MAPP OR COCA"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "LAW-692",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "PSYC-455",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PSYC-203 AND PSYC-251"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "ENGL-278",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "ENGL-100 OR ENGL-110"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "PACT-403",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "TRUE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "DRAM-419",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "BMED-384",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "(PHGY-210 OR PHGY-214 OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "LISC-390 AND LISC-391"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "COMM-382",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "ENGL-100 OR ENGL-110"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "LAW-204 OR LAW-704"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "HEBR-295",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "HEBR-294"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "TRUE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "FILM-323",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "FILM OR STSC OR MAPP OR COCA"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "APSC-174",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BASC OR UENG"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "PRAC-210A",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PRAC-110B"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "ELEC-310",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "ELEC-210 OR ELEC-221"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE OR BASC"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "ARTH-242",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "CIVL-342",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "CIVL-340"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "RELS-239",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "RELS-100"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "CIVL-408",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "BSCE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "STAM-200",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "STAT-269"
-          }
-        ]
-      },
-      {
-        "Course": "EDST-429",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "SOCY-321",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "FILM-385A",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "FILM-250"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "FILM-368 OR FILM-356"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "FILM ORSTSC OR MAPP OR COCA"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "LAW-692",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "PSYC-455",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PSYC-203 AND PSYC-251"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "ENGL-278",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "ENGL-100 OR ENGL-110"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "PACT-403",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "DRAM-419",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "BMED-384",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "((PHGY-210 OR PHGY-214) OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "LISC-390 AND LISC-391"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "COMM-382",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "COMM-382 OR LAW-204 OR LAW-704"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
-      },
-      {
-        "Course": "LLCU-295",
-        "Requirements": [
-          {
-            "Type": "PREREQUISITE",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "EXCLUSION",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "PROGRAM REQUIREMENT",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "APPROVAL",
-            "Criteria": "NONE"
-          },
-          {
-            "Type": "COREQUISITE",
-            "Criteria": "NONE"
-          }
-        ]
+        "type": "COREQUISITE",
+        "criteria": "NONE"
       }
+    ]
+  },
+  {
+    "id": "SPAN-262A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "SPAN-205"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MNTC-408",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MNTC-305 OR APSC-151"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BTECH OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GEOL-249",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GEOL-104"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "GEOL-249 OR GEOL-269"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "MATH-120 OR MATH-121 OR MATH-122 OR (MATH-123 AND MATH-124) AND PHYS-104 OR PHYS-106 OR PHYS107 OR PHYS-117 OR PHYS-118"
+      }
+    ]
+  },
+  {
+    "id": "JAPN-300A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "JAPN-200"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "JAPN-300 OR JAPN-301 OR JAPN-302"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "TRUE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ELEC-353",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC-252"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "ELEC-323 OR MTHE-326"
+      }
+    ]
+  },
+  {
+    "id": "GEOE-249",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "APSC-111 AND APSC-151 AND APSC-171 AND APSC-172"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-419",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "POLS-250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-365",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HIST-300 OR HIST-330"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "HIST"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-301",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ECON-243",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ECON-110 OR ECON-111"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MECH-394",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MECH-217 OR MECH-221 OR MECH-228"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "TRUE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ITLN-112",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ITLN-111 OR ITLN P10"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ITLN-111 OR ITLN-101 OR ITLN-112 OR ITLN-204 OR ITLN-205"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-290",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL-100"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ENGL-290"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ENGL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SURP-889",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GPHY OR SURP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MATH-111A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MATH-110 OR MATH-111 OR MATH-112"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ELEC-454",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(ELEC-323 OR MTHE-332 OR MATH-332) AND ELEC-353"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "JWST-220",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "RELS-100 OR JWST-100 OR HEBR-100"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-410",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "POLS-250)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-486",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL-200 AND ENGL-290"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ENGL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "RELS-401",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "RELS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "RELS-353 OR (RELS-354 AND RELS-355)"
+      }
+    ]
+  },
+  {
+    "id": "FOCI-222B",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CHEM-399",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CHEM-222 AND CHEM-223"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "CHEM-397 OR CHEM-398 OR CHEM-399"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-445",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR COCA OR MAPP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CMPE-204",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC-270 OR CISC-203"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HEBR-295",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HEBR-294"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "TRUE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-323",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "APSC-174",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BASC OR UENG"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PRAC-210A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PRAC-110B"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ELEC-310",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC-210 OR ELEC-221"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-242",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CIVL-342",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CIVL-340"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "RELS-239",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CIVL-408",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "STAM-200",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "EDST-429",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SOCY-321",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-385A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "FILM-250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "FILM-368 OR FILM-356"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LAW-692",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PSYC-455",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PSYC-203 AND PSYC-251"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-278",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL-100 OR ENGL-110"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PACT-403",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "TRUE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "DRAM-419",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "BMED-384",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(PHGY-210 OR PHGY-214 OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LISC-390 AND LISC-391"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-382",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL-100 OR ENGL-110"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LAW-204 OR LAW-704"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HEBR-295",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HEBR-294"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "TRUE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-323",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "APSC-174",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BASC OR UENG"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PRAC-210A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PRAC-110B"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ELEC-310",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC-210 OR ELEC-221"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ENPH-333 AND (ENPH-334 OR PHYS-334)"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-242",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CIVL-342",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CIVL-340"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "RELS-239",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "RELS-100"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CIVL-408",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "STAM-200",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "BIOL-243 OR CHEE-209 OR ECON-250 OR GPHY-247 OR KNPE-251 OR STAM-200 OR NURS-323 OR POLS-385 OR PSYC-202 OR SOCY-211 OR STAT-263 OR STAT-267 OR STAT-367 OR COMM-162"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "STAT-269"
+      }
+    ]
+  },
+  {
+    "id": "EDST-429",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SOCY-321",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-221) OR (SOCY-210 AND SOCY-227) OR (SOCY-210 AND SOCY-211) OR (SOCY-210 AND SOCY-226)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-385A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "FILM-250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "FILM-368 OR FILM-356"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM ORSTSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LAW-692",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PSYC-455",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PSYC-203 AND PSYC-251"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-278",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL-100 OR ENGL-110"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PACT-403",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PACT-100 AND (KNPE-203 OR PPHE-203)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "DRAM-419",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "BMED-384",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "((PHGY-210 OR PHGY-214) OR (PHGY-215 AND PHGY-216)) AND (PHAR-230 OR PHAR-270 OR PHAR-340)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LISC-390 AND LISC-391"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-382",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "COMM-382 OR LAW-204 OR LAW-704"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LLCU-295",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-305A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "HIST296 OR HIST267 OR HIST305"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "HIST"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GNDS-530",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "GNDS510 OR GNDS520 OR GNDS530"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GNDS OR SXGD"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-325",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LLCU-201",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LLCU201 OR IDIS201"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MINE-324",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MTHE225 AND (MECH230 OR CHEE210)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "XRAY-310A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-400",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-490",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "APSC-304",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CIVL-201",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "CIVL200"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SURP-809",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "SURP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "RELS-222",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-215",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": ""
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ARTH214 OR ARTH215 OR ARTH213"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "BCHM-431",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "BCHM310 OR (BCHM315 AND BCHM316) OR (BCHM315 AND BCHM317)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-259",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "HIST259 OR HIST240"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GPHY-338",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GPHY227 OR GPHY228 OR GPHY229"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GEOE-212",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "GEOL212 OR GEOL232"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "GEOL104"
+      }
+    ]
+  },
+  {
+    "id": "GNDS-510A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "GNDS510 OR GNDS520 OR GNDS530"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GNDS OR SXGD"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "NURS-305",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BNSC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ELEC-498B",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC326 AND ELEC371 AND ELEC374 AND ELEC377 AND (CMPE223 OR CMPE320)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-451B",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "FILM250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PHIL-467",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PHIL250 AND PHIL257"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHIL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-293",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MUSC292"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MUSC291 OR MUSC292 OR MUSC293"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-333",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "COMM131 OR COMM231 OR COMM132"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MECH-463",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-324A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "HIST"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-210",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PHYS-216",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(PHYS104 OR PHYS106) AND (MATH120 OR MATH121 OR MATH122)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-470",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "POLS250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MICR-435",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "BIOL205 AND (MICR221 OR MICR271 OR MICR229)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "LISC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "BCHM310 OR BCHM315 OR BIOL334"
+      }
+    ]
+  },
+  {
+    "id": "POLS-442",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "POLS250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-380",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MUSC191 AND (MUSC210 OR MUSC211 OR MUSC203 OR MUSC204 OR MUSC205)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GPHY-332",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GPHY227 AND (GPHY228 OR GPHY229 OR DEVS230)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SURP-893",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GPHY OR SURP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FOUN-448B",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LLCU-215",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LLCU215 OR ITLN215 OR ITLN415"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EQUIVALENCY",
+        "criteria": "ITLN215"
+      }
+    ]
+  },
+  {
+    "id": "FILM-510A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "KNPE-255",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "KNPE125"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "HLTH325 OR KNPE255"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHED OR KINE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "KNPE225 AND KNPE227"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-200A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MUSC121 OR MUSC221 OR MUSC321 OR MUSC124 OR MUSC224 OR MUSC324"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GREK-208A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GREK112"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FREN-450",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "(FREN250 OR FREN360) AND (FREN231 OR FREN330) OR FREN344"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "FREN444"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-464A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL200 AND ENGL290"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ENGL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-486",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MUSC103 OR MUSC289"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-405",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "POLS250"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GNDS-410",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GNDS OR SXGD"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-274",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENPH-457A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-307",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "FILM  OR STSC OR MAPP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PME-827",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "KNPE-473",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHED OR KINE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PHIL-431",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PHIL250 AND PHIL257"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHIL "
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "STAT-356",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "APSC171 OR MATH128"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SOCY-310",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "SOCY122 OR (BISC100 AND BISC101)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-349A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL200 AND ENGL290"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ENGL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FILM-218",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "FILM110 OR (FILM104 AND FILM106) OR (BISC100 AND FILM104)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MECH-241",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "APSC111"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-451",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL200 AND ENGL290"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ENGL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MECH-492",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENGL-256A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ENGL100 OR ENGL110"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "ENGL256 OR ENGL257 OR ENGL258"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PHIL-381",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CMPE-327",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC279 OR CMPE212"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GREK-422",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GREK322"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-491",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MUSC470 OR MUSC491"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-332",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BISC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MATH-210",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MATH110 OR MATH111 OR MATH112"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MATH210 OR MATH211 OR MATH213 OR MATH217"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MPA-859A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PMPA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CMPE-223",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ELEC270 AND ELEC278"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "CISC366"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "FOUN-448",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-601",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "COMM103 OR COMM200 OR COMM600 OR COMM201"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MATH-328",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MATH281"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PHIL-421",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PHIL250 AND PHIL257"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHIL"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HLTH-595A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHED OR KINE OR HLTH"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-300A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MUSC121 OR MUSC221 OR MUSC321 OR MUSC124 OR MUSC224 OR MUSC324"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "RELS-332",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HLTH-334",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HLTH101 OR KNPE167 OR SOCY122"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "PHED OR KINE OR HLTH"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "DRAM-319",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "BIOL-111",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "BIOL302 OR BIOL303"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ECON-361",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ECON212"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GPHY-240",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GPHY101 OR GPHY102"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "GPHY240 OR SOCY210 OR BMED270"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ENCH-423",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CHEM312 OR ENCH312"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CLST-340",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CLST201"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "PACT-333",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "PACT237 AND KNPE333"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-258",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MTHE-228",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "APSC171 AND APSC172 AND APSC174"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-440",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HIST300 TO HIST330"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "HIST"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-395",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "COMM190 OR (COMM200 AND CISC124)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "SURP-856",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "SURP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MIR-825B",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MIR820A OR MIR820B"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "MIR"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GDPI-800",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GDPI"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "LAW-702",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "CLAW"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ARTH-419",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "ARTH"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CISC-467",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CISC204"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BCMP OR COCA"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COGS-100",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "CISC352 OR PSYC200"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-600",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "COMM103 OR COMM200 OR COMM201"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-461",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "HIST300 TO HIST330"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "HIST"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GEOL-481",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GEOL321"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CLST-401",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "CLST OR CLAS OR GREK OR LATN"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "EDST-456",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BED OR DED"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "DRAM-306",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-245",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-492",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "COMM190 OR (COMM200 AND CISC124)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GPHY-880",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "GPHY OR SURP"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-387",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MUSC-129A",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "MUTH OR MUSC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "EMPR-210",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "LAW560 OR LAW567 OR LAW203 OR LAW703"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "DEVS-395",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "DEVS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "MATH-335",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "MATH334 AND (MATH326 OR MATH228)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "MATH236 OR MATH335 OR PHYS312"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "ECON-455",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "ECON310 AND ECON255"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CHEE-414",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CHEE221"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "COMM-112",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "COMM111"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "COMM112 OR COMM212 OR COMM612 OR EMPR280"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "COMM"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "HIST-201",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "GEOE-319",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "GEOE249 AND (MTHE225 OR MTHE232)"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "BSCE OR BASC"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "GEOE359"
+      }
+    ]
+  },
+  {
+    "id": "POLS-329",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "POLS-327",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "POLS"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "True"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  }
 ]
