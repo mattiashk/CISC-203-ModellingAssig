@@ -1,0 +1,77 @@
+[
+  {
+    "student": "Student1",
+    "terms": [
+      {
+        "term": "WINTER",
+        "courses": [
+          {
+            "course": "2020-WI-U-M-CISC-204-001-LEC",
+            "dates": [
+              {
+                "starttime": "2023-11-21T14:30:00",
+                "endtime": "2023-11-21T15:30:00",
+                "location": "BIOSCI RM1102"
+              },
+              {
+                "starttime": "2023-11-22T16:30:00",
+                "endtime": "2023-11-22T17:30:00",
+                "location": "BIOSCI RM1102"
+              },
+              {
+                "starttime": "2023-11-24T15:30:00",
+                "endtime": "2023-11-24T16:30:00",
+                "location": "BIOSCI RM1102"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "student": "Student2",
+    "terms": [
+      {
+        "term": "FALL",
+        "courses": [
+          {
+            "course": "2019-FA-U-M-CISC-124-005-LAB",
+            "dates": [
+              {
+                "starttime": "2023-11-24T15:30:00",
+                "endtime": "2023-11-24T17:30:00",
+                "location": "JEFFERY RM155"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "term": "WINTER",
+        "courses": [
+          {
+            "course": "2020-WI-U-M-CISC-204-001-LEC",
+            "dates": [
+              {
+                "starttime": "2023-11-21T14:30:00",
+                "endtime": "2023-11-21T15:30:00",
+                "location": "BIOSCI RM1102"
+              },
+              {
+                "starttime": "2023-11-22T16:30:00",
+                "endtime": "2023-11-22T17:30:00",
+                "location": "BIOSCI RM1102"
+              },
+              {
+                "starttime": "2023-11-24T15:30:00",
+                "endtime": "2023-11-24T16:30:00",
+                "location": "BIOSCI RM1102"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]
