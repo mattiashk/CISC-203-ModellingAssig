@@ -1,16 +1,17 @@
 
 import os, sys
 
-from run import build_theory
-import main
+import sat_solver
+import run
 
 USAGE = '\n\tpython3 test.py [draft|final]\n'
 EXPECTED_VAR_MIN = 10
 EXPECTED_CONS_MIN = 50
 
 def test_theory():
-    objects = main.create_data_layer()
-    T = build_theory(objects)
+    objects = run.create_data_layer()
+    result_dict = sat_solver.execute(objects)
+    T = result_dict["Theory"]
 
     assert len(T.vars()) > EXPECTED_VAR_MIN, "Only %d variables -- your theory is likely not sophisticated enough for the course project." % len(T.vars())
     assert T.size() > EXPECTED_CONS_MIN, "Only %d operators in the formula -- your theory is likely not sophisticated enough for the course project." % T.size()

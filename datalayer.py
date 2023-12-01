@@ -2,37 +2,56 @@ import json
 from aenum import MultiValueEnum
 from enum import Enum
 from datetime import datetime, timedelta
-
 from collections.abc import Mapping
-
 import sys
-from contextlib import redirect_stdout
 
 """
 Object-Oriented JSON Data Modeling
 
-This Python file defines classes for representing Queens courses, Queens departments and Queens course sections , as well as a collection for courses, departmentsm and course sections.
+Defines classes for representing Queens courses, Queens departments and Queens course sections, as well as collections for courses, departments and sections.
+
+Module-level attributes:
+- data: A module attribute containing all data initalized by the datalayer
+- testid: A module attribute storing the test id to prevent json remapping. 
 
 Classes:
+- Term: An Enum representing academic terms, defines three academic terms FALL, WINTER, SUMMER.
+- AcademicYear: An Enum representing academic years, defines four academic years FIRSTYEAR, SECONDYEAR, THIRDYEAR, FOURTHYEAR.
+
 - Course: Represents a course with its attributes.
-- Courses: Represents a course with its attributes.
+- Courses: Represents a collection of Course objects.
 
-- Department: Represents a department with its attributes and provides properties for id, code, and name.
-- Departments: Represents a collection of department objects and provides methods to add and find departments.
+- CourseRequirement: Represents all enrolment requirements of a Course.
+- CourseRequirementSpecific: Represents a specific requirement for a Course. ex. PREREQUISITE, COREQUISITE, EXCLUSION, COREQUISITE
+- CourseRequirements: Represents a collection of CourseRequirement objects.
 
-- CourseSection: Represents a course sections with its attributes.
-- Section: Represents a specific course section (i.e. 001) with its attributes.
-- SectionDate: Represents a course section's date (i.e. class dates) with its attributes.
-- CourseSections: Represents a collection of course section objects and provides methods to add and find course sections.
+- Department: Represents a academic department.
+- Departments: Represents a collection of Department objects.
 
+- TermLevelSection: (Private) Represents a the parent Section of a Course during a specific Term. Contains links to the equivalent Course object.
+- Section: Represents a specific course section (i.e. 001).
+- SectionDate: Represents a Course Section's date (i.e. Monday 9:30am).
+- SectionDates: Represents a collection of SectionDate objects.
+- Sections: Represents a collection of Section objects.
 
-Author: [Hayden Jenkins]
-Date: [28/10/23]
+- Student: Represents a specific student.
+- Students: Represents a collection of Student objects.
 
-Example usage:
-- Create instances of Course, Department and CourseSection.
-- Create Collections of Course, Department and CourseSection.
+- Friend: Represents a specific friend of a Student.
+- Friends: Represents a collection of Friend objects.
+
+Functions:
+- mapDepartments: Maps data from a buildings.json file to a Departments collection.
+- mapRequirements: Map data from a requirements.json file to a CourseRequirements collection.
+- mapSections: Maps data from a sections.json file to a Sections collection.
+- mapCourses: Maps data from a courses.json file to a Courses collection.
+- mapStudents: Maps data from a students.json file to a Students collection.
+- mapFriends: Maps friend data from a students.json file to a Friends collection.
 """
+
+# Module-level
+data = None
+testid = 999999
 
 
 #ENUM Classes
@@ -70,7 +89,7 @@ class AcademicYear(Enum):
     THIRDYEAR = "THIRDYEAR"
     FOURTHYEAR = "FOURTHYEAR"
 
-
+#Course Classes
 class Course:
     """
     Represents a Queens course with its attributes.
@@ -598,7 +617,12 @@ class Courses(Mapping):
         Returns:
             bool: True if the Course object is in the collection, False otherwise.
         """
-        return item in self._courses
+        if isinstance(item, Course):
+            return (item.id in self._courses)
+        elif isinstance(item, str):
+            return (item in self._courses)
+        else:
+            return False 
 
     def __getitem__(self, item):
         """
@@ -627,10 +651,10 @@ class Courses(Mapping):
         """
         self._courses[key] = value
 
-
+#Course Requirement Classes
 class CourseRequirement:
     """
-    Represents the course and its requirements.
+    Represents all enrolment requirements of a Course.
 
     Attributes:
     - id (str): The course code
@@ -947,7 +971,7 @@ class CourseRequirements:
         """
         self._requirements[key] = value
 
-
+#Course Department Classes
 class Department:
     """
     Represents a Queens department with its attributes and provides properties for id, code, and name.
@@ -1127,12 +1151,12 @@ class Departments:
             return department
         raise StopIteration
 
-
+#Course Section Classes
 class TermLevelSection:
     """
     Represents a parent section of a course during a specific Term.
     
-    Note: DO NOT USE THIS CLASS OUTSIDE OF THIS FILE
+    Note: Private: datalayer.py scope only
     """
     def __init__(self, id, year, term, department, course_code, course_name, units, campus, academic_level, course_sections):
         """
@@ -1391,63 +1415,6 @@ class Section(TermLevelSection):
             str: A formatted string with Section information.
         """
         return(self.class_number)
-
-class SectionDates:
-    """
-    Represents a collection of SectionDate objects with its attributes.
-
-    Attributes:
-        dates (list): The collection of SectionDate objet.
-
-    Methods:
-        __str__(self): Returns a string representation of the SectionDates instance.
-    """
-    def __init__(self):
-        self._dates = []
-
-    def __str__(self):
-        """
-        Returns a string representation of the list of SectionDates objects.
-
-        Returns:
-            str: A list with information for each SectionDate object.
-        """
-        formatted_string = "["
-
-        for date in self._dates:
-            formatted_string += ("'{}', ".format(date))
-        
-        formatted_string = formatted_string[:-2]
-        formatted_string += "]"
-        
-        return formatted_string
-
-    def add_date(self, date):
-        """
-        Add a SectionDate to the collection.
-
-        Args:
-            date (SectionDate): The SectionDate object to be added.
-        """
-        if date is not None:
-            self._dates.append(date)
-    
-    
-    def __iter__(self):
-        """
-        Make the SectionDates class iterable. This method returns an iterator.
-        """
-        self._date_iterator = iter(self._dates)
-        return self
-
-    def __next__(self):
-        """
-        Get the next SectionDate object in the iteration.
-        """
-        try:
-            return next(self._date_iterator)
-        except StopIteration:
-            raise StopIteration
     
 class SectionDate:
     """
@@ -1616,32 +1583,89 @@ class SectionDate:
             f"{self.day} {self.start_time} : {self.end_time}"
         )
 
-class Sections(Mapping):
+class SectionDates:
     """
-    Represents a collection of CourseSection objects with the ability to manage, search, and iterate through them.
+    Represents a collection of SectionDate objects with its attributes.
 
     Attributes:
-        sections (dict): A dictionary that stores CourseSection objects in a 2D dictionary with the first level being the term 
-            and the second level being the CourseSections by their unique IDs.
+        dates (list): The collection of SectionDate objet.
+
+    Methods:
+        __str__(self): Returns a string representation of the SectionDates instance.
+    """
+    def __init__(self):
+        self._dates = []
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of SectionDates objects.
+
+        Returns:
+            str: A list with information for each SectionDate object.
+        """
+        formatted_string = "["
+
+        for date in self._dates:
+            formatted_string += ("'{}', ".format(date))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return formatted_string
+
+    def add_date(self, date):
+        """
+        Add a SectionDate to the collection.
+
+        Args:
+            date (SectionDate): The SectionDate object to be added.
+        """
+        if date is not None:
+            self._dates.append(date)
+    
+    def __iter__(self):
+        """
+        Make the SectionDates class iterable. This method returns an iterator.
+        """
+        self._date_iterator = iter(self._dates)
+        return self
+
+    def __next__(self):
+        """
+        Get the next SectionDate object in the iteration.
+        """
+        try:
+            return next(self._date_iterator)
+        except StopIteration:
+            raise StopIteration
+
+class Sections(Mapping):
+    ALLSECTIONS = None
+    """
+    Represents a collection of Section objects with the ability to manage, search, and iterate through them.
+
+    Attributes:
+        sections (dict): A dictionary that stores Section objects in a 2D dictionary with the first level being the term 
+            and the second level being the Sections by their unique IDs.
 
     Methods:
         add_sections(self, sections): Add multiple sections to the collection.
-        add_section(self, section): Add a CourseSection to the collection.
-        find_section_by_id(self, id): Find a CourseSection by its unique identifier.
+        add_section(self, section): Add a Section to the collection.
+        find_section_by_id(self, id): Find a Section by its unique identifier.
         find_sections_by_course_code(self, code): Find all Sections over different terms by its course code.
-        get_term_collection(self, term): Get a collection of CourseSection objects during a specific term.
-        __str__(self): Returns a string representation of the list of CourseSection objects.
+        get_term_collection(self, term): Get a collection of Section objects during a specific term.
+        __str__(self): Returns a string representation of the list of Section objects.
         __iter__(self): Make the Sections class iterable. This method returns an iterator.
-        __next__(self): Get the next CourseSection object in the iteration.
-        __getitem__(self, item): Retrieve a CourseSection object by its unique ID.
-        __len__(self): Get the number of CourseSection objects in the collection.
-        __contains__(self, item): Check if a CourseSection object is in the collection.
-        __getitem__(self, item): Retrieve a CourseSection object by its unique ID.
-        add_items(self, key, value): Add a CourseSection object to the collection using a unique identifier (ID).
+        __next__(self): Get the next Section object in the iteration.
+        __getitem__(self, item): Retrieve a Section object by its unique ID.
+        __len__(self): Get the number of Section objects in the collection.
+        __contains__(self, item): Check if a Section object is in the collection.
+        __getitem__(self, item): Retrieve a Section object by its unique ID.
+        add_items(self, key, value): Add a Section object to the collection using a unique identifier (ID).
 
     """
-
-    def __init__(self):
+    
+    def __init__(self, sections=None):
         """
         Initializes an empty Sections instance.
         """
@@ -1655,6 +1679,9 @@ class Sections(Mapping):
         self._fall_sections = {}
         self._winter_sections = {}
         self._summer_sections = {}
+        
+        if sections is not None:
+            self.add_sections(sections)
 
     @property
     def all_sections_by_term(self):
@@ -1885,7 +1912,7 @@ class Sections(Mapping):
         """
         self.add_section(value)
 
-
+#Student Classes
 class Student:
     """
     Represents a specific student with their attributes.
@@ -1896,11 +1923,12 @@ class Student:
         - _program (string): The program the student is enrolled in. #TODO needs to be mapped to a new program class to force required courses
         - _completed_courses (Courses): A Courses object containing a collection of this students completed of courses.
         - _course_wish_list (Courses): A Courses object containing the courses this student wishes to enroll in this academic year.
+        - _friends (Friends): A collection of Friend objects representing a students friends and their shared courses.
 
     Methods:
         __str__(): Returns a string representation of the Student instance.
     """
-    def __init__(self, name, academic_year, program, completed_courses, course_wish_list):
+    def __init__(self, name, academic_year, program, completed_courses, course_wish_list, friends):
         """
         Initializes a Student instance.
 
@@ -1910,12 +1938,15 @@ class Student:
             _program (string): The program the student is enrolled in.
             _completed_courses (Courses): A Courses object containing a collection of this students completed of courses.
             _course_wish_list (Courses): A Courses object containing the courses this student wishes to enroll in this academic year.
+             _friends (Friends): A collection of Friend objects representing a students friends and their shared courses.
+
         """
         self.name = name
         self.academic_year = academic_year
         self.program = program
         self.completed_courses = completed_courses
         self.course_wish_list = course_wish_list
+        self.friends = Friends()
     
     def __str__(self):
         """
@@ -1925,15 +1956,19 @@ class Student:
             str: A formatted string with Student information.
         """
 
-        formatted_wish_list = "["
+        if len(self._course_wish_list) > 0:
+            formatted_wish_list = "["
 
-        for course in self._course_wish_list:
-            formatted_wish_list += ("'{}', ".format(course))
-        
-        formatted_wish_list = formatted_wish_list[:-2]
-        formatted_wish_list += "]"
+            for course in self._course_wish_list:
+                formatted_wish_list += ("'{}', ".format(course))
+            
+            formatted_wish_list = formatted_wish_list[:-2]
+            formatted_wish_list += "]"
 
-        return("{}:{}" .format(self.name, formatted_wish_list))
+            return("{}:{}" .format(self.name, formatted_wish_list))
+
+        else:
+            return self.name
 
     @property
     def name(self):
@@ -2003,7 +2038,7 @@ class Student:
         Set the completed courses attribute.
 
         This setter method is used to set the completed courses attribute for an instance
-        of a class. It accepts a value that can be either a Courses object or a list
+        of this Student. It accepts a value that can be either a Courses object or a list
         of unique course identifiers (Course IDs) represented as strings. It then assigns
         this value to the private attribute _completed_courses.
 
@@ -2045,7 +2080,7 @@ class Student:
         Set the course wish list attribute.
 
         This setter method is used to set the course wish list attribute for an instance
-        of a class. It accepts a value that can be either a Courses object or a list of
+        of this Student. It accepts a value that can be either a Courses object or a list of
         unique course IDs (strings). If the provided value is a list of course IDs, it
         creates a Courses object and adds the courses based on the IDs.
 
@@ -2065,7 +2100,15 @@ class Student:
             if all(isinstance(c, str) for c in value):
                 courses = Courses()
                 for c in value:
-                    courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+                    if c in Courses.ALLCOURSES and c+"A" not in Courses.ALLCOURSES:
+                        courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+                    
+                    # If course is full year and has A B terms
+                    elif c+"A" in Courses.ALLCOURSES and c+"B" in Courses.ALLCOURSES:
+                        first_term = Courses.ALLCOURSES.find_course_by_id(c+"A")
+                        second_term = Courses.ALLCOURSES.find_course_by_id(c+"B")
+                        courses.add_course(first_term)
+                        courses.add_course(second_term)
 
                 self._course_wish_list = courses
             else:
@@ -2073,9 +2116,60 @@ class Student:
         else:
             self._course_wish_list = value        
 
+    @property
+    def friends(self):
+        """
+        Get the friends attribute, a Friends object.
+        """
+        return self._friends
+
+    @friends.setter
+    def friends(self, value):
+        """
+        Set the friends attribute.
+
+        Args:
+            value (Friends): A Friends object representing a students friends
+        """
+        
+        self._friends = value
+        
+    def has_friends(self):
+        """
+        Returns True if a Student has friends in which they wish to take courses with.
+
+        Returns:
+            bool: True if a Student has Friends in which they wish to take courses with, otherwise false
+        """
+        return (len(self.friends) > 0)
+    
+    def is_reciprocal(self, friend, course):
+        """
+        Returns True if the Friend of Student also wishes to take the same course with them.
+
+        Args:
+            friend (Friend): A Friend object, that exists in this Student's colletion of Friends
+            course (Course): A Course object, that represents the Course both students might want to take.
+
+
+        Returns:
+            bool: True if the Friend of Student also wishes to take the same course with them, otherwise False.
+        """
+        
+        #ensure the friend that is passed is indeed their friend and that the course preference is one that they wish to take.
+        if friend in self.friends and course in self.course_wish_list:
+            #get the student object of the friend, to see if this student exists as a friend to them'
+            friends_of_friend = Students.ALLSTUDENTS[friend.name].friends
+            
+            #if there friendship is mutal, check if the course preference is mutal
+            if self in friends_of_friend:
+                return course in friends_of_friend[self.name].shared_courses
+        
+        return False
+                
 class Students(Mapping):
     """
-    Represents a collection of CourseSection objects with the ability to manage, search, and iterate through them.
+    Represents a collection of Student objects with the ability to manage, search, and iterate through them.
 
     Attributes:
         students (dict): A dictionary that stores Student objects by their unique IDs.
@@ -2229,7 +2323,7 @@ class Students(Mapping):
         Returns:
             bool: True if the Student object is in the collection, False otherwise.
         """
-        return item in self._students
+        return (item in self._students) or (item.name in self._students)
 
     def __getitem__(self, item):
         """
@@ -2258,13 +2352,300 @@ class Students(Mapping):
         """
         self._students[key] = value
 
+#Freind Classes
+class Friend():
+    """
+    Represents a specific friend with their attributes.
+
+    Attributes:
+        - _shared_courses (Courses): A Courses object containing the courses this friend wishes to share with a student this academic year.
+        - _name (str): A students name
+
+    Methods:
+        __str__(): Returns a string representation of the Friend instance.
+    """
+    def __init__(self, name, shared_courses, student):
+        """
+        Initializes a Friend instance.
+
+        Args:
+            _shared_courses (Courses): A Courses object containing the courses this friend wishes to share with a student this academic year.
+            _name (str): A students name
+        """
+        self.shared_courses = shared_courses
+        self.name = name
+        self.student = student # a link to a student object
+        
+    
+    def __str__(self):
+        """
+        Returns a string representation of the Friend.
+
+        Returns:
+            str: A formatted string with Friend information.
+        """
+
+        formatted_shared_list = "["
+
+        for course in self._shared_courses:
+            formatted_shared_list += ("'{}', ".format(course))
+        
+        formatted_shared_list = formatted_shared_list[:-2]
+        formatted_shared_list += "]"
+
+        return("{}:{}" .format(self.name, formatted_shared_list))
+    
+    
+    @property
+    def name(self):
+        """
+        Get the student name attribute.
+        """
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        """
+        Set the student name attribute.
+
+        Args:
+            value (String): a student name.
+        """
+        self._name = value
+
+
+    @property
+    def shared_courses(self):
+        """
+        Get the shared_courses attribute, a Courses object.
+        """
+        return self._shared_courses
+
+    @shared_courses.setter
+    def shared_courses(self, value):
+        """
+        Set the shared course list attribute. #LEFT OFF
+
+        This setter method is used to set the shared course  list attribute for an instance
+        of a freind. It accepts a value that can be either a Courses object or a list of
+        unique course IDs (strings). If the provided value is a list of course IDs, it
+        creates a Courses object and adds the courses based on the IDs.
+
+        Args:
+            value (Union[Courses, List[str]]): A Courses object representing the shared course
+            list or a list of unique course IDs (strings) to be added to the wish list.
+
+        Note:
+            - If the provided value is a Courses object, it is directly assigned to the
+            _completed_courses attribute.
+            - If the provided value is a list of Course IDs, it iterates through the list,
+            retrieves the corresponding Course objects using Course IDs, and creates
+            a new Courses object containing these courses before assigning it to
+            _shared_courses.
+        """
+        if not isinstance(value, Courses):
+            if all(isinstance(c, str) for c in value):
+                courses = Courses()
+                for c in value:
+                    courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+
+                self._shared_courses = courses
+            else:
+                raise ValueError("The value must be a Courses object or a list of unique Course ID's")
+        else:
+            self._shared_courses = value        
+        
+class Friends(Mapping):
+    """
+    Represents a collection of Friend objects with the ability to manage, search, and iterate through them.
+
+    Attributes:
+        friends (dict): A dictionary that stores Friends objects by their unique IDs.
+
+    Methods:
+        add_friend(self, student): Add a Friend to the collection.
+        find_friend_by_name(self, name): Find a Friend by its unique identifier.
+        __str__(self): Returns a string representation of the list of Friend objects.
+        __iter__(self): Make the Friends class iterable. This method returns an iterator.
+        __next__(self): Get the next Friend object in the iteration.
+        __getitem__(self, item): Retrieve a Friend object by its unique ID.
+        __len__(self): Get the number of Friend objects in the collection.
+        __contains__(self, item): Check if a Friend object is in the collection.
+        __getitem__(self, item): Retrieve a Friend object by its unique ID.
+        add_items(self, key, value): Add a Friend object to the collection using a unique identifier (ID).
+
+    """
+    ALLFRIENDS = None
+
+    def __init__(self, friends=None):
+        """
+        Initializes a Friends instance with an optional dictionary of Friend objects.
+
+        Args:
+            friends (dict, optional): A dictionary of Friend objects indexed by friend name.
+                Default is None, which creates an empty dictionary.
+        """
+        self._friends = {}  # Use a dictionary to store students by name
+        if friends is not None:
+            self.add_friends(friends)
+
+    @property
+    def friends(self):
+        """
+        Get the list of Friends.
+        """
+        return self._friends
+
+    @friends.setter
+    def friends(self, value):
+        """
+        Set the list of Friends.
+
+        Args:
+            value (List): The new list of Friends.
+        """
+        self._friends = value
+
+    def add_friend(self, friend):
+        """
+        Add a friend to the collection.
+
+        Args:
+            friend (Friend): The Friend object to be added.
+        """
+        if friend is not None:
+            self._friends[friend.name] = friend  # Use friend name as the key in the dictionary
+
+    def add_students(self, friends):
+        """
+        Add multiple friends to the collection.
+
+        Args:
+            friends (list of Friends): A list of Friends objects to be added.
+        """
+        for friend in friends:
+            self.add_friend(friend)
+
+
+    def find_friend_by_name(self, name):
+        """
+        Find a Friend object by its unique name.
+
+        Args:
+            id (str): The unique name of the Friend to search for.
+
+        Returns:
+            Friend or None: The Friend object if found, or None if not found.
+        """
+        return self._friends.get(name, None)
+
+    def __str__(self):
+        """
+        Returns a string representation of the list of Friend objects.
+
+        Returns:
+            str: A list with information for each Friend.
+        """
+
+        formatted_string = "["
+
+        for friend in self._friends:
+            formatted_string += ("'{}', ".format(friend))
+        
+        formatted_string = formatted_string[:-2]
+        formatted_string += "]"
+        
+        return(formatted_string)
+
+    def __iter__(self):
+        """
+        Make the Friends class iterable. This method returns an iterator.
+        """
+        self._current_index = 0
+        return self
+
+    def __next__(self):
+        """
+        Get the next Friend object in the iteration.
+        """
+        friends_list = list(self._friends.values())
+        if self._current_index < len(friends_list):
+            friend = friends_list[self._current_index]
+            self._current_index += 1
+            return friend
+        raise StopIteration
+
+    def __getitem__(self, item):
+        """
+        Retrieve a Friend object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the Friend to be retrieved.
+
+        Returns:
+            Friend: The Friend object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a Friend object from the Friends
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._friends[item] 
+    
+    def __len__(self):
+        """
+        Get the number of Friend objects in the collection.
+
+        Returns:
+            int: The number of Friend objects in the collection.
+        """
+        return len(self._friends)
+
+    def __contains__(self, item):
+        """
+        Check if a Friend object is in the collection.
+
+        Args:
+            item: The Friend object to check for presence in the collection.
+
+        Returns:
+            bool: True if the Friend object is in the collection, False otherwise.
+        """
+        return (item in self._friends) or (item.name in self._friends)
+
+    def __getitem__(self, item):
+        """
+        Retrieve a Friend object by its unique ID.
+
+        Args:
+            item: The unique identifier (ID) of the Friend to be retrieved.
+
+        Returns:
+            Friend: The Friend object associated with the provided unique ID.
+
+        Note:
+            This method allows you to access a Friend object from the Friends
+            collection using its unique identifier. If the ID is not found, it
+            will raise a KeyError.
+        """
+        return self._friends[item] 
+
+    def add_item(self, key, value):
+        """
+        Add a Friend object to the collection using a unique identifier (ID).
+
+        Args:
+            key: The unique identifier (ID) for the Friend.
+            value: The Friend object to add to the collection.
+        """
+        self._friends[key] = value
 
 def mapDepartments(buildings_file):
     """
-    Map data from a buildings JSON file to Department objects.
+    Map data from a buildings.json JSON file to Department objects.
 
     Args:
-        buildings_file (str): The path to the buildings JSON file.
+        buildings_file (str): The path to the buildings.json JSON file.
 
     Returns:
         Departments: An instance of the Departments class containing a collection of Department objects.
@@ -2272,7 +2653,7 @@ def mapDepartments(buildings_file):
     with open(buildings_file, "r") as json_file:
         data = json.load(json_file)
 
-    departments = []  # Create a list to store course objects 
+    departments = []  # Create a list to store Department objects 
 
     for department_data in data:
         
@@ -2283,12 +2664,13 @@ def mapDepartments(buildings_file):
         )
         departments.append(department)
 
-    # Return a list of Department objects
+    # Return a collection of Department objects
     return Departments(departments)
 
 def mapRequirements(requirements_file):
     """
-    Map data from a requirements JSON file to CourseRequirement objects.
+    Map data from a requirements.json JSON file to CourseRequirement objects.
+    Links Course requirements to their respective Requirements object if a Requirements object has been initalized.
 
     Args:
         requirements_file (str): The path to the requirements JSON file.
@@ -2299,8 +2681,8 @@ def mapRequirements(requirements_file):
     with open(requirements_file, "r") as json_file:
         data = json.load(json_file)
 
-    all_course_requirements = []  # Create a list to store course objects 
-
+    # Iterate through the JSON data and create Requirement instances
+    all_course_requirements = []  #create a list to store Requirement objects 
     for course_requirements in data:
         course_requirement = CourseRequirement(**course_requirements)
         all_course_requirements.append(course_requirement)
@@ -2314,17 +2696,17 @@ def mapRequirements(requirements_file):
         course_obj_link = course_requirements["id"]
         course_obj = Courses.ALLCOURSES.find_course_by_id(course_obj_link)
         if course_obj is not None:
+            course_obj.requirements = course_requirement
 
-                course_obj.requirements = course_requirement
 
-
-    # Return a collection of CourseRequirement objects
+    # Return a collection of CourseRequirement objects and set the global ALLREQUIREMENTS attribute
     CourseRequirements.ALLREQUIREMENTS = CourseRequirements(all_course_requirements)
     return CourseRequirements.ALLREQUIREMENTS
     
 def mapSections(sections_file):
     """
     Map data from a sections JSON file to CourseSection objects.
+    Links Course sections to their respective Sections objects if a Sections object has been initalized.
 
     Args:
         sections_file (str): The path to the sections JSON file.
@@ -2334,35 +2716,43 @@ def mapSections(sections_file):
     """
     with open(sections_file, "r") as json_file:
         data = json.load(json_file)
-    # Iterate through the JSON data and create CourseSection instances
+        
+    # Iterate through the JSON data and create Section instances
+    every_section = [] #create a list to store Section objects 
     for parent_section in data:
         course_obj_link = f"{parent_section['department']}-{parent_section['course_code']}"
         all_course_sections = Sections()
         for each_section in parent_section["course_sections"]:
-            each_section_mapped = Section(**each_section)
-            each_section_mapped.add_parent_section(**parent_section) #inialize the parent term section for the child
-            each_section_mapped.dates = SectionDates()
-            for date in each_section["dates"]:
-                each_section_mapped.dates.add_date(SectionDate(**date)) #link child date arrays to dates attribute
-            all_course_sections.add_section(each_section_mapped) 
-        
+            
+            # A list of other class options besides standard lecture, all of these sections are ignored
+            Unimplemented = ["Laboratory","Tutorial", "Seminar", "Online", "IndividualStudy", "Clinical", "Research", "Project", "Practicum", "Blended", "Exam", "Demonstration", "ThesisResearch", "FieldStudies"]
+            
+            if each_section["section_type"] == "Lecture": #if section type is Lecture add to list of Lectures, i.e. all_course_sections
+                each_section_mapped = Section(**each_section)
+                each_section_mapped.add_parent_section(**parent_section) #inialize the parent term section for the child
+                each_section_mapped.dates = SectionDates()
+                for date in each_section["dates"]:
+                    each_section_mapped.dates.add_date(SectionDate(**date)) #link child date arrays to dates attribute
+                all_course_sections.add_section(each_section_mapped)
+                every_section.append(each_section_mapped)
+            
         course_obj = Courses.ALLCOURSES.find_course_by_id(course_obj_link)
         if course_obj is not None:
             if len(course_obj.sections) == 0:
                 course_obj.sections = all_course_sections
             else:
                 course_obj.sections.add_sections(all_course_sections._all_sections.values())
-
-    return None
+    
+    # Return a collection of Section objects and set the global ALLSECTIONS attribute
+    Sections.ALLSECTIONS = Sections(every_section)
+    return Sections.ALLSECTIONS
 
 def mapCourses(courses_file):
     """
-    Map data from a courses JSON file to Course objects.
-    Links student courses to their respective Section objects if a Sections object is passed
+    Map data from a courses JSON file to Course objects. 
 
     Args:
         courses_file (str): The path to the courses JSON file.
-        (optional) mapped_sections (Sections): The Sections object containing all Section objects
 
     Returns:
         Courses: An instance of the Courses class containing a collection of Course objects.
@@ -2370,27 +2760,25 @@ def mapCourses(courses_file):
     with open(courses_file, "r") as json_file:
         data = json.load(json_file)
 
-    courses = []  # Create a list to store course objects 
-
     # Iterate through the JSON data and create Course instances
+    courses = []  #create a list to store course objects 
     for course_data in data:
         course = Course(**course_data)
         courses.append(course)
 
 
 
-    # Return a collection of Course objects
+    # Return a collection of Course objects and set the global ALLCOURSES attribute
     Courses.ALLCOURSES = Courses(courses)
     return Courses.ALLCOURSES
 
 def mapStudents(students_file):
     """
     Map data from a student JSON file to Students objects.
-    Links student courses to their respective Course objects if a Courses object is passed
+    Links Student courses to their respective Course objects if a Courses object has been initalized
 
     Args:
         students_file (str): The path to the students JSON file.
-        (optional) mapped_courses (Courses): The Courses object containing all Course objects
 
     Returns:
         Students: An instance of the Students class containing a collection of Student objects.
@@ -2407,14 +2795,39 @@ def mapStudents(students_file):
 
     # Return a collection of CourseSection objects
     Students.ALLSTUDENTS = Students(all_students)
+    
+    mapFriends(data)
     return Students.ALLSTUDENTS
 
+def mapFriends(student_data):
+    """
+    Map data from a student JSON file to Friendss objects.
+    Links Student freinds to their respective Friends objects if a Students object has been initalized
+
+    Args:
+       students_file (str): The path to the students JSON file.
+
+    Returns:
+        None
+        
+    Raises:
+        ValueError: A freind must exists as a Student object in the global Students.ALLSTUDENTS attribute before it can be initalized as a Friend object
+    """
+    for student in student_data:
+        student_obj = Students.ALLSTUDENTS.find_student_by_name(student["name"])
+        
+        all_friends = Friends()
+        for friend in student["friends"]:
+            friend_student_obj = Students.ALLSTUDENTS.find_student_by_name(friend["name"])
+            if friend_student_obj is not None:
+                all_friends.add_friend(Friend(friend["name"], friend["shared_courses"], friend_student_obj))
+            
+            else:
+                raise ValueError(f"a friend must exist as a student")
+        
+        student_obj.friends = all_friends
 
 if __name__ == "__main__":
-    c = mapCourses("data/reference/courses.json")
-    s = mapSections("data/reference/sections.json")
-    #mapStudents("data/testing/students.json")
-    r = mapRequirements("data/testing/requirements-cisc.json")
-    print(c["MATH-110B"].sections)
+    pass
 
     

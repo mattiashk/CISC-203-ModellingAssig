@@ -341,13 +341,3 @@ def check_program(student_program, rule):
 
     expression = replace_variables(rule, premises)
     return bool(boolExpr.parseString(expression)[0])
-
-
-#result = check_exclusion(["CISC-325", "CISC-204"], ["CISC-121", "CISC-124", "MATH-110", "MATH-124", "CISC-235", "ASTR-101", "GEOL-107"], "CISC-124 OR CISC-235") #We want True
-
-#result = check_prerequisite(["CISC-325", "CISC-204"], ["CISC-121", "CISC-124", "MATH-110", "MATH-121", "CISC-235", "ASTR-101", "GEOL-107"], "CISC-124 AND (MATH-110 OR (CISC-102 AND MATH-111)) AND (MATH-121 OR (MATH-120 AND MATH-126))") #We want True
-
-#result = check_corequisite(["CISC-325", "CISC-204"], ["CISC-124", "CISC-125", "MATH-110", "MATH-124", "CISC-235", "ASTR-101", "GEOL-107"], "CISC-124 OR CISC-235") #We want True
-
-#result = check_program("CISC","(BSCE OR BACK OR BMCO OR COGS OR CSCI OR COMP OR COMA OR COCA) AND NOT CISC")
-#print(result)

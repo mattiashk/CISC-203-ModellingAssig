@@ -16,11 +16,18 @@ RUN pip3 install --upgrade pip
 RUN pip3 install nnf
 RUN pip3 install bauhaus
 RUN pip3 install aenum
+RUN pip3 install datetime
+RUN pip3 install requests
+RUN pip3 install flask
+RUN pip3 install flask_cors
 
 
 # install dsharp to run in the container
 RUN curl https://mulab.ai/cisc-204/dsharp -o /usr/local/bin/dsharp
 RUN chmod u+x /usr/local/bin/dsharp
+
+# Expose the port that your app will run on
+EXPOSE 5000
 
 # default command to execute when container starts
 CMD /bin/bash
