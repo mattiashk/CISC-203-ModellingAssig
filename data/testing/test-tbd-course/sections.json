@@ -1,0 +1,64 @@
+[
+    {
+        "id": "2019-FA-U-M-CISC-204",
+        "year": "2019",
+        "term": "Fall",
+        "department": "CISC",
+        "course_code": "204",
+        "course_name": "Logic for Computing Science",
+        "units": 3.0,
+        "campus": "Main",
+        "academic_level": "Undergraduate",
+        "course_sections": [
+            {
+                "section_name": "001-LEC",
+                "section_type": "Lecture",
+                "section_number": "001",
+                "class_number": "2426",
+                "dates": [
+                    {
+                        "day": "TBD",
+                        "start_time": "TBD",
+                        "end_time": "TBD",
+                        "start_date": "TBD",
+                        "end_date": "TBD",
+                        "location": "DUNNING AUD",
+                        "instructors": [
+                            "Dunfield, Joshua"
+                        ]
+                    },
+                    {
+                        "day": "TBD",
+                        "start_time": "TBD",
+                        "end_time": "TBD",
+                        "start_date": "TBD",
+                        "end_date": "TBD",
+                        "location": "DUNNING AUD",
+                        "instructors": [
+                            "Dunfield, Joshua"
+                        ]
+                    },
+                    {
+                        "day": "TBD",
+                        "start_time": "TBD",
+                        "end_time": "TBD",
+                        "start_date": "TBD",
+                        "end_date": "TBD",
+                        "location": "DUNNING AUD",
+                        "instructors": [
+                            "Dunfield, Joshua"
+                        ]
+                    }
+                ],
+                "combined_with": [
+                    "2473"
+                ],
+                "enrollment_capacity": 350,
+                "enrollment_total": 0,
+                "waitlist_capacity": 31,
+                "waitlist_total": 0,
+                "last_updated": "2019-10-14T01:40:33.727921+00:00"
+            }
+        ]
+    }
+]

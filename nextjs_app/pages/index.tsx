@@ -9,6 +9,7 @@ const IndexPage = () => {
   const [data, setData] = useState([]);
   const router = useRouter();
   const [selectedTestCase, setSelectedTestCase] = useState('0');
+  const [testData, setTestData] = useState([]);
 
   const toastRef = useRef(null);
 
@@ -27,12 +28,35 @@ const IndexPage = () => {
     document.getElementById('toast').style.backgroundColor = 'white';
   };
   
+  // Get test cases (py)
+  useEffect(() => {
+    let isSubscribed = true; //track state
+  
+    fetch('http://localhost:5000/test-cases')
+      .then(response => {
+        if (!response.ok) {
+          // Throw to skip catch 
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (isSubscribed) {
+          setTestData(data);
+        }
+      })
+      .catch(error => {
+        if (isSubscribed) {
+          // Ensure called once
+          showToast('error', 'Error!', `Failed to fetch test data: ${error.message}`);
+        }
+      });
+  
+    return () => {
+      isSubscribed = false;
+    };
+  }, []);
 
-  const testData: { [key: string]: Object }[] = [
-    { Id: '0', Name: 'Test Case 0' },
-    { Id: '1', Name: 'Test Case 1' },
-    { Id: '2', Name: 'Test Case 2' }
-  ];
   const fields: object = { text: 'Name', value: 'Id' };
 
   const handleTestCaseChange = (e) => {
@@ -61,10 +85,33 @@ const IndexPage = () => {
     }
   };
 
+  // Get student overview (local)
   useEffect(() => {
+    let isSubscribed = true; //track state
+
     fetch('/api/student-overview')
-      .then(response => response.json())
-      .then(data => setData(data));
+      .then(response => {
+        if (!response.ok) {
+          // Throw to skip catch
+          throw new Error(`HTTP status ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        if (isSubscribed) {
+          setData(data);
+        }
+      })
+      .catch(error => {
+        if (isSubscribed) {
+          // Ensure called once
+          showToast('error', 'Error!', `Failed to fetch student data: ${error.message}`);
+        }
+      });
+
+    return () => {
+      isSubscribed = false;
+    };
   }, []);
 
   const redirectToTimetable = (studentName, term) => {
@@ -74,8 +121,8 @@ const IndexPage = () => {
 
   return (
     <div>
-      <div id='#toast_target' className="bg-white text-center p-8">
-          <ToastComponent id='toast' className='toast-container' target="#toast_target" ref={toastRef} position={{ X: 'Right', Y: 'Top' } } created={showToast} close={onClose}/>
+      <div id='toast_target' className="text-center p-8">
+          <ToastComponent id='toast' target='#toast_target' className='toast-container' ref={toastRef} position={{ X: 'Right', Y: 'Top' } } close={onClose}/>
         <h1 className="text-3xl font-bold uppercase text-gray-800">SCHEDULE SENSEI</h1>
         <Image src="/logo.png" alt="Schedule Sensei" width={200} height={200} className="mx-auto my-12" />
         {data && data.length > 0 ? (
@@ -97,14 +144,23 @@ const IndexPage = () => {
             </GridComponent>
           </div>
         ) : (
-          <p>No students data available.</p>
+          <p className="text-black font-bold text-center p-6">No students data available</p>
         )}
-        <div className="w-80 border border-gray-300 rounded-lg px-3 py-2 mb-4 mx-auto mt-8">
-          <DropDownListComponent id="ddlelement" dataSource={testData} fields={fields} placeholder="Select a test case" change={handleTestCaseChange}/>
+        <div>
+          {testData && testData.length > 0 ? (
+          <div className="w-80 border border-gray-300 rounded-lg px-3 py-2 mb-4 mx-auto mt-8">
+            <DropDownListComponent id="ddlelement" dataSource={testData} fields={fields} placeholder="Select a test case" change={handleTestCaseChange}/>
+            <button onClick={handleGenerateDataClick} className="bg-blue-500 text-white rounded-full px-6 py-2 mt-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
+              Generate New Data
+            </button>
+          </div>
+          ) : (
+            <div className="w-80 px-3 py-2 mb-4 mx-auto mt-8">
+              <p className="text-black font-bold text-center p-6">No test data available</p>
+              <p className="text-black font-bold text-center p-6">Please add a test data set to tests.config.json</p>
+            </div>
+          )}
         </div>
-        <button onClick={handleGenerateDataClick} className="bg-blue-500 text-white rounded-full px-6 py-2 mt-2 hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-opacity-50">
-          Generate New Data
-        </button>
       </div>
     </div>
   );

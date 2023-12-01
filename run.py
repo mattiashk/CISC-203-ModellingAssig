@@ -32,9 +32,6 @@ def start():
     
     # If web app is set to true itilialize an HTTP server for communication
     if webapp:
-        # Run the SAT Solver on a different thread and POST solution to the nextjs app
-        solver = threading.Thread(target=web_app_mode) #run the sat solver on a different thread and POST solution to the nextjs app
-        time.sleep(5)
         webapp_api.run_app() #create a flask_thread for the HTTP socket, allows communication with the web app
         
     # Otherwise run the sat solver and to the output the terminal
@@ -62,7 +59,8 @@ def get_input(cases, invalid_input=None):
 
     # Check for valid numeric input and convert to integer
     if test.isdigit() and int(test) in utils.AllTestCases.ALLTESTIDS:
-        print(f"{TextColor.OKGREEN}Executing {test}{TextColor.ENDC}")
+        print(f"{TextColor.OKGREEN}Executing {test} {TextColor.ENDC}")
+
         return int(test)
     else:
         # If input is not valid, recursively call get_input with the invalid input
@@ -88,7 +86,7 @@ def normal_mode(cases):
             break
     
         result = utils.sat_solve_request(test_case)
-        if result != False:
+        if result != False and result["Solution"] is not None:
             T = result["Theory"]
             S = result["Solution"]
             O = result["Objects"]
@@ -104,20 +102,30 @@ def normal_mode(cases):
                 print("\n")
                 utils.display_course_selection(S, O)
                 print("\n")
+
+        elif result["Solution"] is None:
+            print(f"{TextColor.FAIL}No Solutions{TextColor.ENDC}")
+            #break
         
         else:
             print(f"{TextColor.FAIL}An error occured while executing the sat solver{TextColor.ENDC}")
     
-     
-def web_app_mode():
+
+def populate_data():
     """
-    Runs the application in web app mode. Posts SAT Solver solutions to the Next.js web app.
+    Populates the web app with a predefined solution
     """
-    objects = utils.create_data_layer("test-small-01")
+    objects = utils.create_data_layer("data/testing/test-small-general")
     result_dict = sat_solver.execute(objects)
     T = result_dict["Theory"]
     S = result_dict["Solution"]
     utils.display_timetable_view(S, objects) #format solution data and POST to nextjs app
+
+def web_app_mode():
+    """
+    Runs the application in web app mode. Posts SAT Solver solutions to the Next.js web app.
+    """
+    populate_data()
 
 def dev_mode():
     """

@@ -1,4 +1,5 @@
 import '@/styles/globals.css'
+import '@/styles/toast.css'
 // _app.tsx
 import type { AppProps } from 'next/app';
 // Rest of your imports

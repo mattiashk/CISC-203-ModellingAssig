@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from utils import parse_sat_test
+import json
 
 """
 Defines a Flask API for parsing requested SAT solver test cases.
@@ -23,6 +24,17 @@ def handle_parse_test():
         return jsonify(response)
     else:
         return jsonify({"status": "error", "message": "test_number not provided"}), 400
+
+@app.route('/test-cases', methods=['GET'])
+def handle_test_cases():
+    # Read the test casew JSON file
+    with open('tests.config.json', 'r') as file:
+        data = json.load(file)
+
+    # Transform data
+    transformed_data = [{"Id": str(item["id"]), "Name": item["test"]} for item in data]
+
+    return jsonify(transformed_data)
 
 def run_app():
     app.run(debug=True, host='0.0.0.0', port=5000)

@@ -16,5 +16,11 @@
         "test": "test-full-year-course",
         "description": "A single full year course with terms A and B",
         "location": "data/testing/test-full-year-course"
+    },
+    {
+        "id": 3,
+        "test": "test-tbd-course",
+        "description": "A single course without determined dates or times",
+        "location": "data/testing/test-tbd-course"
     }
 ]

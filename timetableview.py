@@ -31,8 +31,8 @@ class TimeTableView:
     Methods:
     - to_dict(): Converts the TimeTableView object to a dictionary for JSON serialization.
     """
-    def __init__(self, students=[]):
-        self.students = students
+    def __init__(self):
+        self.students = []
         
     def to_dict(self):
         return [student.to_dict() for student in self.students]
@@ -134,12 +134,11 @@ class CourseDateView:
         self.location = location
 
     def to_dict(self):
-        if self.starttime == "TBA" or self.endtime == "TBA":
-            {"starttime": "TBA", "endtime": "TBA", "location": self.location}
+        if self.starttime == "TBA" or self.starttime is None or self.endtime == "TBA" or self.endtime is None:
+            return {"starttime": "TBA", "endtime": "TBA", "location": self.location}
         
         else:
             return {"starttime": self.starttime.strftime("%Y-%m-%dT%H:%M:%S"), "endtime": self.endtime.strftime("%Y-%m-%dT%H:%M:%S"), "location": self.location}
-        #return vars(self)
 
 
 def map_week_days(date_obj):
@@ -181,38 +180,42 @@ def create_json(solution, objects):
         dict: A JSON representation of the timetable.
     """
     
-    students = objects["students"]
-    timetableview = TimeTableView() #initialize a new TimeTableView to hold the current solution
-    
-    for student in students:
-        studentview = StudentView(student.name) #initialize a new StudentView to hold the current Student
+    if solution is not None:
+        students = objects["students"]
+        timetableview = TimeTableView() #initialize a new TimeTableView to hold the current solution
         
-        for course in student.course_wish_list:
-            if solution[sat_solver.StudentEnrolledCourse(student, course)]:
-                offered_terms = course.sections.get_term_offerings()
-                
-                for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
-                    termview = TermView(str(term)) #initialize a new TermView to hold the current Term
+        for student in students:
+            studentview = StudentView(student.name) #initialize a new StudentView to hold the current Student
+            
+            for course in student.course_wish_list:
+                if solution[sat_solver.StudentEnrolledCourse(student, course)]:
+                    offered_terms = course.sections.get_term_offerings()
                     
-                    if solution[sat_solver.StudentEnrolledCourseTerm(student, course, term)]:
-                        term_offerings = course.sections.get_term_collection(term) #get course term offerings
+                    for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                        termview = TermView(str(term)) #initialize a new TermView to hold the current Term
                         
-                        for section in term_offerings: #get the Section objects from the term_offering
-                            if solution[sat_solver.StudentEnrolledCourseSection(student, course, term, section)]:
+                        if solution[sat_solver.StudentEnrolledCourseTerm(student, course, term)]:
+                            term_offerings = course.sections.get_term_collection(term) #get course term offerings
+                            
+                            for section in term_offerings: #get the Section objects from the term_offering
+                                if solution[sat_solver.StudentEnrolledCourseSection(student, course, term, section)]:
 
-                                courseview = CourseView(section.id, section.dates ) #initialize a new CourseView to hold the Section a student is enrolled in
-                                termview.courses.append(courseview)
-                                
-                                #print(f"{student.name} enrolled in {section.id} in term {str(term)}") #REMOVE
-                                
-                    if termview.courses != []:
-                        if term in studentview.terms:
-                            studentview.terms[term].courses += termview.courses
-                        else:
-                            studentview.terms[term] = termview
-        timetableview.students.append(studentview)
+                                    courseview = CourseView(section.id, section.dates ) #initialize a new CourseView to hold the Section a student is enrolled in
+                                    termview.courses.append(courseview)
+                                    
+                                    #print(f"{student.name} enrolled in {section.id} in term {str(term)}") #REMOVE
+                                    
+                        if termview.courses != []:
+                            if term in studentview.terms:
+                                studentview.terms[term].courses += termview.courses
+                            else:
+                                studentview.terms[term] = termview
+            timetableview.students.append(studentview)
 
-    # Serialize to JSON
-    data = timetableview.to_dict()
+        # Serialize to JSON
+        data = timetableview.to_dict()
+    
+    else:
+        data = None
     return data
     

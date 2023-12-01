@@ -5,7 +5,7 @@ import { DataManager } from '@syncfusion/ej2-data';
 import { GridComponent, ColumnsDirective, ColumnDirective, Page } from '@syncfusion/ej2-react-grids';
 
 const StudentTimetable = () => {
-  const [others, events] = useState([]);
+  const [others, setOthers] = useState([]);
   const router = useRouter();
   const { studentId, term } = router.query; // Get studentId and term
   const [eventSettings, setEventSettings] = useState<{ dataSource: DataManager }>({ dataSource: new DataManager() });
@@ -92,9 +92,12 @@ const StudentTimetable = () => {
   
       const eventDataManager = new DataManager(events);
       setEventSettings({ dataSource: eventDataManager });
+      setOthers(others);
     } catch (error) {
       console.error('Error fetching data:', error);
     }
+
+    console.log(others);
   };
 
   const handleBackClick = () => {
@@ -125,9 +128,9 @@ const StudentTimetable = () => {
         <Inject services={[WorkWeek, Agenda, DragAndDrop, Resize]} />
       </ScheduleComponent>
       <div>
-        {others && others.length > 0 && (
-          <div className="my-10">
-            <h2 className="text-4xl font-bold text-center my-4">Other Courses</h2>
+        {others && others.length > 0 ? (
+          <div className="p-10">
+            <h2 className="text-4xl font-bold text-center text-black my-4">Other Courses</h2>
             <div className="flex justify-center">
               <GridComponent dataSource={others} allowPaging={true} pageSettings={{ pageSize: 5 }}>
                 <ColumnsDirective>
@@ -140,6 +143,8 @@ const StudentTimetable = () => {
               </GridComponent>
             </div>
           </div>
+        ) : (
+          <p className="text-black font-bold text-center p-10">No other courses.</p>
         )}
       </div>
     </div>

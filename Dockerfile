@@ -26,5 +26,8 @@ RUN pip3 install flask_cors
 RUN curl https://mulab.ai/cisc-204/dsharp -o /usr/local/bin/dsharp
 RUN chmod u+x /usr/local/bin/dsharp
 
+# Expose the port that your app will run on
+EXPOSE 5000
+
 # default command to execute when container starts
 CMD /bin/bash

@@ -6,6 +6,7 @@ import requests
 import os
 import json
 import pprint
+import importlib
 
 """
 Contains utility classes and functions for the timetable scheduling SAT solver. 
@@ -195,7 +196,7 @@ def display_timetable_view(solution, objects):
     post_data_to_api(data)
     
 def post_data_to_api(data):
-    url = 'http://localhost:3000/api/recieve-data'
+    url = 'http://web_app_204:3000/api/recieve-data'
     headers = {'Content-Type': 'application/json'}
     
     try:
@@ -230,7 +231,10 @@ def parse_sat_test(test_number):
         if result != False:
             S = result["Solution"]
             O = result["Objects"]
+
+            display_course_selection(S, O)
             display_timetable_view(S, O)
+            
             return {"status": "success", "message": f"Test number: {test_number} parsed"}
         else:
             return {"status": "failure", "message": f"An error occured while executing the sat solver"}
@@ -249,13 +253,30 @@ def sat_solve_request(test_number):
         dict or bool: The result dictionary containing the solution and objects if successful, or False if an error occurs.
     """
     try:
+        importlib.reload(sat_solver) #on each request rest the data layer and the sat_solver to clean data
+        importlib.reload(datalayer)
+        importlib.reload(timetableview)
+        datalayer.data = None
+        datalayer.Courses.ALLCOURSES = None
+        datalayer.Students.ALLSTUDENTS = None
+        datalayer.Sections.ALLSECTIONS = None
+        datalayer.CourseRequirements.ALLREQUIREMENTS = None
+        datalayer.Friends.ALLFRIENDS = None
+
         if datalayer.data == None or datalayer.testid != test_number:
             objects = create_data_layer(AllTestCases.ALLTESTS[test_number].location)
+            datalayer.testid = test_number
+            datalayer.data = objects
         else:
-            datalayer.data = test_number
+            datalayer.testid = test_number
             objects = datalayer.data
+
+        objects = create_data_layer(AllTestCases.ALLTESTS[test_number].location)
+
         result_dict = sat_solver.execute(objects)
         result_dict["Objects"] = objects
+
+        display_course_selection(result_dict["Solution"], result_dict["Objects"])
         return result_dict
     except Exception as e:
         print(f"{TextColor.FAIL}{e}{TextColor.ENDC}")
@@ -311,6 +332,6 @@ def create_data_layer(datalocation="default"):
     
     # Set the Module-level attribute to a dictionary containing all data sets
     data = {"courses": all_courses, "departments": all_departments, "students": all_students, "requirements": all_requirements, "sections": all_sections}
-    datalayer.data = data
+
 
     return data

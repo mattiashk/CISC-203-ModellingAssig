@@ -767,6 +767,10 @@ def execute(objects):
             raise SystemExit(ve)
             # Additional error handling or cleanup code can go here
     
+    except:
+        utils.warn(f"Caught a ValueError During CompileTime: Does the student wish to take any courses?")
+        raise SystemExit()
+    
     return {"Theory": T, "Solution": T.solve()}
     
     
