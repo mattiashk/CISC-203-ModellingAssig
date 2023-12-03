@@ -71,6 +71,11 @@ cleanup() {
 }
 trap cleanup SIGINT SIGTERM
 
+uninstall(){
+    echo "${RED}WARNING: Removing all associated Container, Volumes and Networks!${NC}"
+    docker-compose down --volumes --rmi all
+}
+
 # Parse command-line arguments
 while [[ "$#" -gt 0 ]]; do
     case $1 in
@@ -78,7 +83,8 @@ while [[ "$#" -gt 0 ]]; do
         --start) start_flag=true; shift ;;
         --console) console_flag=true; shift ;;
         --run) run_flag=true; shift ;;
-        --stop) stop_flag=true; shift;;
+        --shutdown) stop_flag=true; shift;;
+        --uninstall) uninstall_flag=true; shift;;
     esac
 done
 
@@ -86,11 +92,12 @@ done
 if [[ $build_flag == true && $console_flag == true ]]; then
     update_json "use_web_app" "false"
     build_and_start_sat
-    get_docker_containers
-    docker exec -it $SAT_SOLVER_CONTAINER_ID python3 run.py
+    #get_docker_containers
+    #docker exec -it $SAT_SOLVER_CONTAINER_ID python3 run.py
 
 elif [[ $start_flag ]]; then
     if [[ $console_flag ]]; then
+        update_json "use_web_app" "false"
         build_and_start_sat
         get_docker_containers
         docker exec -it $SAT_SOLVER_CONTAINER_ID python3 run.py
@@ -128,7 +135,9 @@ elif [[ $run_flag == true ]]; then
 
 elif [[ $stop_flag == true ]]; then
     cleanup
-
+    
+elif [[ $uninstall_flag == true ]]; then
+    uninstall
 else
     echo "Invalid option: -$OPTARG" >&2
     echo "Please specify a build or run option"

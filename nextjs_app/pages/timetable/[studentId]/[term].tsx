@@ -24,34 +24,6 @@ const StudentTimetable = () => {
     }
   }, [studentId, term]);
 
-  // const fetchData = async (studentId: string, term: string) => {
-  //   try {
-  //     const response = await fetch(`/api/data?studentId=${studentId}&term=${term}`);
-  //     const data = await response.json();
-
-  //     if (response.status !== 200) {
-  //       console.error('Error:', data.message);
-  //       return;
-  //     }
-
-  //     // Process `data` to create events
-  //     const events = data.courses.flatMap(course => course.dates.map(date => ({
-  //       Id: course.course + date.starttime, // unique combination for ID
-  //       Subject: course.course,
-  //       StartTime: new Date(date.starttime),
-  //       EndTime: new Date(date.endtime),
-  //       Location: date.location,
-  //       Description: course.course + ' - ' + date.location
-  //     })));
-
-  //     console.log("All Events:", events);
-
-  //     const eventDataManager = new DataManager(events);
-  //     setEventSettings({ dataSource: eventDataManager });
-  //   } catch (error) {
-  //     console.error('Error fetching data:', error);
-  //   }
-  // };
   const fetchData = async (studentId: string, term: string) => {
     try {
       const response = await fetch(`/api/data?studentId=${studentId}&term=${term}`);

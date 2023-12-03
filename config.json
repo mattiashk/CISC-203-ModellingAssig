@@ -1,6 +1,6 @@
 {
-  "use_web_app": true,
-  "show_propositions": true,
+  "use_web_app": false,
+  "show_propositions": false,
   "courses_file": "data/reference/courses.json",
   "buildings_file": "data/reference/buildings.json",
   "departments_file": "data/reference/departments.json",

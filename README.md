@@ -1,58 +1,147 @@
+# ReadMe
+
 # CISC/CMPE 204 Modelling Project
 
-Welcome to the major project for CISC/CMPE 204!
-
-Change this README.md file to summarize your project, and provide pointers to the general structure of the repository. How you organize and build things (which files, how you structure things, etc) is entirely up to you! The only things you must keep in place are what is already listed in the **Structure** section below.
+The aim of this project is to create a logical model that allows a student to input a tentative course schedule and assess its feasibility. The model will consider various factors, including course prerequisites, and time conflicts. By applying principles of natural deduction, the model will attempt to evaluate a feasible solution satisfying all constraints and ensuring all necessary requirements are met.
 
 ## Structure
 
-* `documents`: Contains folders for both of your draft and final submissions. README.md files are included in both.
-* `run.py`: General wrapper script that you can choose to use or not. Only requirement is that you implement the one function inside of there for the auto-checks.
-* `test.py`: Run this file to confirm that your submission has everything required. This essentially just means it will check for the right files and sufficient theory size.
+***Folders***
+
+- `documents` Contains both draft and final submissions.
+- `data` Contains both test and main data sets from [qmulus](https://github.com/queens-qmulus/datasets).
+- `webapp` Contains a Nextjs web app to view and interact with generated timetable solutions.
+
+***Files***
+
+- `run.py`General wrapper script to execute the sat solver.
+- `sat_solver.py` The Python SAT solver constraint and proposition models, as well as compile and solve functions.
+- `datalayer.py` Defines classes for representing Queens courses, departments, requirements, and sections, as well as collections of these elements.
+- `timetable.py` Defines timetable classes and JSON Serialization functions.
+- `webapp_api.py` Defines a Flask API for parsing requested SAT solver test cases.
+- `utils.py` Contains utility classes and functions for the timetable scheduling SAT solver.
+- `test.py` Submission requirements and theory size checks.
 
 ## Running With Docker
 
-By far the most reliable way to get things running is with [Docker](https://www.docker.com). This section runs through the steps and extra tips to running with Docker. You can remove this section for your final submission, and replace it with a section on how to run your project.
+By far the most reliable way to get this project running is with [Docker](https://www.docker.com/). This section runs through the steps.
 
 1. First, download Docker https://www.docker.com/get-started
-
 2. Navigate to your project folder on the command line.
+3. We have created a bash script `model.sh` to help you build and run the project given your desired preferences. **(Web App and Console modes)**
+4. Our script **requires jq**, a json processor. It can be installed by running `sudo apt install jq` in your console.
+    
+    ### **Using the Web App**
+    
+    If you would like to run the *Python SAT Solver* and use the *Nextjs Web App* for interaction with the Solver: 
+    
+    *From the project folder run to following commands.*
+    
+    1. `./model.sh --build` builds both the Sat Solver and the Web App containers.
+    2. `./model.sh --start` starts both the Sat Solver and the Web App
+    3. The Web App can be accessed at [http://localhost:3000/](http://localhost:3000/)
+    4. To stop both the Web App and the Sat Solver, you can `Ctrl+C` in the terminal to interrupt and shut down both containers. Running `./model.sh --shutdown` is also an option if your terminal is not tied up.
+    5. From the shutdown state both the Sat Solver and the Web APP containers can be restarted with `./model.sh --start` followed by `./model.sh --run` to run both programs.
+    
+    ### **Using the Console**
+    
+    If you would like to run the *Python SAT Solver* and use the *Console* for interaction: 
+    
+    *From the project folder run to following commands.*
+    
+    1. `./model.sh --build --console` *builds the Sat Solver container*
+    2. `./model.sh --start --console` *starts the Sat Solver*
+    3. The Sat Solver can then be used through the terminal.
+    4. To stop the Sat Solver, you can `Ctrl+C` in the terminal to interrupt and shut down the container. Running `./model.sh --shutdown` is also an option if your terminal is not tied up.
+    5. From the shutdown state the Sat Solver container can be restarted with `./model.sh --start --console` followed by `./model.sh --run --console` to run the program.
+    
+    **Alternative Using Docker Compose**
+    
+    *More complicated*
+    
+    1. Running `docker-compose up -d`  will build the Python SAT Solver image `sat_solver_204` as well as the Nextjs Web App `web_app_204` image as well as create and start both containers.
+        
+        Note that the -d option is important as it runs the command in the background to avoid tying up the terminal, preventing further commands from being run.
+        
+    2. From there the two containers should be connected. Both containers share a local network `webapp_network` for HTTP communications. The SAT Solver container project directory is also linked to the local project folder so that everything you do in one automatically updates in the other.
+    3. **IMPORTANT** You must ensure your desired preferences exist in the `config.json` file if using this method, otherwise the app may run in console mode as a background process, or vise versa.
+    4. **Web App Mode**
+        1. To start the Nextjs Web App you must run
+            
+            `docker exec -d $(docker-compose ps -q web_app_204) npm start`
+            
+            ***This executes `npm start` in the web_app_204 container as a background process*
+            
+        2. To start the Python Sat Solver you must run
+            
+            `docker exec -d $(docker-compose ps -q sat_solver_204) python3 run.py`
+            
+            **************This executes `python3 [run.py](http://run.py)` in the sat_colver_204 container*
+            
+        3. The Web App can be accessed at [http://localhost:3000/](http://localhost:3000/)
+        4. To stop both the Web App and the Sat Solver, you must shutdown the containers using the Docker Desktop GUI or by running:
+            
+            `docker-compose stop $(docker-compose ps -q web_app_204)` *stops the Web App*
+            
+            `docker-compose stop $(docker-compose ps -q sat_solver_204)` *stops the SAT Solver*
+            
+    5. **Console Mode**
+        1. To start the Python Sat Solver you must run
+            
+            `docker exec -it $(docker-compose ps -q sat_solver_204) python3 run.py`
+            
+            **************This executes `python3 [run.py](http://run.py)` in the sat_colver_204 container*
+            
+        2. To stop both the the Sat Solver, you can enter `e` as input, to shutdown the containers you can use the Docker Desktop GUI or run:
+            
+            `docker-compose stop $(docker-compose ps -q sat_solver_204)` *stops the SAT Solver*
+            
+    
+    ## Usage
+    
+    **Web App Mode**
+    
+    After running the project in the Web App Mode and visiting the home page [http://localhost:3000/](http://localhost:3000/) you will be greeted with a blank page with no student data, as no tests have been ran.
+    
+    ![Untitled](documentation/Untitled.png)
+    
+    Selecting the drop-down reveals pre-configured test cases, that can be selected and ran in the Sat Solver using the *“Generate New Data button”*.
+    
+    ![Untitled](documentation/Untitled%201.png)
+    
+    After generating the solution the page will refresh and a table containing students and there enrolled terms will appear. A students term schedule can then be viewed using the *“view”* button located in the table.
+    
+    ![Untitled](documentation/Untitled%202.png)
+    
+    A specific students time table may resemble the following
+    
+    ![Untitled](documentation/Untitled%203.png)
+    
+    **Console Mode**
+    
+    After running the project in Console Mode the following message will be displayed in the console
+    
+    ![Untitled](documentation/Untitled%204.png)
+    
+    This prompt accepts user input for a *test case id*. After entering a case the solution is directed to the console.
+    
+    ![Untitled](documentation/Untitled%205.png)
+    
+    The Console Mode remains in a while loop repeatedly asking for user input until the `e` key is entered closing the program.
+    
+    ## Contents
+    
+    ## Uninstall
+    
+    To remove all docker containers, volumes, and networks used by this project you can run
+    
+    `./model.sh —uninstall` if you wish to use our script
+    
+    OR
+    
+    `docker-compose down --volumes --rmi all`
+    
 
-3. We first have to build the course image. To do so use the command:
-`docker build -t cisc204 .`
+[ReadMe](https://www.notion.so/ReadMe-5954b8d933b54eb6a9b98034acf9775c?pvs=21)
 
-4. Now that we have the image we can run the image as a container by using the command: `docker run -it -v $(pwd):/PROJECT cisc204 /bin/bash`
-
-    `$(pwd)` will be the current path to the folder and will link to the container
-
-    `/PROJECT` is the folder in the container that will be tied to your local directory
-
-5. From there the two folders should be connected, everything you do in one automatically updates in the other. For the project you will write the code in your local directory and then run it through the docker command line. A quick test to see if they're working is to create a file in the folder on your computer then use the terminal to see if it also shows up in the docker container.
-
-### Mac Users w/ M1 Chips
-
-If you happen to be building and running things on a Mac with an M1 chip, then you will likely need to add the following parameter to both the build and run scripts:
-
-```
---platform linux/x86_64
-```
-
-For example, the build command would become:
-
-```
-docker build --platform linux/x86_64 -t cisc204 .
-```
-
-### Mount on Different OS'
-
-In the run script above, the `-v $(pwd):/PROJECT` is used to mount the current directory to the container. If you are using a different OS, you may need to change this to the following:
-
-- Windows PowerShell: `-v ${PWD}:/PROJECT`
-- Windows CMD: `-v %cd%:/PROJECT`
-- Mac: `-v $(pwd):/PROJECT`
-
-Finally, if you are in a folder with a bunch of spaces in the absolute path, then it will break things unless you "quote" the current directory like this (e.g., on Windows CMD):
-
-```
-docker run -it -v "%cd%":/PROJECT cisc204
-```
+[](https://www.notion.so/4b03e8aad277426bbf9923eb4bd6c61f?pvs=21)

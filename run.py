@@ -39,7 +39,17 @@ def start():
         normal_mode(testcases) #run the sat solver and output to terminal
 
 def get_input(cases, invalid_input=None):
-    """"
+    """
+    Prompts the user to enter a test case ID or 'e' to exit.
+    Validates the input and returns the test case ID if valid.
+    If Invalid, the function recursively calls itself until a valid input is provided or the user chooses to exit.
+
+    Args:
+        cases (AllTestCases): A AllTestCases collection contating all available test case IDs for selection.
+        invalid_input (str, optional): The previously entered invalid input, if provided, an error message is displayed.
+
+    Returns:
+        int or bool: Returns the integer test case ID if a valid ID is entered, or False if the user enters 'e' to exit.
     """
 
     # Prepare the prompt message
@@ -59,7 +69,7 @@ def get_input(cases, invalid_input=None):
 
     # Check for valid numeric input and convert to integer
     if test.isdigit() and int(test) in utils.AllTestCases.ALLTESTIDS:
-        print(f"{TextColor.OKGREEN}Executing {test} {TextColor.ENDC}")
+        print(f"{TextColor.OKGREEN}Executing test case: {test} {TextColor.ENDC}")
 
         return int(test)
     else:
@@ -78,15 +88,17 @@ def normal_mode(cases):
     C = True
     count = 0
     while C:
+        count += 1
         if count > 1:
             print("--------------------------------------------------------------------------------------------------------------")
+            time.sleep(2)
         test_case = get_input(cases)
         
         if test_case is False:
             break
     
         result = utils.sat_solve_request(test_case)
-        if result != False and result["Solution"] is not None:
+        if  result != None and result != False and result["Solution"] is not None:
             T = result["Theory"]
             S = result["Solution"]
             O = result["Objects"]
@@ -103,13 +115,15 @@ def normal_mode(cases):
                 utils.display_course_selection(S, O)
                 print("\n")
 
-        elif result["Solution"] is None:
+        elif result != None and result != False and result["Solution"] is None:
             print(f"{TextColor.FAIL}No Solutions{TextColor.ENDC}")
-            #break
+            print("\n")
         
         else:
             print(f"{TextColor.FAIL}An error occured while executing the sat solver{TextColor.ENDC}")
-    
+            print("\n")
+
+        count += 1
 
 def populate_data():
     """

@@ -198,6 +198,7 @@ def display_timetable_view(solution, objects):
 def post_data_to_api(data):
     url = 'http://web_app_204:3000/api/recieve-data'
     headers = {'Content-Type': 'application/json'}
+    print(data)
     
     try:
         response = requests.post(url, json=data, headers=headers, timeout=10)
@@ -276,7 +277,8 @@ def sat_solve_request(test_number):
         result_dict = sat_solver.execute(objects)
         result_dict["Objects"] = objects
 
-        display_course_selection(result_dict["Solution"], result_dict["Objects"])
+        if result_dict["Solution"] is not None and get_webapp_preferences() is True:
+            display_course_selection(result_dict["Solution"], result_dict["Objects"])
         return result_dict
     except Exception as e:
         print(f"{TextColor.FAIL}{e}{TextColor.ENDC}")

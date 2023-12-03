@@ -140,7 +140,6 @@ class CourseDateView:
         else:
             return {"starttime": self.starttime.strftime("%Y-%m-%dT%H:%M:%S"), "endtime": self.endtime.strftime("%Y-%m-%dT%H:%M:%S"), "location": self.location}
 
-
 def map_week_days(date_obj):
     """
     Maps week days to date objects starting with Sunday.
@@ -152,10 +151,12 @@ def map_week_days(date_obj):
         dict: A dictionary mapping week days to date objects.
     """
     
-    # Calculate the start of the current week (Sunday)
-    sunday = date_obj - timedelta(days=date_obj.weekday() + 1)
+    # Adjusted calculation for the start of the week (Sunday)
+    if date_obj.weekday() == 6:  #if it's Sunday
+        sunday = date_obj
+    else:  #any other day
+        sunday = date_obj - timedelta(days=date_obj.weekday() + 1)
 
-    # Create a dictionary to map week days to date objects
     week_days = {
         'Sunday': sunday,
         'Monday': sunday + timedelta(days=1),
@@ -218,4 +219,3 @@ def create_json(solution, objects):
     else:
         data = None
     return data
-    
