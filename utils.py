@@ -106,6 +106,35 @@ def get_webapp_preferences():
         webapp = config['use_web_app']
         return webapp
 
+def get_webapp_port():
+    """
+    Reads and returns the user's preference for the web app port from the config.json configuration file.
+
+    Returns:
+        int: The user's preference for the a web app's port.
+    """
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+        
+        # Access user preferences
+        port = config['web_app_port']
+        return port
+
+def get_solver_port():
+    """
+    Reads and returns the user's preference for the sat solver port from the config.json configuration file.
+
+    Returns:
+        int: The user's preference for the a sat solver's port.
+    """
+    with open('config.json', 'r') as config_file:
+        config = json.load(config_file)
+        
+        # Access user preferences
+        port = config['sat_solver_port']
+        return port
+
+
 def get_console_solution_preferences():
     """
     Reads and returns the user's preference for showing propositions in the console from the config.json configuration file.
@@ -196,9 +225,8 @@ def display_timetable_view(solution, objects):
     post_data_to_api(data)
     
 def post_data_to_api(data):
-    url = 'http://web_app_204:3000/api/recieve-data'
+    url = f'http://web_app_204:{get_webapp_port()}/api/recieve-data'
     headers = {'Content-Type': 'application/json'}
-    print(data)
     
     try:
         response = requests.post(url, json=data, headers=headers, timeout=10)
@@ -233,9 +261,10 @@ def parse_sat_test(test_number):
             S = result["Solution"]
             O = result["Objects"]
 
-            display_course_selection(S, O)
-            display_timetable_view(S, O)
-            
+            if (S is not None):
+                display_course_selection(S, O)
+                display_timetable_view(S, O)
+                
             return {"status": "success", "message": f"Test number: {test_number} parsed"}
         else:
             return {"status": "failure", "message": f"An error occured while executing the sat solver"}

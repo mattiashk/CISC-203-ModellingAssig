@@ -13,7 +13,7 @@ update_json() {
     # Check if jq is installed
     if ! command -v jq &> /dev/null; then
         echo -e "${RED}WARNING jq is not installed. Please install jq to use this script.${NC}"
-        echo "using -> sudo apt install jq"
+        echo "using -> apt install jq OR brew install jq"
         exit 1
     fi
 
@@ -23,12 +23,14 @@ update_json() {
  
 
 build_and_start_all() {
+    cp config.json nextjs_app/
     docker-compose up -d
 
 }
 
 build_and_start_sat() {
     echo "Building the SAT solver service..."
+
     docker-compose up -d sat_solver_204
 }
 
@@ -42,7 +44,8 @@ start_sat_solver() {
 }
 
 start_nextjs_app() {
-    docker exec $WEB_APP_CONTAINER_ID npm start > /dev/null 2>&1
+    get_web_app_port
+    docker exec $WEB_APP_CONTAINER_ID npm start -- -p $WEBPORT > /dev/null 2>&1
 }
 
 get_docker_containers() {
@@ -58,6 +61,11 @@ is_sat_solver_running() {
     docker ps -q -f name=sat_solver_204
 }
 
+get_web_app_port(){
+    WEBPORT=$(jq '.web_app_port' config.json)
+}
+
+
 # Clean up processes on exit
 cleanup() {
     get_docker_containers
@@ -72,7 +80,7 @@ cleanup() {
 trap cleanup SIGINT SIGTERM
 
 uninstall(){
-    echo "${RED}WARNING: Removing all associated Container, Volumes and Networks!${NC}"
+    echo -e "${RED}WARNING: Removing all associated Container, Volumes and Networks!${NC}"
     docker-compose down --volumes --rmi all
 }
 
@@ -124,8 +132,9 @@ elif [[ $run_flag == true ]]; then
     #WEBAPP
     else
         start_sat_solver &
+        get_web_app_port
         echo -e "${GREEN}Success!${NC}"
-        echo -e "${GREEN}The Web App is available: http://localhost:3000/${NC}"
+        echo -e "${GREEN}The Web App is available: http://localhost:$WEBPORT/${NC}"
         start_nextjs_app
         if [ $? -eq 1 ]; then
             echo -e "${RED}WARNING An Error has occured starting the Web App!${NC}"

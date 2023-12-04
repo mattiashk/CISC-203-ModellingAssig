@@ -27,15 +27,25 @@ const IndexPage = () => {
   const onClose = () => {
     document.getElementById('toast').style.backgroundColor = 'white';
   };
+
+  
   
   // Get test cases (py)
   useEffect(() => {
-    let isSubscribed = true; //track state
+    let isSubscribed = true; // Track state
+    let sat_solver_port;
   
-    fetch('http://localhost:5000/test-cases')
+    // Fetch the configuration
+    fetch('/api/config')
+      .then(response => response.json())
+      .then(config => {
+        sat_solver_port = config.sat_solver_port;
+  
+        return fetch(`http://localhost:${sat_solver_port}/test-cases`);
+      })
       .then(response => {
         if (!response.ok) {
-          // Throw to skip catch 
+          // Throw to skip to catch 
           throw new Error(`HTTP status ${response.status}`);
         }
         return response.json();
@@ -65,25 +75,34 @@ const IndexPage = () => {
 
   const handleGenerateDataClick = async () => {
     try {
-      const response = await fetch('http://localhost:5000/parse-test', {
+      // Fetch configuration
+      const configResponse = await fetch('/api/config');
+      if (!configResponse.ok) {
+        throw new Error('Failed to load configuration');
+      }
+      const { sat_solver_port } = await configResponse.json();
+  
+      const response = await fetch(`http://localhost:${sat_solver_port}/parse-test`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({ test_case: selectedTestCase })
       });
-
+  
       if (response.ok) {
         showToast('success', 'Success!', 'Your request has been sent successfully.');
-        setTimeout(() => {window.location.reload();}, 3000);
+        setTimeout(() => { window.location.reload(); }, 3000);
       } else {
         showToast('error', 'Error!', 'A problem has occurred while submitting your request.');
-        setTimeout(() => {window.location.reload();}, 3000);
+        setTimeout(() => { window.location.reload(); }, 3000);
       }
     } catch (error) {
       showToast('error', 'Error!', error.message);
     }
   };
+  
+  
 
   // Get student overview (local)
   useEffect(() => {

@@ -1,6 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
-from utils import parse_sat_test
+import utils
 import json
 
 """
@@ -20,14 +20,14 @@ def handle_parse_test():
     print(f"data: {data}")
     if 'test_case' in data:
         test_number = data['test_case']
-        response = parse_sat_test(int(test_number))
+        response = utils.parse_sat_test(int(test_number))
         return jsonify(response)
     else:
         return jsonify({"status": "error", "message": "test_number not provided"}), 400
 
 @app.route('/test-cases', methods=['GET'])
 def handle_test_cases():
-    # Read the test casew JSON file
+    # Read the test cases JSON file
     with open('tests.config.json', 'r') as file:
         data = json.load(file)
 
@@ -37,4 +37,4 @@ def handle_test_cases():
     return jsonify(transformed_data)
 
 def run_app():
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=True, host='0.0.0.0', port=utils.get_solver_port())

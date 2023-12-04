@@ -3,10 +3,11 @@ version: '3.8'
 services:
   web_app_204:
     build:
-      context: ./nextjs_app  #path to Next.js app
+      context: ./nextjs_app
       dockerfile: Dockerfile
+    platform: linux/x86_64
     volumes:
-      - ./nextjs_app:/app/src  # Map Python app directory to /PROJECT in container
+      - ./nextjs_app:/app/src
     ports:
       - "3000:3000"
     networks:
@@ -15,12 +16,13 @@ services:
 
   sat_solver_204:
     build:
-      context: .  #path to Python app
+      context: .
       dockerfile: Dockerfile
+    platform: linux/x86_64
     volumes:
-      - .:/PROJECT  # Map Python app directory to /PROJECT in container
+      - .:/PROJECT
     ports:
-      - "5000:5000"
+      - "3015:3015"
     networks:
       - webapp_network
     command: tail -f /dev/null

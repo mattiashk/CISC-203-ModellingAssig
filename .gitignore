@@ -1,0 +1,10 @@
+
+*.priv
+
+__pycache__/
+
+/nextjs_app/node_modules/
+
+/nextjs_app/.next/
+
+private/
