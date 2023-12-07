@@ -48,7 +48,7 @@ The aim of this project is to create a logical model that allows a student to i
 
 - `documents` Contains both draft and final submissions.
 - `data` Contains both test and main data sets from [qmulus](https://github.com/queens-qmulus/datasets).
-- `webapp` Contains a Nextjs web app to view and interact with generated timetable solutions.
+- `nextjs_app` Contains a Nextjs web app to view and interact with generated timetable solutions.
 
 ***Files***
 
