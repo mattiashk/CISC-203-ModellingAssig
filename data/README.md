@@ -16,8 +16,9 @@
 12. **test-coreq-complex**: Complex scenario with multiple unmet corequisites and prerequisites.
 13. **test-exclusion**: Course with an exclusion criterion.
 14. **test-exclusion2**: Course with an already taken exclusion *no solution*.
-15. **your-custom-test-case**: An empty data set that you can configure.
-16. **complete-large-test-case**: A complete data set containing all possible courses and sections (but no student data).
+15. **test-time-conflict**: 2 courses with a time conflict *no solutions*.
+16. **your-custom-test-case**: An empty data set that you can configure.
+17. **complete-large-test-case**: A complete data set containing all possible courses and sections (but no student data).
 
 
 ### How To Create Custom Test Cases
@@ -38,3 +39,24 @@
 
 - **Create Sub-files**: 
   Save the `.json` files and update the `tests.config.json` in your root project folder with your newly created test case.
+
+### tests.config.json
+
+Predefined test data sets are defined in the to the `tests.config.json` in the root project directory.
+
+- **`id`**: A unique identifier for the test.
+- **`test`**: A name for the test.
+- **`description`**: A description of the test.
+- **`location`**: The location of the test data set.
+
+***Example:***
+```json
+[
+    {   
+        "id": 0,
+        "test": "test-set-01",
+        "description": "An example test data set",
+        "location": "data/testing/test-data-set"
+    }
+]
+```
