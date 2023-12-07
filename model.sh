@@ -126,11 +126,13 @@ elif [[ $run_flag == true ]]; then
 
     #SAT
     if [[ $console_flag == true ]]; then
+        update_json "use_web_app" "false"
         echo -e "${GREEN}Success!${NC}"
         docker exec -it $SAT_SOLVER_CONTAINER_ID python3 run.py
 
     #WEBAPP
     else
+        update_json "use_web_app" "true"
         start_sat_solver &
         get_web_app_port
         echo -e "${GREEN}Success!${NC}"

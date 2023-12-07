@@ -2,14 +2,14 @@
 import os, sys
 
 import sat_solver
-import run
+import utils
 
 USAGE = '\n\tpython3 test.py [draft|final]\n'
 EXPECTED_VAR_MIN = 10
 EXPECTED_CONS_MIN = 50
 
 def test_theory():
-    objects = run.create_data_layer()
+    objects = utils.create_data_layer()
     result_dict = sat_solver.execute(objects)
     T = result_dict["Theory"]
 

@@ -322,7 +322,7 @@ def enrolment_rules(objects):
                     ENROLLED_COURSE_SECTIONS.append(StudentEnrolledCourseSection(student, course, term, section))
                     
                 ENROLLED_COURSE_SECTIONS_OPTIONS = Or(ENROLLED_COURSE_SECTIONS)
-                E.add_constraint(StudentEnrolledCourseTerm(student, course, term) >> ENROLLED_COURSE_SECTIONS_OPTIONS) #BUG
+                E.add_constraint(StudentEnrolledCourseTerm(student, course, term) >> ENROLLED_COURSE_SECTIONS_OPTIONS)
                 #constraint.add_at_most_one(E, ENROLLED_COURSE_SECTIONS) #BUG
     
     #CONSTRAINT 1.1 - One Section per Course 
@@ -397,7 +397,7 @@ def enrolment_restrictions(objects):
                                     for section_course2 in term_offerings_course2: #get the Section objects from the term offering for course 2
                                         if section_course1.has_conflict(section_course2):
                                             time_conflict_instance = CourseTermSectionTimeConflict(student, term1, course1, section_course1, course2, section_course2)
-                                            constraint.add_exactly_one(E,[time_conflict_instance]) #force the premise to true #TODO I don't think this is how your suppose to do this LOL
+                                            constraint.add_exactly_one(E,[time_conflict_instance]) #force the premise to true
                                             E.add_constraint(time_conflict_instance >> ~(StudentEnrolledCourseSection(student, course1, term1, section_course1) & StudentEnrolledCourseSection(student, course2, term2, section_course2)))
 
     #CONSTRAINT 6 - Section Enrolment Capacity
@@ -476,8 +476,38 @@ def enrolment_requirements(objects):
                         exclusion_exists = CheckCourseExclusionsExists(student.name, course.id, check_course) #create a course exclusion propositon
                         
                         #If a course that is in the exclusion rule has been taken, or a student wishes to take the course then the exclusion rule has been broken
-                        if check_course in str(student.course_wish_list) + str(student.completed_courses):
+                        if check_course in str(student.completed_courses):
                             constraint.add_exactly_one(E,[exclusion_exists]) #force the proposition to true, i.e an exclusion is present
+
+                        elif check_course in str(student.course_wish_list) and check_course+'A' not in str(student.course_wish_list) and check_course+'B' not in str(student.course_wish_list):
+                            offered_terms = course.sections.get_term_offerings()
+                            for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                                other_terms = []
+                                
+                                if term == datalayer.Term.FALL:
+                                    if datalayer.Term.WINTER in offered_terms:
+                                        other_terms.append(datalayer.Term.WINTER)
+                                    if datalayer.Term.SUMMER in offered_terms:
+                                        other_terms.append(datalayer.Term.SUMMER)
+                                    
+                                elif term == datalayer.Term.WINTER and datalayer.Term.SUMMER in offered_terms and datalayer.Term.SUMMER:
+                                    other_terms.append(datalayer.Term.SUMMER)
+
+                                        
+                                if other_terms != []:
+                                    options = []
+                                    for o_term in other_terms:
+                                        options.append(StudentEnrolledCourseTerm(student, course, o_term))
+                                    options = Or(options)
+                                    
+                                    E.add_constraint(StudentEnrolledCourseTerm(student, student.course_wish_list[check_course], term) >> (options))
+                                    
+                                    
+                                else:
+                                    E.add_constraint(StudentEnrolledCourseTerm(student, course, term) >> ~(StudentEnrolledCourse(student, student.course_wish_list[check_course])))
+                                    
+                            constraint.add_none_of(E,[exclusion_exists]) #force the proposition to false, i.e an exclusion is not present
+
                         else:
                             constraint.add_none_of(E,[exclusion_exists]) #force the proposition to false, i.e an exclusion is not present
                             
@@ -496,7 +526,7 @@ def enrolment_requirements(objects):
                     exclusion_rule = f"(~({exclusion_rule}))"
                     requirement_met = f"(CourseExclusionRequirement('{student.name}', '{course.id}'))"
                     
-                    #Equivalence Relationship #BUG OR NOT WORKING
+                    #Equivalence Relationship
                     #new_constraint = f"E.add_constraint(({exclusion_rule} >> {requirement_met}) & ({requirement_met} >> {exclusion_rule}))"
                     new_constraint = f"E.add_constraint(({exclusion_rule} & {requirement_met}) | (~{requirement_met} & ~{exclusion_rule}))"
                     
@@ -507,7 +537,7 @@ def enrolment_requirements(objects):
             else:
                 constraint.add_exactly_one(E,[CourseExclusionRequirement(student, course)]) #Force True
 
-    #CONSTRAINT 7 - Course Prerequisites     #BUG              
+    #CONSTRAINT 7 - Course Prerequisites             
     #For every student and every course in a students wishlist, if a course that a student wish's to take has a prerequisite rule in
     # its requirements, then a prerequisite course must be in the students course history.
     for student in students:
@@ -522,13 +552,13 @@ def enrolment_requirements(objects):
                         
                         prerequisite_exists = CheckCoursePrerequisitesExists(student.name, course.id, check_course) #create a course prerequisite propositon
                         
-                        #If a course that is in the prerequisite rule has not been taken, then the prerequisite rule has been broken
-                        if check_course in str(student.completed_courses):
+                        #If a course that is in the prerequisite rule has  been taken, then the prerequisite rule has been satisfied
+                        if check_course in str(student.completed_courses) or check_course+'A' in str(student.completed_courses) or check_course+'B' in str(student.completed_courses):
                             constraint.add_exactly_one(E,[prerequisite_exists]) #force the proposition to true, i.e an prerequisite is present
                         
                         #If a course that is in the prerequisite rule has not already been taken and is not being taken before the course in question, then the prerequisite rule has been broken,
                         #therefore if a student is planning on taking a corequisite course, they must be taken at the same time or before.
-                        elif check_course in str(student.course_wish_list):
+                        elif check_course in str(student.course_wish_list) and check_course+'A' not in str(student.course_wish_list) and check_course+'B' not in str(student.course_wish_list):
                             offered_terms = course.sections.get_term_offerings()
                             for term in offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
                                 other_terms = []
@@ -553,7 +583,7 @@ def enrolment_requirements(objects):
                                     
                                     
                                 else:
-                                    E.add_constraint(StudentEnrolledCourseTerm(student, student.course_wish_list[check_course], term) >> ~(StudentEnrolledCourse(student, course))) #BUG
+                                    E.add_constraint(StudentEnrolledCourseTerm(student, student.course_wish_list[check_course], term) >> ~(StudentEnrolledCourse(student, course)))
                                     
                             constraint.add_exactly_one(E,[prerequisite_exists]) #force the proposition to true, i.e a prerequisite is present
                         
@@ -584,7 +614,7 @@ def enrolment_requirements(objects):
             else:
                 constraint.add_exactly_one(E,[CoursePrerequisiteRequirement(student, course)]) #Force True
 
-    #CONSTRAINT 8 - Course Corequisites #BUG
+    #CONSTRAINT 8 - Course Corequisites
     #For every student and every course in a students wishlist, if a course that a student wish's to take has a corequisite rule in
     # its requirements, then a coerequisite course must be in the students course history.
     for student in students:
@@ -596,19 +626,21 @@ def enrolment_requirements(objects):
                 if corequisite_rule != "NONE":
                     corequisite_courses = utils.extract_courses(corequisite_rule) #get all the courses in the corequisite rule
                     
+                    check_index = -1
                     for check_course in corequisite_courses: #loop over all courses in the corequisite rule
+                        check_index +=1
                         
                         corequisite_exists = CheckCourseCorequisitesExists(student.name, course.id, check_course) #create a course corequisite propositon
                         
                         #If a course that is in the corequisite rule has not already been taken, then the corequisite rule has been broken
-                        if check_course in str(student.completed_courses):
+                        if check_course in str(student.completed_courses) or check_course+'A' in str(student.completed_courses) or check_course+'B' in str(student.completed_courses):
                             constraint.add_exactly_one(E,[corequisite_exists]) #force the proposition to true, i.e a corequisite is present
                         
                         #If a course that is in the corequisite rule has not already been taken and is not being taken at the same time as the course in question or before,
                         # then the corequisite rule has been broken,
                         #therefore if a student is planning on taking a corequisite course, they must be taken at the same time or before.
                         
-                        elif check_course in str(student.course_wish_list):
+                        elif check_course in str(student.course_wish_list) and check_course+'A' not in str(student.course_wish_list) and check_course+'B' not in str(student.course_wish_list):
                             offered_terms = course.sections.get_term_offerings()
                             for term in  offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
                                 other_terms = []
@@ -635,6 +667,41 @@ def enrolment_requirements(objects):
                                 E.add_constraint(StudentEnrolledCourseTerm(student, course, term) >> (options))
                                 
                                 constraint.add_exactly_one(E,[corequisite_exists]) #force the proposition to true, i.e a corequisite is present
+                        
+                        #Full Year Corequisites
+                        elif check_course+'A' in str(student.course_wish_list) and check_course+'B' in str(student.course_wish_list):
+                            corequisite_rule = corequisite_rule.replace(check_course, check_course+'B')
+                            check_course = check_course+'B'
+                            corequisite_courses[check_index] = check_course+'B'
+                            corequisite_exists = CheckCourseCorequisitesExists(student.name, course.id, check_course)
+
+                            offered_terms = course.sections.get_term_offerings()
+                            for term in  offered_terms: #loop over "WINTER", "SUMMER", "FALL" terms depending on course offering
+                                other_terms = []
+                                if term == datalayer.Term.SUMMER:
+                                    if datalayer.Term.FALL in offered_terms:
+                                        other_terms.append(datalayer.Term.FALL)
+                                    if datalayer.Term.WINTER in offered_terms:
+                                        other_terms.append(datalayer.Term.WINTER)
+                                    other_terms.append(datalayer.Term.SUMMER)
+                                        
+                                elif term == datalayer.Term.WINTER:
+                                    if datalayer.Term.FALL in offered_terms:
+                                        other_terms.append(datalayer.Term.FALL)
+                                    other_terms.append(datalayer.Term.WINTER)
+                                    
+                                elif term == datalayer.Term.FALL:
+                                    other_terms.append(datalayer.Term.FALL)
+                                
+                                options = []
+                                for o_term in other_terms:
+                                    options.append(StudentEnrolledCourseTerm(student, student.course_wish_list[check_course], o_term))
+                                options = Or(options)
+                                
+                                E.add_constraint(StudentEnrolledCourseTerm(student, course, term) >> (options))
+                                
+                                constraint.add_exactly_one(E,[corequisite_exists]) #force the proposition to true, i.e a corequisite is present
+
                             
                         else:
                             constraint.add_none_of(E,[corequisite_exists]) #force the proposition to false, i.e a corequisite is not present
@@ -717,8 +784,6 @@ def friendship(objects):
                         
                             
                         E.add_constraint((StudentEnrolledCourse(student, course) & StudentEnrolledCourse(friend, course) & Friendship(student1, student2)) >> (common_section))
-    
-        #TODO
     
 
 #BUILDER

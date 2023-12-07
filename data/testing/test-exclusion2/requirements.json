@@ -1,0 +1,50 @@
+[ {
+  "id": "CISC-121",
+  "requirements": [
+    {
+      "type": "PREREQUISITE",
+      "criteria": "NONE"
+    },
+    {
+      "type": "EXCLUSION",
+      "criteria": "NONE"
+    },
+    {
+      "type": "PROGRAM REQUIREMENT",
+      "criteria": "NONE"
+    },
+    {
+      "type": "APPROVAL",
+      "criteria": "NONE"
+    },
+    {
+      "type": "COREQUISITE",
+      "criteria": "CISC-102 OR MATH-111 OR MATH-121 OR MATH-110 OR MATH-112 OR MATH-120 OR MATH-123 OR MATH-124 OR MATH-126 OR APSC-171 OR APSC-172 OR APSC-174 OR COMM-161 OR COMM-162"
+    }
+  ]
+},{
+  "id": "CISC-101",
+  "requirements": [
+    {
+      "type": "PREREQUISITE",
+      "criteria": "NONE"
+    },
+    {
+      "type": "EXCLUSION",
+      "criteria": "CISC-203 OR CISC-121 OR APSC-142 OR APSC-143 OR CISC-110"
+    },
+    {
+      "type": "PROGRAM REQUIREMENT",
+      "criteria": "CISC OR CMPE"
+    },
+    {
+      "type": "APPROVAL",
+      "criteria": "NONE"
+    },
+    {
+      "type": "COREQUISITE",
+      "criteria": "NONE"
+    }
+  ]
+}
+]

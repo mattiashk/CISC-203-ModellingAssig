@@ -9,6 +9,11 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     const rawData = fs.readFileSync(dataFilePath, 'utf8');
     const studentsData = JSON.parse(rawData);
 
+    if (Array.isArray(studentsData) && studentsData.length === 1 && studentsData[0].Solution === false) {
+      res.status(200).json(studentsData);
+      return;
+    }
+
     const overviewData = studentsData.map(student => {
       const terms = {
         Fall: student.terms.some(term => term.term === "FALL") ? true : false,

@@ -1,0 +1,27 @@
+[ 
+  {
+  "id": "CISC-101",
+  "requirements": [
+    {
+      "type": "PREREQUISITE",
+      "criteria": "NONE"
+    },
+    {
+      "type": "EXCLUSION",
+      "criteria": "CISC-203 OR CISC-121 OR APSC-142 OR APSC-143 OR CISC-110"
+    },
+    {
+      "type": "PROGRAM REQUIREMENT",
+      "criteria": "CISC OR CMPE"
+    },
+    {
+      "type": "APPROVAL",
+      "criteria": "NONE"
+    },
+    {
+      "type": "COREQUISITE",
+      "criteria": "NONE"
+    }
+  ]
+}
+]

@@ -14,8 +14,15 @@ const dataFilePath = path.resolve(__dirname, '../../../../data/data.json');
 export default (req: NextApiRequest, res: NextApiResponse) => {
   if (req.method === 'POST') {
     try {
-      const jsonData = req.body;
+      let jsonData = req.body;
 
+      if (jsonData === "No Solution") {
+        jsonData = [{"Solution": false}];
+      }
+
+     else if (Object.keys(jsonData).length === 0 && jsonData.constructor === Object) {
+        jsonData = [];
+      }
       fs.writeFileSync(dataFilePath, JSON.stringify(jsonData, null, 2));
 
       res.status(201).json({ message: 'Data stored successfully' });
@@ -27,7 +34,6 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
   } 
   else if (req.method === 'GET') {
     try {
-      // Read data from data.json
       const rawData = fs.readFileSync(dataFilePath, 'utf8');
       const data = JSON.parse(rawData);
 

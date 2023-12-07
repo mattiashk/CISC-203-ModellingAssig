@@ -201,10 +201,8 @@ def create_json(solution, objects):
                             for section in term_offerings: #get the Section objects from the term_offering
                                 if solution[sat_solver.StudentEnrolledCourseSection(student, course, term, section)]:
 
-                                    courseview = CourseView(section.id, section.dates ) #initialize a new CourseView to hold the Section a student is enrolled in
+                                    courseview = CourseView((f"{section.courseid}-{section.class_number}"), section.dates ) #initialize a new CourseView to hold the Section a student is enrolled in
                                     termview.courses.append(courseview)
-                                    
-                                    #print(f"{student.name} enrolled in {section.id} in term {str(term)}") #REMOVE
                                     
                         if termview.courses != []:
                             if term in studentview.terms:
@@ -217,5 +215,5 @@ def create_json(solution, objects):
         data = timetableview.to_dict()
     
     else:
-        data = None
+        data = "[]"
     return data

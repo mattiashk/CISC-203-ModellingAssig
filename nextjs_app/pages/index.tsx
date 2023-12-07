@@ -35,7 +35,7 @@ const IndexPage = () => {
     let isSubscribed = true; // Track state
     let sat_solver_port;
   
-    // Fetch the configuration
+    // Fetch configuration
     fetch('/api/config')
       .then(response => response.json())
       .then(config => {
@@ -45,7 +45,6 @@ const IndexPage = () => {
       })
       .then(response => {
         if (!response.ok) {
-          // Throw to skip to catch 
           throw new Error(`HTTP status ${response.status}`);
         }
         return response.json();
@@ -111,7 +110,6 @@ const IndexPage = () => {
     fetch('/api/student-overview')
       .then(response => {
         if (!response.ok) {
-          // Throw to skip catch
           throw new Error(`HTTP status ${response.status}`);
         }
         return response.json();
@@ -144,7 +142,9 @@ const IndexPage = () => {
           <ToastComponent id='toast' target='#toast_target' className='toast-container' ref={toastRef} position={{ X: 'Right', Y: 'Top' } } close={onClose}/>
         <h1 className="text-3xl font-bold uppercase text-gray-800">SCHEDULE SENSEI</h1>
         <Image src="/logo.png" alt="Schedule Sensei" width={200} height={200} className="mx-auto my-12" />
-        {data && data.length > 0 ? (
+        {Array.isArray(data) && data.length === 1 && data[0].Solution === false ? (
+          <p className="text-black font-bold text-center p-6">No solution available</p>
+        ) : data && data.length > 0 ? (
           <div className="mx-auto w-1/2 p-8">
             <GridComponent dataSource={data} allowPaging={true} pageSettings={{ pageSize: 10 }}>
               <ColumnsDirective>
@@ -163,7 +163,7 @@ const IndexPage = () => {
             </GridComponent>
           </div>
         ) : (
-          <p className="text-black font-bold text-center p-6">No students data available</p>
+          <p className="text-black font-bold text-center p-6">No student data available</p>
         )}
         <div>
           {testData && testData.length > 0 ? (

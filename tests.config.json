@@ -1,26 +1,104 @@
 [
     {   
         "id": 0,
-        "test": "test-small-general",
-        "description": "A small test size of 2 students each enrolled in 2 courses, with no conflicts",
-        "location": "data/testing/test-small-general"
+        "test": "test-medium-general",
+        "description": "A full course load for a first year student.",
+        "location": "data/testing/test-medium-general"
     },
-    {
+    {   
         "id": 1,
-        "test": "test-small-freindship-01",
-        "description": "A small test size of 2 friends each enrolled in 2 courses, with no conflicts",
-        "location": "data/testing/test-small-freindship-01"
+        "test": "test-medium-friendship",
+        "description": "A full course load for a 2 first year students who are firends.",
+        "location": "data/testing/test-medium-friendship"
     },
     {
         "id": 2,
-        "test": "test-full-year-course",
-        "description": "A single full year course with terms A and B",
-        "location": "data/testing/test-full-year-course"
+        "test": "test-small-freindship-01",
+        "description": "A small test size of 2 friends each enrolled in 2 courses, with no conflicts.",
+        "location": "data/testing/test-small-freindship-01"
     },
     {
         "id": 3,
+        "test": "test-full-year-course",
+        "description": "A single full year course with terms A and B.",
+        "location": "data/testing/test-full-year-course"
+    },
+    {
+        "id": 4,
         "test": "test-tbd-course",
-        "description": "A single course without determined dates or times",
+        "description": "A single course without determined dates or times.",
         "location": "data/testing/test-tbd-course"
+    },
+    {
+        "id": 5,
+        "test": "test-prereq-satisfied",
+        "description": "A single course (CISC-204) with satisfied prerequisites (CISC-121, MATH-110).",
+        "location": "data/testing/test-prereq-satisfied"
+    },
+    {
+        "id": 6,
+        "test": "test-prereq-not-satisfied",
+        "description": "A single course (CISC-204) with non satisfied prerequisites (CISC-121) however (MATH-110) is satisfied.",
+        "location": "data/testing/test-prereq-not-satisfied"
+    },
+    {
+        "id": 7,
+        "test": "test-prereq-not-satisfied-fullyear",
+        "description": "A single course (CISC-204) with non satisfied prerequisites (CISC-121) and (MATH-110) a full year course, therfore has no solution.",
+        "location": "data/testing/test-prereq-not-satisfied-fullyear"
+    },
+    {
+        "id": 8,
+        "test": "test-coreq-satisfied",
+        "description": "A single course (CISC-220) with a satisfied corequisites (CISC-124) that was taken in a previous year.",
+        "location": "data/testing/test-coreq-satisfied"
+    },
+    {
+        "id": 9,
+        "test": "test-coreq-satisfied-02",
+        "description": "A single course (CISC-220) with a non satisfied corequisites (CISC-124) therefore it must be taken.",
+        "location": "data/testing/test-coreq-satisfied-02"
+    },
+    {
+        "id": 10,
+        "test": "test-coreq-satisfied-03",
+        "description": "A single course (CISC-220) with a non satisfied corequisites (CISC-124) which has a non satisfied prerequisite (CISC-121).",
+        "location": "data/testing/test-coreq-satisfied-03"
+    },
+    {
+        "id": 11,
+        "test": "test-coreq-complex",
+        "description": "A single course (CISC-220) with a non satisfied corequisites (CISC-124) which has a non satisfied prerequisite (CISC-121) which has a non satisfied full year corequisite (MATH-110).",
+        "location": "data/testing/test-coreq-complex"
+    },
+    {
+        "id": 12,
+        "test": "test-exclusion",
+        "description": "A single course (CISC-101) with an exclusion (CISC-121).",
+        "location": "data/testing/test-exclusion"
+    },
+    {
+        "id": 13,
+        "test": "test-exclusion2",
+        "description": "A single course (CISC-101) with an exclusion (CISC-121) which has already been taken.",
+        "location": "data/testing/test-exclusion2"
+    },
+    {
+        "id": 14,
+        "test": "test-time-conflict",
+        "description": "2 courses with a time conflict, thus no solutions.",
+        "location": "data/testing/test-time-conflict"
+    },
+    {
+        "id": 15,
+        "test": "your-custom-test-case",
+        "description": "An empty data set that you can configure.",
+        "location": "data/testing/your-custom-test-case"
+    },
+    {
+        "id": 16,
+        "test": "complete-large-test-case",
+        "description": "A complete data set containing all possible courses and sections (but no student data).",
+        "location": "complete-large-test-case"
     }
 ]

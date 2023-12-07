@@ -264,6 +264,9 @@ def parse_sat_test(test_number):
             if (S is not None):
                 display_course_selection(S, O)
                 display_timetable_view(S, O)
+
+            elif (S is None):
+                post_data_to_api("No Solution")
                 
             return {"status": "success", "message": f"Test number: {test_number} parsed"}
         else:

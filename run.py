@@ -145,26 +145,65 @@ def dev_mode():
     """
     Runs the application in a development mode for testing and debugging. Uses a predefined test case.
     """
-    objects = utils.create_data_layer("test-friends-01")
-    #objects = main.create_data_layer()
+    # Initialize Test Cases
+    cases = utils.initalize_test_cases()
     
-    result_dict = sat_solver.execute(objects)
+    C = True
+    count = 0
+    while C:
+        count += 1
+        if count > 1:
+            print("--------------------------------------------------------------------------------------------------------------")
+            time.sleep(2)
+        test_case = get_input(cases)
+        
+        if test_case is False:
+            break
     
-    T = result_dict["Theory"]
-    S = result_dict["Solution"]
-    
-    print("\nSatisfiable: %s" % T.satisfiable())
-    print("# Solutions: %d" % count_solutions(T))
-    print("   Solution:")
-    utils.display_timetable_view(S, objects)
-    # display_solution(S)
+        result = utils.sat_solve_request(test_case)
 
-    # if count_solutions(T) != 0:
-    #     print("\n\n\n\n")
-    #     display_course_selection(solution, objects)
-    #     print("\n\n")
-    #     display_timetable_view(solution, objects)
-    #     print("\n\n")
+        ##TESTING
+        import pprint
+        print("Objects:")
+        if result != False:
+            for key in result["Objects"].keys():
+                print(f"{key}: {result['Objects'][key]}")
+
+            print(result["Objects"]["students"]['Student1'].completed_courses)
+                
+            print("\n")
+        
+
+        if  result != None and result != False and result["Solution"] is not None:
+            T = result["Theory"]
+            S = result["Solution"]
+            O = result["Objects"]
+            
+            
+            if utils.get_console_solution_preferences():
+                utils.display_propositions(S)#show all propositions
+            
+            print("\n")
+            print("Satisfiable: %s" % T.satisfiable())
+            print("# Solutions: %d" % count_solutions(T))
+            if count_solutions(T) != 0:
+                print("   Solution:")
+                print("\n")
+                utils.display_course_selection(S, O)
+                print("\n")
+
+        elif result != None and result != False and result["Solution"] is None:
+            print(f"{TextColor.FAIL}No Solutions{TextColor.ENDC}")
+            print("\n")
+        
+        else:
+            print(f"{TextColor.FAIL}An error occured while executing the sat solver{TextColor.ENDC}")
+            print("\n")
+
+        count += 1
+
+        C = False
+
     
 
     

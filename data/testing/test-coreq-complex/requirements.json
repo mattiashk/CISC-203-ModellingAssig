@@ -1,0 +1,77 @@
+[
+  {
+    "id": "CISC-220",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "CISC-124"
+      }
+    ]
+  },
+  {
+    "id": "CISC-124",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "CISC-121"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "NONE"
+      }
+    ]
+  },
+  {
+    "id": "CISC-121",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "MATH-110"
+      }
+    ]
+  }
+]

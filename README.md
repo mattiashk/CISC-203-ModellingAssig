@@ -77,21 +77,25 @@ By far the most reliable way to get this project running is with [Docker](https:
     If you would like to run the *Python SAT Solver* and use the *Nextjs Web App* for interaction with the Solver: 
 	
     *From the project folder run to following commands.*
+	a. Ensure the model.sh has execute permission.
+	```sh
+		chmod +x model.sh
+	```
 	
-    a. Build both the Sat Solver and the Web App containers.
+    b. Build both the Sat Solver and the Web App containers.
 	```sh
 		./model.sh --build
 	```
-    b. Start both the Sat Solver and the Web App
+    c. Start both the Sat Solver and the Web App
 	```sh
 		./model.sh --start
 	```
-    c. The Web App can be accessed at [http://localhost:3000/](http://localhost:3000/)
-    d. To stop both the Web App and the Sat Solver, you can `Ctrl+C` in the terminal to interrupt and shut down both containers. Running the following command is also an option if your terminal is not tied up.
+    d. The Web App can be accessed at [http://localhost:3000/](http://localhost:3000/)
+    e. To stop both the Web App and the Sat Solver, you can `Ctrl+C` in the terminal to interrupt and shut down both containers. Running the following command is also an option if your terminal is not tied up.
 	```sh
 		./model.sh --shutdown
 	```
-    e. From the shutdown state both the Sat Solver and the Web APP containers can be restarted with `./model.sh --start` followed by `./model.sh --run` to run both programs.
+    f. From the shutdown state both the Sat Solver and the Web APP containers can be restarted with `./model.sh --start` followed by `./model.sh --run` to run both programs.
     
     ### **Using the Console**
     
@@ -197,13 +201,12 @@ This prompt accepts user input for a *test case id*. After entering a case the s
 The Console Mode remains in a while loop repeatedly asking for user input until the `e` key is entered closing the program.
 
 ### Custom Test Cases
-Please read the [creating custom test cases overview]()
+Please read the [creating custom test cases overview](https://github.com/mattiashk/CISC-204-ModellingAssig/blob/main/data/README.md)
 
 ## Contents
-- [Web App Overview]()
-- [SAT Solver Overview]()
-- [Data Set Overview]()
-- [Creating Custom Test Cases]()
+- [Web App Overview](https://github.com/mattiashk/CISC-204-ModellingAssig/tree/main/nextjs_app#readme)
+- [Data Set Overview](https://github.com/mattiashk/CISC-204-ModellingAssig/blob/main/data/reference/README.md)
+- [Creating Custom Test Cases](https://github.com/mattiashk/CISC-204-ModellingAssig/blob/main/data/README.md)
 
 ## Uninstall
 

@@ -1,0 +1,27 @@
+[
+  {
+    "id": "CISC-220",
+    "requirements": [
+      {
+        "type": "PREREQUISITE",
+        "criteria": "NONE"
+      },
+      {
+        "type": "EXCLUSION",
+        "criteria": "NONE"
+      },
+      {
+        "type": "PROGRAM REQUIREMENT",
+        "criteria": "NONE"
+      },
+      {
+        "type": "APPROVAL",
+        "criteria": "NONE"
+      },
+      {
+        "type": "COREQUISITE",
+        "criteria": "CISC-124"
+      }
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Student1",
+        "academic_year": "SECONDYEAR",
+        "program": "COMPSCI",
+        "completed_courses": ["CISC-124"],
+        "course_wish_list": ["CISC-220"],
+        "friends":[]
+    }
+]

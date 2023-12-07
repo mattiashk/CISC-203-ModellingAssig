@@ -1239,18 +1239,18 @@ class Section(TermLevelSection):
         if not isinstance(other, Section):
             raise ValueError("The other value must be a Section object")
         else:
-            for date1 in self.dates:
-                for date2 in other.dates:
-                    start_time1 = datetime.strptime(date1.start_time, "%H:%M")
-                    end_time1 = datetime.strptime(date1.end_time, "%H:%M")
-                    start_time2 = datetime.strptime(date2.start_time, "%H:%M")
-                    end_time2 = datetime.strptime(date2.end_time, "%H:%M")
+                for date1 in self.dates:
+                    for date2 in other.dates:
+                        if not date1.is_tba() and not date2.is_tba():
+                            start_time1 = datetime.strptime(date1.start_time, "%H:%M")
+                            end_time1 = datetime.strptime(date1.end_time, "%H:%M")
+                            start_time2 = datetime.strptime(date2.start_time, "%H:%M")
+                            end_time2 = datetime.strptime(date2.end_time, "%H:%M")
 
-                    if date1.day == date2.day:
-                        # Check for time overlap
-                        if start_time1 < end_time2 and end_time1 > start_time2:
-                            return True  # Conflict found
-
+                            if date1.day == date2.day:
+                                # Check for time overlap
+                                if start_time1 < end_time2 and end_time1 > start_time2:
+                                    return True  # Conflict found
         return False
             
     @property
@@ -1582,6 +1582,15 @@ class SectionDate:
         return (
             f"{self.day} {self.start_time} : {self.end_time}"
         )
+
+    def is_tba(self):
+        """
+        Checks if the current date is 'TBA'.
+
+        Returns:
+            bool: True if this date is 'TBA', False otherwise.
+        """
+        return any(value == 'TBA' for value in [self.day, self.start_date, self.end_date, self.start_time, self.end_time])
 
 class SectionDates:
     """
@@ -1920,7 +1929,7 @@ class Student:
     Attributes:
         - _name (str): The name of the student.
         - _academic_year (AcademicYear): The current academic year of the student.
-        - _program (string): The program the student is enrolled in. #TODO needs to be mapped to a new program class to force required courses
+        - _program (string): The program the student is enrolled in.
         - _completed_courses (Courses): A Courses object containing a collection of this students completed of courses.
         - _course_wish_list (Courses): A Courses object containing the courses this student wishes to enroll in this academic year.
         - _friends (Friends): A collection of Friend objects representing a students friends and their shared courses.
@@ -2058,8 +2067,16 @@ class Student:
             if all(isinstance(c, str) for c in value):
                 courses = Courses()
                 for c in value:
-                    courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
-                
+                    if c in Courses.ALLCOURSES and c+"A" not in Courses.ALLCOURSES:
+                        courses.add_course(Courses.ALLCOURSES.find_course_by_id(c))
+                    
+                    # If course is full year and has A B terms
+                    elif c+"A" in Courses.ALLCOURSES and c+"B" in Courses.ALLCOURSES:
+                        first_term = Courses.ALLCOURSES.find_course_by_id(c+"A")
+                        second_term = Courses.ALLCOURSES.find_course_by_id(c+"B")
+                        courses.add_course(first_term)
+                        courses.add_course(second_term)
+
                 self._completed_courses = courses
 
             else:
@@ -2829,5 +2846,4 @@ def mapFriends(student_data):
 
 if __name__ == "__main__":
     pass
-
     

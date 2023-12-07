@@ -1,0 +1,28 @@
+[
+    {
+        "name": "Student1",
+        "academic_year": "FIRSTYEAR",
+        "program": "COMPSCI",
+        "completed_courses": [""],
+        "course_wish_list": ["CISC-121", "MATH-110", "MATH-121", "CISC-124", "GEOL-107", "ASTR-101", "HLTH-102", "COGS-100"],
+        "friends":[
+            {
+                "name": "Student2",
+                "shared_courses": ["CISC-121", "CISC-124", "MATH-110"]
+            }
+        ]
+    },
+    {
+        "name": "Student2",
+        "academic_year": "FIRSTYEAR",
+        "program": "COMPSCI",
+        "completed_courses": [""],
+        "course_wish_list": ["CISC-121", "MATH-110", "MATH-121", "CISC-124", "GEOL-107", "PHIL-153", "HLTH-101", "POLS-101"],
+        "friends":[
+            {
+                "name": "Student1",
+                "shared_courses": ["CISC-121", "CISC-124", "MATH-110"]
+            }
+        ]
+    }
+]

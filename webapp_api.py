@@ -17,7 +17,6 @@ CORS(app)  # Enable CORS for all routes
 @app.route('/parse-test', methods=['POST'])
 def handle_parse_test():
     data = request.get_json()
-    print(f"data: {data}")
     if 'test_case' in data:
         test_number = data['test_case']
         response = utils.parse_sat_test(int(test_number))
